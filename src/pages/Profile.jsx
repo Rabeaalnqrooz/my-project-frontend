@@ -91,10 +91,14 @@ export function Profile() {
       }
       await updateProfile(formData);
       setImageFile(null);
-      reset(data);
+      // reset(data);
       toast.success(t("toast.profile_updated_success"));
     } catch (error) {
-      toast.error(error.message);
+      toast.error(
+        error.response?.data?.message ||
+          error.message ||
+          t("toast.process_failed_error"),
+      );
     }
   };
 
@@ -155,53 +159,68 @@ export function Profile() {
   const isButtonDisabled = (!isDirty && !imageFile) || isLoading;
 
   return (
-    // 👈 التأكد من سحب ألوان الخلفية والنصوص ديناميكياً لتتوافق مع الـ Dark Mode
-    <div className="max-w-lg mx-auto pt-24 px-4 mb-3 relative text-foreground">
+    <div className="max-w-lg mx-auto pt-24 px-4 mb-6 relative text-foreground mt-12 animate-in fade-in duration-300">
       <Tabs
         value={activeTab}
         onValueChange={setActiveTab}
-        className="mt-8 sm:mt-4"
+        className="mt-8 sm:mt-4 space-y-6"
       >
-        <TabsList className="w-full justify-start bg-muted border border-border">
+        {/* قائمة التبويبات - بتصميم متناسق ومريح للعين بالوضعين */}
+        <TabsList className="w-full justify-start bg-muted/60 p-1 border border-border/60 rounded-xl">
           <TabsTrigger
             value="profile"
-            className="cursor-pointer data-[state=active]:bg-background data-[state=active]:text-foreground"
+            className="cursor-pointer rounded-lg text-sm font-semibold transition-all data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-sm px-4 py-2"
           >
             {t("profile_tab")}
           </TabsTrigger>
           <TabsTrigger
             value="ResetPassword"
-            className="cursor-pointer data-[state=active]:bg-background data-[state=active]:text-foreground"
+            className="cursor-pointer rounded-lg text-sm font-semibold transition-all data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-sm px-4 py-2"
           >
             {t("reset_password_tab")}
           </TabsTrigger>
         </TabsList>
 
         {/* ─── تبويب الملف الشخصي ─────────────────── */}
-        <TabsContent value="profile">
-          {/* تم تهيئة الـ Card ليعمل ديناميكياً مع الخلفية والحدود الداكنة */}
-          <Card className="bg-card border-border text-card-foreground">
-            <CardHeader>
-              <CardTitle className="text-start text-foreground">
+        <TabsContent value="profile" className="outline-none">
+          <Card className="bg-card/70 backdrop-blur-sm border-border/60 text-card-foreground shadow-xl rounded-2xl overflow-hidden">
+            <CardHeader className="pb-4">
+              <CardTitle className="text-start text-lg sm:text-xl font-extrabold tracking-tight text-foreground">
                 {t("edit_profile_title")}
               </CardTitle>
             </CardHeader>
             <CardContent>
               <form
-                className="space-y-4 text-start"
+                className="space-y-5 text-start"
                 onSubmit={handleSubmit(onSubmit)}
               >
-                <div className="flex flex-col items-center gap-3">
-                  <img
-                    src={preview || "/default-avatar.png"}
-                    alt="avatar"
-                    className="w-24 h-24 rounded-full object-cover border border-border"
-                  />
+                {/* قسم الصورة الشخصية المطور تفاعلياً */}
+                <div className="flex flex-col items-center gap-3 group">
+                  <div className="relative w-24 h-24 rounded-full overflow-hidden border-2 border-border shadow-sm bg-muted flex items-center justify-center">
+                    <img
+                      src={preview || "/default-avatar.png"}
+                      alt="avatar"
+                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                    />
+                  </div>
                   <button
                     onClick={handelbutton}
-                    className="hover:underline cursor-pointer text-sm font-medium text-blue-600 dark:text-blue-400"
+                    className="cursor-pointer text-xs sm:text-sm font-bold text-primary hover:underline transition-colors flex items-center gap-1"
                     type="button"
                   >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="h-3.5 w-3.5"
+                    >
+                      <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z" />
+                      <circle cx="12" cy="13" r="3" />
+                    </svg>
                     {t("edit_picture_btn")}
                   </button>
                   <Input
@@ -213,85 +232,93 @@ export function Profile() {
                   />
                 </div>
 
+                {/* شبكة المدخلات لبيانات المستخدم */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  {/* تم تعديل الـ Inputs والـ Labels لتتوافق مع درجات الـ Dark Mode */}
-                  <div className="space-y-2">
-                    <Label className="text-foreground">{t("first_name")}</Label>
+                  <div className="space-y-1.5">
+                    <Label className="text-xs sm:text-sm font-semibold text-foreground/90">
+                      {t("first_name")}
+                    </Label>
                     <Input
-                      className="bg-transparent border-border text-foreground focus-visible:ring-primary"
+                      className="h-10 rounded-xl bg-transparent border-border text-foreground focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-0 shadow-sm"
                       {...register("firstName")}
                     />
                     {errors.firstName && (
-                      <p className="text-red-500 dark:text-red-400 text-sm font-medium">
+                      <p className="text-destructive text-xs font-semibold pt-0.5 animate-in fade-in">
                         {errors.firstName.message}
                       </p>
                     )}
                   </div>
 
-                  <div className="space-y-2">
-                    <Label className="text-foreground">{t("last_name")}</Label>
+                  <div className="space-y-1.5">
+                    <Label className="text-xs sm:text-sm font-semibold text-foreground/90">
+                      {t("last_name")}
+                    </Label>
                     <Input
-                      className="bg-transparent border-border text-foreground focus-visible:ring-primary"
+                      className="h-10 rounded-xl bg-transparent border-border text-foreground focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-0 shadow-sm"
                       {...register("lastName")}
                     />
                     {errors.lastName && (
-                      <p className="text-red-500 dark:text-red-400 text-sm font-medium">
+                      <p className="text-destructive text-xs font-semibold pt-0.5 animate-in fade-in">
                         {errors.lastName.message}
                       </p>
                     )}
                   </div>
 
-                  <div className="space-y-2 md:col-span-2">
-                    <Label className="text-foreground">
+                  <div className="space-y-1.5 md:col-span-2">
+                    <Label className="text-xs sm:text-sm font-semibold text-foreground/90">
                       {t("phone_number")}
                     </Label>
                     <Input
-                      className="bg-transparent border-border text-foreground focus-visible:ring-primary"
+                      className="h-10 rounded-xl bg-transparent border-border text-foreground focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-0 shadow-sm"
                       {...register("phoneNo")}
                     />
                     {errors.phoneNo && (
-                      <p className="text-red-500 dark:text-red-400 text-sm font-medium">
+                      <p className="text-destructive text-xs font-semibold pt-0.5 animate-in fade-in">
                         {errors.phoneNo.message}
                       </p>
                     )}
                   </div>
 
-                  <div className="space-y-2 md:col-span-2">
-                    <Label className="text-foreground">{t("city_label")}</Label>
+                  <div className="space-y-1.5 md:col-span-2">
+                    <Label className="text-xs sm:text-sm font-semibold text-foreground/90">
+                      {t("city_label")}
+                    </Label>
                     <Input
-                      className="bg-transparent border-border text-foreground focus-visible:ring-primary"
+                      className="h-10 rounded-xl bg-transparent border-border text-foreground focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-0 shadow-sm"
                       {...register("city")}
                     />
                     {errors.city && (
-                      <p className="text-red-500 dark:text-red-400 text-sm font-medium">
+                      <p className="text-destructive text-xs font-semibold pt-0.5 animate-in fade-in">
                         {errors.city.message}
                       </p>
                     )}
                   </div>
 
-                  <div className="space-y-2 md:col-span-2">
-                    <Label className="text-foreground">
+                  <div className="space-y-1.5 md:col-span-2">
+                    <Label className="text-xs sm:text-sm font-semibold text-foreground/90">
                       {t("address_label")}
                     </Label>
                     <Input
-                      className="bg-transparent border-border text-foreground focus-visible:ring-primary"
+                      className="h-10 rounded-xl bg-transparent border-border text-foreground focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-0 shadow-sm"
                       {...register("address")}
                     />
                     {errors.address && (
-                      <p className="text-red-500 dark:text-red-400 text-sm font-medium">
+                      <p className="text-destructive text-xs font-semibold pt-0.5 animate-in fade-in">
                         {errors.address.message}
                       </p>
                     )}
                   </div>
 
-                  <div className="space-y-2 md:col-span-2">
-                    <Label className="text-foreground">{t("zip_code")}</Label>
+                  <div className="space-y-1.5 md:col-span-2">
+                    <Label className="text-xs sm:text-sm font-semibold text-foreground/90">
+                      {t("zip_code")}
+                    </Label>
                     <Input
-                      className="bg-transparent border-border text-foreground focus-visible:ring-primary"
+                      className="h-10 rounded-xl bg-transparent border-border text-foreground focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-0 shadow-sm"
                       {...register("zipCode")}
                     />
                     {errors.zipCode && (
-                      <p className="text-red-500 dark:text-red-400 text-sm font-medium">
+                      <p className="text-destructive text-xs font-semibold pt-0.5 animate-in fade-in">
                         {errors.zipCode.message}
                       </p>
                     )}
@@ -301,7 +328,7 @@ export function Profile() {
                 <Button
                   disabled={isButtonDisabled}
                   type="submit"
-                  className="w-full cursor-pointer h-11 bg-blue-600 hover:bg-blue-700 text-white rounded-xl border-none transition-colors"
+                  className="w-full h-11 bg-primary text-primary-foreground font-bold rounded-xl cursor-pointer flex items-center justify-center shadow-sm hover:bg-primary/95 transition-all duration-200 mt-2"
                 >
                   {isLoading ? (
                     <span className="flex items-center justify-center gap-2">
@@ -318,22 +345,22 @@ export function Profile() {
         </TabsContent>
 
         {/* ─── تبويب تغيير كلمة المرور ─────────────────── */}
-        <TabsContent value="ResetPassword">
-          <Card className="bg-card border-border text-card-foreground">
-            <CardHeader>
-              <CardTitle className="text-start text-foreground">
+        <TabsContent value="ResetPassword" className="outline-none">
+          <Card className="bg-card/70 backdrop-blur-sm border-border/60 text-card-foreground shadow-xl rounded-2xl overflow-hidden">
+            <CardHeader className="pb-4">
+              <CardTitle className="text-start text-lg sm:text-xl font-extrabold tracking-tight text-foreground">
                 {t("reset_password_tab")}
               </CardTitle>
             </CardHeader>
             <CardContent>
               <form
-                className="space-y-4 text-start"
+                className="space-y-5 text-start"
                 onSubmit={handleSubmitPassword(onPasswordSubmit)}
               >
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div className="space-y-2 md:col-span-2">
+                <div className="grid grid-cols-1 gap-4">
+                  <div className="space-y-1.5">
                     <Label
-                      className="text-foreground"
+                      className="text-xs sm:text-sm font-semibold text-foreground/90"
                       htmlFor="currentPassword"
                     >
                       {t("current_password")}
@@ -342,37 +369,40 @@ export function Profile() {
                       id="currentPassword"
                       type="password"
                       placeholder="••••••••"
-                      className="bg-transparent border-border text-foreground focus-visible:ring-primary"
+                      className="h-10 rounded-xl bg-transparent border-border text-foreground focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-0 shadow-sm"
                       {...registerPassword("currentPassword")}
                     />
                     {passwordErrors.currentPassword && (
-                      <p className="text-red-500 dark:text-red-400 text-sm font-medium">
+                      <p className="text-destructive text-xs font-semibold pt-0.5 animate-in fade-in">
                         {passwordErrors.currentPassword.message}
                       </p>
                     )}
                   </div>
 
-                  <div className="space-y-2 md:col-span-2">
-                    <Label className="text-foreground" htmlFor="newPassword">
+                  <div className="space-y-1.5">
+                    <Label
+                      className="text-xs sm:text-sm font-semibold text-foreground/90"
+                      htmlFor="newPassword"
+                    >
                       {t("new_password_label")}
                     </Label>
                     <Input
                       id="newPassword"
                       type="password"
                       placeholder="••••••••"
-                      className="bg-transparent border-border text-foreground focus-visible:ring-primary"
+                      className="h-10 rounded-xl bg-transparent border-border text-foreground focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-0 shadow-sm"
                       {...registerPassword("newPassword")}
                     />
                     {passwordErrors.newPassword && (
-                      <p className="text-red-500 dark:text-red-400 text-sm font-medium">
+                      <p className="text-destructive text-xs font-semibold pt-0.5 animate-in fade-in">
                         {passwordErrors.newPassword.message}
                       </p>
                     )}
                   </div>
 
-                  <div className="space-y-2 md:col-span-2">
+                  <div className="space-y-1.5">
                     <Label
-                      className="text-foreground"
+                      className="text-xs sm:text-sm font-semibold text-foreground/90"
                       htmlFor="confirmPassword"
                     >
                       {t("confirm_password_label")}
@@ -381,11 +411,11 @@ export function Profile() {
                       id="confirmPassword"
                       type="password"
                       placeholder="••••••••"
-                      className="bg-transparent border-border text-foreground focus-visible:ring-primary"
+                      className="h-10 rounded-xl bg-transparent border-border text-foreground focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-0 shadow-sm"
                       {...registerPassword("confirmPassword")}
                     />
                     {passwordErrors.confirmPassword && (
-                      <p className="text-red-500 dark:text-red-400 text-sm font-medium">
+                      <p className="text-destructive text-xs font-semibold pt-0.5 animate-in fade-in">
                         {passwordErrors.confirmPassword.message}
                       </p>
                     )}
@@ -395,7 +425,7 @@ export function Profile() {
                 <Button
                   disabled={isLoading || !isPasswordDirty}
                   type="submit"
-                  className="w-full mt-2 cursor-pointer h-11 bg-blue-600 hover:bg-blue-700 text-white rounded-xl border-none transition-colors"
+                  className="w-full h-11 bg-primary text-primary-foreground font-bold rounded-xl cursor-pointer flex items-center justify-center shadow-sm hover:bg-primary/95 transition-all duration-200 mt-2"
                 >
                   {isLoading ? (
                     <span className="flex items-center justify-center gap-2">

@@ -7,15 +7,17 @@ import Footer from "./Footer";
 
 function Layout() {
   return (
-    // 👈 أضفنا bg-background و text-foreground لتوحيد ثيم التطبيق بالكامل ومنع أي "ومضات" بيضاء في الوضع الداكن
-    <div className="flex flex-col min-h-screen bg-background text-foreground transition-colors duration-300">
+    /* منع أي ومضات بيضاء وتوحيد الخلفية مع حركة تلاشي ناعمة عند دخول التطبيق لأول مرة */
+    <div className="flex flex-col min-h-screen w-full bg-background text-foreground transition-colors duration-300 animate-in fade-in duration-500">
+      {/* شريط الملاحة العلوي للموقع */}
       <Navbar />
 
-      {/* كلاس grow (أو flex-grow) يجبر الـ main على التمدد وأخذ كل المساحة الفارغة */}
-      <main className="grow">
+      {/* الحاوية الديناميكية التي تتمدد تلقائياً لتعبئة المساحة الرأسية بالكامل */}
+      <main className="grow w-full">
         <Outlet />
       </main>
 
+      {/* التذييل السفلي المستقر دائماً في نهاية الشاشة */}
       <Footer />
     </div>
   );

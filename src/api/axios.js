@@ -49,7 +49,7 @@ api.interceptors.response.use(
         // 🔄 استدعاء مسار التجديد باستخدام الـ VITE_API_URL الديناميكي
         // نستخدم هنا axios المستورد مباشرة وليس api لتجنب تداخل الـ interceptors
         await axios.post(
-          `${import.meta.env.VITE_API_URL}/user/refresh-token`,
+          `${import.meta.env.VITE_API_URL}user/refresh-token`,
           {},
           { withCredentials: true },
         );

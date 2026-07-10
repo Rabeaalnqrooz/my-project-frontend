@@ -10,7 +10,7 @@ import useAuthStore from "@/store/authStore";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Globe } from "lucide-react";
+import { Loader2 } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import ThemeToggle from "../components/ThemeToggle"; // 👈 استيراد مكوّن الـ Dark Mode
 
@@ -76,56 +76,97 @@ function VerifyOTP() {
         <Button
           onClick={toggleLanguage}
           variant="outline"
-          className="cursor-pointer flex items-center gap-1.5 px-3 text-sm font-medium bg-card border-border shadow-sm text-foreground"
+          size="sm"
+          className="cursor-pointer flex items-center gap-1.5 h-9 px-3 text-xs sm:text-sm font-medium bg-card/50 border-border/60 shadow-sm text-foreground/90 hover:bg-muted"
         >
-          <Globe className="h-4 w-4" />
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="h-4 w-4 text-muted-foreground"
+          >
+            <circle cx="12" cy="12" r="10" />
+            <line x1="2" y1="12" x2="22" y2="12" />
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+          </svg>
           {i18n.language.startsWith("en") ? "العربية" : "English"}
         </Button>
 
         <ThemeToggle />
       </div>
 
-      {/* زر العودة */}
-      <Link to={"/forgot-password"} className="absolute top-4 start-4">
-        <button className="cursor-pointer text-sm text-muted-foreground hover:text-foreground font-medium transition">
-          {i18n.language.startsWith("en") ? "⬅️ Back" : "رجوع ➡️"}
+      {/* زر العودة - حركة سهم ديناميكية متجاوبة مع اتجاه لغة الصفحة */}
+      <Link to="/forgot-password" className="absolute top-5 start-5 group">
+        <button className="cursor-pointer text-sm text-muted-foreground hover:text-foreground font-semibold transition-colors flex items-center gap-1.5">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="h-3.5 w-3.5 transition-transform group-hover:-translate-x-1 rtl:group-hover:translate-x-1"
+          >
+            <line x1="19" y1="12" x2="5" y2="12" />
+            <polyline points="12 19 5 12 12 5" />
+          </svg>
+          {i18n.language.startsWith("en") ? "Back" : "رجوع"}
         </button>
       </Link>
 
-      <div className="w-full max-w-md space-y-6 mt-12 sm:mt-0">
+      {/* الحاوية الرئيسية لصفحة التحقق مع أنيميشن ظهور ناعم */}
+      <div className="w-full max-w-md space-y-6 mt-12 sm:mt-0 animate-in fade-in zoom-in-95 duration-200">
         {/* ─── Header ───────────────────────────────────── */}
-        <div className="text-center space-y-2">
-          <div
-            className="w-14 h-14 bg-blue-600 rounded-2xl flex items-center
-                       justify-center text-white text-2xl mx-auto shadow-md"
-          >
-            📩
+        <div className="text-center space-y-3">
+          {/* صندوق الأيقونة العلوي مع ألوان متناسقة للثيمين */}
+          <div className="w-12 h-12 bg-primary/10 text-primary rounded-2xl flex items-center justify-center mx-auto shadow-sm">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="h-6 w-6"
+            >
+              <rect width="20" height="16" x="2" y="4" rx="2" />
+              <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+            </svg>
           </div>
-          <h1 className="text-2xl font-bold text-foreground">
-            {t("verify_otp_title")}
-          </h1>
-          <p className="text-muted-foreground text-sm">
-            {t("verify_otp_desc")}{" "}
-            <span className="text-foreground font-medium">{email}</span>
-          </p>
+          <div className="space-y-1">
+            <h1 className="text-xl sm:text-2xl font-extrabold tracking-tight text-foreground">
+              {t("verify_otp_title")}
+            </h1>
+            <p className="text-muted-foreground text-xs sm:text-sm max-w-xs mx-auto leading-relaxed">
+              {t("verify_otp_desc")}{" "}
+              <span className="text-foreground font-semibold break-all">
+                {email}
+              </span>
+            </p>
+          </div>
         </div>
 
         {/* ─── الفورم الحاوية ───────────────────────────────────── */}
-        <div className="bg-card rounded-2xl border border-border p-6 shadow-sm space-y-4 text-start">
+        <div className="bg-card/70 backdrop-blur-sm rounded-2xl border border-border/60 p-6 shadow-xl space-y-4 text-start">
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-            <div className="space-y-1.5">
-              <Label className="text-sm font-medium text-foreground">
+            <div className="space-y-2">
+              <Label className="text-xs sm:text-sm font-semibold text-foreground/90">
                 {t("otp_label")}
               </Label>
               <Input
                 placeholder="123456"
                 maxLength={6}
-                className="h-14 rounded-xl border-border bg-transparent text-foreground focus-visible:ring-primary text-center
-                           text-2xl tracking-widest font-mono"
+                className="h-14 rounded-xl border-border bg-transparent text-foreground focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-0 text-center text-2xl sm:text-3xl tracking-widest font-mono font-bold shadow-inner"
                 {...register("otp")}
               />
               {errors.otp && (
-                <p className="text-red-500 dark:text-red-400 text-xs text-center font-medium">
+                <p className="text-destructive text-xs text-center font-semibold pt-0.5 animate-in fade-in duration-150">
                   {errors.otp.message}
                 </p>
               )}
@@ -133,30 +174,37 @@ function VerifyOTP() {
 
             <Button
               type="submit"
-              className="w-full h-11 bg-blue-600 hover:bg-blue-700 text-white rounded-xl cursor-pointer border-none transition-colors"
+              className="w-full h-11 bg-primary text-primary-foreground font-bold rounded-xl cursor-pointer flex items-center justify-center gap-2 shadow-sm hover:bg-primary/95 transition-all duration-200"
               disabled={isLoading}
             >
-              {isLoading ? t("verifying") : t("verify_btn")}
+              {isLoading ? (
+                <>
+                  <Loader2 className="animate-spin h-4 w-4" />
+                  {t("verifying")}
+                </>
+              ) : (
+                t("verify_btn")
+              )}
             </Button>
           </form>
 
-          {/* إعادة الإرسال */}
-          <div className="text-center space-y-2 pt-2 border-t border-border">
-            <p className="text-sm text-muted-foreground">
+          {/* إعادة الإرسال والتحكم الإضافي */}
+          <div className="text-center space-y-2.5 pt-4 border-t border-border/50">
+            <p className="text-xs sm:text-sm text-muted-foreground">
               {t("no_otp_received")}{" "}
               <button
                 type="button"
                 onClick={handleResend}
                 disabled={isLoading}
-                className="text-blue-600 dark:text-blue-400 font-medium hover:underline
-                           disabled:opacity-40 cursor-pointer"
+                className="text-primary font-bold hover:underline disabled:opacity-40 disabled:no-underline cursor-pointer transition-colors"
               >
                 {t("resend_btn")}
               </button>
             </p>
+
             <Link
               to="/forgot-password"
-              className="inline-block text-xs text-muted-foreground hover:text-blue-600 dark:hover:text-blue-400 transition"
+              className="inline-block text-xs text-muted-foreground hover:text-primary font-medium transition-colors"
             >
               {t("change_email_link")}
             </Link>

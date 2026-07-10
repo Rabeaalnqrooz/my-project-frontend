@@ -8,7 +8,13 @@ import "./i18n.js";
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <BrowserRouter>
-      <Toaster position="top-center" richColors duration={2000} />
+      {/* أضفنا theme="system" أو "dark"/"light" ليتوافق التنبيه مع ألوان الدارك مود بلمح البصر */}
+      <Toaster
+        position="top-center"
+        richColors
+        duration={2000}
+        theme="system"
+      />
       <App />
     </BrowserRouter>
   </StrictMode>,

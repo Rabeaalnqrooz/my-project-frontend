@@ -1,7 +1,6 @@
-// src/components/AdminRoute.jsx
+// frontend/src/components/AdminRoute.jsx
 
 import { Navigate, Outlet } from "react-router-dom";
-import { useEffect, useState } from "react";
 import useAuthStore from "@/store/authStore";
 
 // ============================================================
@@ -9,39 +8,27 @@ import useAuthStore from "@/store/authStore";
 // ============================================================
 
 function AdminRoute() {
-  const { user, getMe } = useAuthStore();
-  const [isChecking, setIsChecking] = useState(true);
+  const { user, isAuthChecked } = useAuthStore();
 
-  useEffect(() => {
-    const check = async () => {
-      try {
-        const res = await getMe();
-        console.log("✅ getMe success:", res);
-      } catch (error) {
-        console.log("❌ getMe failed:", error.message);
-      } finally {
-        setIsChecking(false);
-      }
-    };
-    check();
-  }, []);
-
-  // ✅ انتظر حتى نتحقق - تم ضبط الخلفية والسبينر ليدعم الـ Dark Mode تلقائياً
-  if (isChecking) {
+  // ✅ نفس منطق ProtectedRoute — ننتظر التحقق المركزي بدل ما نكرر getMe() هون
+  if (!isAuthChecked) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-background transition-colors duration-300">
-        <div className="w-10 h-10 border-4 border-primary border-t-transparent rounded-full animate-spin" />
+      <div className="flex min-h-screen items-center justify-center bg-background/80 backdrop-blur-[2px] transition-colors duration-300 animate-in fade-in duration-500">
+        <div className="relative flex items-center justify-center">
+          {/* الدائرة الخلفية الناعمة */}
+          <div className="h-10 w-10 rounded-full border-4 border-muted" />
+          {/* الجزء المتحرك الذكي */}
+          <div className="absolute h-10 w-10 animate-spin rounded-full border-4 border-primary border-t-transparent border-r-transparent" />
+        </div>
       </div>
     );
   }
 
-  // مش مسجل
+  // ⚠️ الترتيب مهم: أول نتحقق "مسجل دخول؟" وبعدين "أدمن فعلاً؟"
+  // (بدل ما نفترض إنه أي user موجود لازم نتحقق دوره)
   if (!user) return <Navigate to="/login" replace />;
-
-  // مش أدمن
   if (user.role !== "admin") return <Navigate to="/" replace />;
 
-  // ✅ أدمن
   return <Outlet />;
 }
 
