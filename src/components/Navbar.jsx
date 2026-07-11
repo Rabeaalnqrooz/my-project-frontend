@@ -73,7 +73,7 @@ function Navbar() {
         {/* 1. شعار المتجر (تصغير الحجم ليتناسب مع المعايير العصرية لشريط التنقل) */}
         <Link to="/" className="flex items-center gap-2.5 group shrink-0">
           <img
-            src="/public/julialogo.png"
+            src="/julialogo.png"
             alt={t("logo")}
             className="h-10 sm:h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
           />
