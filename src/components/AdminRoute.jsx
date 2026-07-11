@@ -1,17 +1,33 @@
 // frontend/src/components/AdminRoute.jsx
 
-import { Navigate, Outlet } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Navigate, Outlet } from "react-dom";
 import useAuthStore from "@/store/authStore";
 
 // ============================================================
-// 🔒 ADMIN ROUTE GUARD
+// 🔒 ADMIN ROUTE GUARD (المطور للأونلاين)
 // ============================================================
 
 function AdminRoute() {
-  const { user, isAuthChecked } = useAuthStore();
+  const { user } = useAuthStore();
+  const [isReady, setIsReady] = useState(false);
 
-  // ✅ نفس منطق ProtectedRoute — ننتظر التحقق المركزي بدل ما نكرر getMe() هون
-  if (!isAuthChecked) {
+  useEffect(() => {
+    // ⏳ نضمن إعادة مزامنة الجلسة من الـ localStorage بالكامل قبل اتخاذ أي قرار
+    const syncAuth = async () => {
+      try {
+        await useAuthStore.persist.rehydrate();
+      } catch (err) {
+        console.error("خطأ أثناء مزامنة جلسة الأدمن:", err);
+      } finally {
+        setIsReady(true);
+      }
+    };
+    syncAuth();
+  }, []);
+
+  // ✅ 1️⃣ ننتظر حتى تكتمل جاهزية الجلسة أونلاين تماماً
+  if (!isReady) {
     return (
       <div className="flex min-h-screen items-center justify-center bg-background/80 backdrop-blur-[2px] transition-colors duration-300 animate-in fade-in duration-500">
         <div className="relative flex items-center justify-center">
@@ -24,10 +40,15 @@ function AdminRoute() {
     );
   }
 
-  // ⚠️ الترتيب مهم: أول نتحقق "مسجل دخول؟" وبعدين "أدمن فعلاً؟"
-  // (بدل ما نفترض إنه أي user موجود لازم نتحقق دوره)
-  if (!user) return <Navigate to="/login" replace />;
-  if (user.role !== "admin") return <Navigate to="/" replace />;
+  // ✅ 2️⃣ الترتيب الآمن والصارم بعد جاهزية البيانات
+  if (!user) {
+    return <Navigate to="/login" replace />;
+  }
+
+  if (user.role !== "admin") {
+    console.warn("محاولة دخول غير مصرحة، المستخدم ليس مسؤولاً!");
+    return <Navigate to="/" replace />;
+  }
 
   return <Outlet />;
 }
