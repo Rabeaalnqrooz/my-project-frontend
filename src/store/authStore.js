@@ -145,6 +145,7 @@ export const useAuthStore = create(
 
       // ✅ مسح الأخطاء
       clearError: () => set({ error: null }),
+      hasHydrated: () => useAuthStore.persist.hasHydrated(),
     }),
     {
       name: "auth",
