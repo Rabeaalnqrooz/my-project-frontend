@@ -253,6 +253,7 @@ function AdminProducts() {
                 id="price"
                 type="number"
                 min="0"
+                step="0.01"
                 value={formData.price}
                 onChange={(e) =>
                   setFormData({ ...formData, price: e.target.value })
@@ -272,6 +273,7 @@ function AdminProducts() {
                 id="discountPrice"
                 type="number"
                 min="0"
+                step="0.01"
                 value={formData.discountPrice}
                 onChange={(e) =>
                   setFormData({ ...formData, discountPrice: e.target.value })
