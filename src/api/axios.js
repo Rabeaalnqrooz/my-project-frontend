@@ -20,13 +20,12 @@ api.interceptors.request.use(
 api.interceptors.response.use(
   (response) => response,
 
-  // ❌ الطلب فشل — محاولة التجديد التلقائي بالخلفية قبل اتخاذ قرار الطرد
   async (error) => {
     const originalRequest = error.config;
     const message =
       error.response?.data?.message || error.message || "حدث خطأ غير متوقع";
 
-    // ✅ تحديث المسارات هنا لتطابق بادئة الـ Backend الجديدة
+    // 1️⃣ تحديد مسارات التحقق لمنع تكرار الطلبات عليها
     const authRoutes = [
       "user/login",
       "user/register",
@@ -38,32 +37,46 @@ api.interceptors.response.use(
       originalRequest.url?.includes(route),
     );
 
-    // ✅ التجديد يتم فقط إذا كان الخطأ 401، وليس مسار Auth، ولم نقم بالمحاولة مسبقاً (_retry)
+    // 2️⃣ إذا كان الخطأ 401 والمستخدم ليس في مسارات تسجيل الدخول، ولم تتم المحاولة مسبقاً
     if (
       error.response?.status === 401 &&
       !isAuthRoute &&
       !originalRequest._retry
     ) {
-      originalRequest._retry = true; // علامة لمنع الدخول في حلقة لانهائية إذا فشل التجديد
+      originalRequest._retry = true; // وضع علامة منع التكرار فوراً
 
       try {
-        // 🔄 استدعاء مسار التجديد مع تضمين الإصدار الجديد /api/v1/
+        // 🔄 محاولة تجديد التوكن أونلاين
         await axios.post(
           `${import.meta.env.VITE_API_URL}/api/v1/user/refresh-token`,
           {},
           { withCredentials: true },
         );
 
-        // 🎉 نجح التجديد بنجاح! أعد تنفيذ طلب المستخدم الأصلي بنفس كلاس الـ api
+        // 🎉 نجح التجديد! أعد تنفيذ طلب الصفحة الأصلي (مثال: user/me)
         return api(originalRequest);
       } catch (refreshError) {
-        // ❌ فشل التجديد (الـ Refresh Token منتهي الصلاحية أيضاً أو محذوف) -> هنا نطرد المستخدم للـ Login
+        // ❌ فشل التجديد تماماً أونلاين (الـ Refresh Token منتهي أو غير موجود)
+        console.error("فشل تجديد الجلسة، جاري التوجيه لتسجيل الدخول...");
+
+        // مسح بيانات Zustand المحلية لتجنب التعليق
+        localStorage.removeItem("auth");
+
+        // توجيه صارم لصفحة الـ login
         window.location.href = "/login";
         return Promise.reject(refreshError);
       }
     }
 
-    // إرجاع الخطأ العادي في حال كانت المشكلة ليست 401 أو فشلت المحاولات
+    // 3️⃣ كسر الحلقة اللانهائية إذا كان الخطأ 401 يحدث داخل طلب الـ refresh نفسه
+    if (
+      error.response?.status === 401 &&
+      originalRequest.url?.includes("user/refresh-token")
+    ) {
+      localStorage.removeItem("auth");
+      window.location.href = "/login";
+    }
+
     return Promise.reject(new Error(message));
   },
 );
