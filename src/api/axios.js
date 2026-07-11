@@ -1,7 +1,8 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL,
+  // ✅ أضفنا مسار الإصدار الأساسي للـ API ليتوافق مع السيرفر
+  baseURL: `${import.meta.env.VITE_API_URL}/api/v1`,
   // ✅ ضروري جداً — يرسل الـ Cookies تلقائياً (accessToken و refreshToken) مع كل طلب
   withCredentials: true,
   headers: { "Content-Type": "application/json" },
@@ -25,7 +26,7 @@ api.interceptors.response.use(
     const message =
       error.response?.data?.message || error.message || "حدث خطأ غير متوقع";
 
-    // ✅ استثناء مسارات الـ Auth الأساسية بالإضافة لمسار التجديد نفسه لمنع الـ Infinite Loops
+    // ✅ تحديث المسارات هنا لتطابق بادئة الـ Backend الجديدة
     const authRoutes = [
       "user/login",
       "user/register",
@@ -46,10 +47,9 @@ api.interceptors.response.use(
       originalRequest._retry = true; // علامة لمنع الدخول في حلقة لانهائية إذا فشل التجديد
 
       try {
-        // 🔄 استدعاء مسار التجديد باستخدام الـ VITE_API_URL الديناميكي
-        // نستخدم هنا axios المستورد مباشرة وليس api لتجنب تداخل الـ interceptors
+        // 🔄 استدعاء مسار التجديد مع تضمين الإصدار الجديد /api/v1/
         await axios.post(
-          `${import.meta.env.VITE_API_URL}user/refresh-token`,
+          `${import.meta.env.VITE_API_URL}/api/v1/user/refresh-token`,
           {},
           { withCredentials: true },
         );
