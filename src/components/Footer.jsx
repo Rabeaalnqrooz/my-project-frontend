@@ -72,7 +72,7 @@ function Footer() {
             <div className="mt-4 flex items-center gap-3">
               {/* 1. أيقونة الموقع (Web) */}
               <a
-                href="#"
+                href="https://julia4-store.vercel.app"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex h-9 w-9 items-center justify-center rounded-xl bg-card border border-border/60 text-muted-foreground hover:text-primary hover:border-primary/50 hover:scale-105 transition-all duration-200 shadow-sm"
@@ -96,7 +96,7 @@ function Footer() {
 
               {/* 2. أيقونة فيسبوك (Facebook) */}
               <a
-                href="#"
+                href="https://www.facebook.com/profile.php?id=61565193101989"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex h-9 w-9 items-center justify-center rounded-xl bg-card border border-border/60 text-muted-foreground hover:text-primary hover:border-primary/50 hover:scale-105 transition-all duration-200 shadow-sm"
@@ -118,7 +118,7 @@ function Footer() {
 
               {/* 3. أيقونة إنستغرام (Instagram) */}
               <a
-                href="#"
+                href="https://www.instagram.com/julianqrooz/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex h-9 w-9 items-center justify-center rounded-xl bg-card border border-border/60 text-muted-foreground hover:text-primary hover:border-primary/50 hover:scale-105 transition-all duration-200 shadow-sm"

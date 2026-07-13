@@ -11,8 +11,8 @@ function Contact() {
     {
       icon: Mail,
       label: t("contact_email_label"),
-      value: "support@mystore.com",
-      href: "mailto:support@mystore.com",
+      value: "julianqrooz@gmail.com",
+      href: "mailto:julianqrooz@gmail.com",
     },
     {
       icon: Phone,
