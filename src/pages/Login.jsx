@@ -28,7 +28,7 @@ function Login() {
 
   // 🎯 بناء الـ Schema ديناميكياً ليدعم ترجمة أخطاء الـ Validation مباشرة
   const loginSchema = z.object({
-    email: z.string().email(t("invalid_link_error")),
+    email: z.string().email(t("validation.invalid_email")),
     password: z.string().min(8, t("validation.new_password_short")),
   });
 
@@ -161,12 +161,12 @@ function Login() {
                   >
                     {t("password")}
                   </Label>
-                  <Link
+                  {/* <Link
                     to="/forgot-password"
                     className="text-xs text-muted-foreground hover:underline hover:text-foreground transition-colors font-medium"
                   >
                     {t("forgot_password")}
-                  </Link>
+                  </Link> */}
                 </div>
                 <Input
                   id="password"

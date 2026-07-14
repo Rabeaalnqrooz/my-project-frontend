@@ -151,7 +151,7 @@ const resources = {
 
       // إشعارات التنبيه (Toasts & Errors)
       email_required_error: "Please enter your email address first",
-      invalid_link_error: "Verification link is invalid",
+      invalid_email: "Invalid email address",
       session_expired_error: "Session expired",
       signup_success:
         "Account created successfully! Please Check your email. 🎉",
@@ -487,7 +487,7 @@ const resources = {
 
       // إشعارات التنبيه (Toasts & Errors)
       email_required_error: "يرجى إدخال بريدك الإلكتروني أولاً",
-      invalid_link_error: "رابط التحقق هذا غير صالح",
+      invalid_email: " البريد الإلكتروني المدخل غير صالح",
       session_expired_error: "انتهت صلاحية الجلسة",
       signup_success:
         "تم إنشاء الحساب بنجاح! يرجى التحقق من بريدك الإلكتروني. 🎉",
