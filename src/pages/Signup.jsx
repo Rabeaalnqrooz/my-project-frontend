@@ -29,7 +29,7 @@ function Signup() {
   const registerSchema = z.object({
     firstName: z.string().min(2, t("validation.first_name_short")),
     lastName: z.string().min(2, t("validation.last_name_short")),
-    email: z.string().email(t("validation.invalid_email")),
+    email: z.string().email(t("invalid_link_error")),
     password: z.string().min(8, t("validation.new_password_short")),
   });
 
@@ -45,9 +45,7 @@ function Signup() {
     try {
       await registerUser(data);
       toast.success(t("signup_success"));
-
-      // 🚀 يوجه المستخدم فوراً إلى الداخل لأنه أصبح مسجلاً للدخول تلقائياً!
-      navigate("/"); // أو "/dashboard" حسب مسارات تطبيقك
+      navigate("/login");
     } catch (error) {
       const errorMessage =
         error.response?.data?.message ||

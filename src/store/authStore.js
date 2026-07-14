@@ -17,12 +17,7 @@ export const useAuthStore = create(
         set({ isLoading: true, error: null });
         try {
           const res = await api.post("user/register", data);
-
-          // 🚀 بما أن الحساب مفعل تلقائياً، نقوم بحفظ بيانات المستخدم في الـ State فوراً
-          // (تأكد أن الـ Backend يرسل الكائن user في الـ response، وإلا اتركها res.data)
-          const userData = res.data.user || res.data;
-
-          set({ user: userData, isLoading: false });
+          set({ isLoading: false });
           return res.data;
         } catch (error) {
           set({ isLoading: false, error: error.message });
