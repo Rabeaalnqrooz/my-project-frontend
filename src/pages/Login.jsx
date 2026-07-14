@@ -161,12 +161,12 @@ function Login() {
                   >
                     {t("password")}
                   </Label>
-                  <Link
+                  {/* <Link
                     to="/forgot-password"
                     className="text-xs text-muted-foreground hover:underline hover:text-foreground transition-colors font-medium"
                   >
                     {t("forgot_password")}
-                  </Link>
+                  </Link> */}
                 </div>
                 <Input
                   id="password"
