@@ -109,6 +109,11 @@ function Navbar() {
             onClick={toggleLanguage}
             variant="ghost"
             size="sm"
+            aria-label={
+              i18n.language.startsWith("en")
+                ? "التبديل للعربية"
+                : "Switch to English"
+            }
             className="cursor-pointer flex items-center gap-1.5 h-9 px-2.5 text-xs sm:text-sm font-medium hover:bg-muted/60 text-foreground/90"
           >
             <Globe className="h-4 w-4 text-muted-foreground" />
@@ -123,6 +128,7 @@ function Navbar() {
               <Button
                 variant="ghost"
                 size="icon"
+                aria-label={t("cart_title")}
                 className="cursor-pointer h-9 w-9 text-foreground/90 hover:bg-muted/60 relative"
               >
                 <ShoppingCart className="h-[19px] w-[19px]" />
@@ -225,6 +231,7 @@ function Navbar() {
             <Button
               variant="outline"
               size="icon"
+              aria-label={mobileMenuOpen ? "إغلاق القائمة" : "فتح القائمة"}
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="h-9 w-9 border-border/60 bg-card/50 hover:bg-muted/80 cursor-pointer text-base rounded-xl"
             >
