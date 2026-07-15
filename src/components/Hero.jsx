@@ -58,7 +58,7 @@ function Hero() {
             <div className="absolute inset-0 bg-gradient-to-tr from-primary/10 to-transparent rounded-2xl blur-xl opacity-70 group-hover:opacity-100 transition-opacity duration-500" />
 
             <img
-              src="/hero-cover.png"
+              src="/hero-cover.webp"
               alt="hero image"
               className="relative rounded-2xl shadow-2xl object-cover max-h-[350px] sm:max-h-[450px] w-full border border-border/60 transition-transform duration-500 ease-out group-hover:scale-[1.01]"
             />
