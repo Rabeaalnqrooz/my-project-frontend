@@ -38,16 +38,6 @@ function Hero() {
                 {t("hero_get_started_btn")}
               </Button>
             </Link>
-
-            <Link to="/about" className="w-full sm:w-auto">
-              <Button
-                variant="outline"
-                size="lg"
-                className="w-full sm:w-auto h-12 px-8 rounded-xl font-medium bg-card/40 border-border/60 hover:bg-muted/80 transition-all duration-250 cursor-pointer"
-              >
-                {t("hero_learn_more_btn")}
-              </Button>
-            </Link>
           </div>
         </div>
 
