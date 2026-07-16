@@ -16,7 +16,7 @@ function AnnouncementBar() {
       textAr: "خصم إضافي على منتجات نون الأردن! استخدم كود:",
       textEn: "Extra discount on Noon Jordan! Use code:",
       code: "JULIA",
-      link: "https://www.noon.com/jordan-ar/",
+      link: "https://s.noon.com/WNjhdJnqrko",
       bgColor: "bg-yellow-500",
       textColor: "text-black",
     },
