@@ -67,8 +67,8 @@ function Navbar() {
   }, [user, fetchCart]);
 
   return (
-    // 👈 تم تحويل الـ Navbar إلى خلفية شبه شفافة مع Blur عصري يتناغم مع إضاءة الـ Hero الخلفية
-    <nav className="fixed top-0 start-0 w-full z-50 border-b border-border/50 bg-background/80 backdrop-blur-md text-foreground transition-all duration-300">
+    // 👈 تم تحويل التثبيت من fixed إلى sticky ليتجاوب بشكل ديناميكي مع الـ AnnouncementBar فوقه دون تداخل
+    <nav className="sticky top-0 start-0 w-full z-50 border-b border-border/50 bg-background/80 backdrop-blur-md text-foreground transition-all duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between relative">
         {/* 1. شعار المتجر (تصغير الحجم ليتناسب مع المعايير العصرية لشريط التنقل) */}
         <Link to="/" className="flex items-center gap-2.5 group shrink-0">
