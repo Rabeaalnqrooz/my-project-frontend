@@ -70,7 +70,7 @@ function Navbar() {
     // 👈 تم تحويل التثبيت من fixed إلى sticky ليتجاوب بشكل ديناميكي مع الـ AnnouncementBar فوقه دون تداخل
     <nav className="sticky top-0 start-0 w-full z-50 border-b border-border/50 bg-background/80 backdrop-blur-md text-foreground transition-all duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between relative">
-        {/* 1. شعار المتجر (تصغير الحجم ليتناسب مع المعايير العصرية لشريط التنقل) */}
+        {/* 1. شعار المتجر */}
         <Link to="/" className="flex items-center gap-2.5 group shrink-0">
           <img
             src="/julialogo.png"
@@ -82,7 +82,7 @@ function Navbar() {
           </h1>
         </Link>
 
-        {/* 2. روابط التنقل (Desktop - بتصميم خطي ناعم عند الـ Hover) */}
+        {/* 2. روابط التنقل (Desktop) */}
         <ul className="gap-8 items-center hidden lg:flex font-medium text-sm">
           <li>
             <Link
@@ -98,6 +98,16 @@ function Navbar() {
               className="text-foreground/80 hover:text-foreground relative py-1.5 after:absolute after:bottom-0 after:start-0 after:h-[2px] after:w-0 hover:after:w-full after:bg-primary after:transition-all after:duration-300 transition-colors"
             >
               {t("products")}
+            </Link>
+          </li>
+
+          {/* 👈 الرابط الجديد للمدونة على الـ Desktop بنفس التنسيق والحركات */}
+          <li>
+            <Link
+              to="/blog"
+              className="text-foreground/80 hover:text-foreground relative py-1.5 after:absolute after:bottom-0 after:start-0 after:h-[2px] after:w-0 hover:after:w-full after:bg-primary after:transition-all after:duration-300 transition-colors"
+            >
+              {t("blog")}
             </Link>
           </li>
         </ul>
@@ -122,7 +132,7 @@ function Navbar() {
             </span>
           </Button>
 
-          {/* أيقونة السلة (تظهر فقط للمستخدم المسجّل) */}
+          {/* أيقونة السلة */}
           {user && (
             <Link to="/cart" className="relative">
               <Button
@@ -167,7 +177,7 @@ function Navbar() {
             </div>
           )}
 
-          {/* حالة: المستخدم مسجّل دخوله (Drop Menu متناسق بالكامل) */}
+          {/* حالة: المستخدم مسجّل دخوله */}
           {user && (
             <div className="relative" ref={dropdownRef}>
               <button
@@ -226,7 +236,7 @@ function Navbar() {
             </div>
           )}
 
-          {/* قائمة الموبايل (الهامبرغر المطور والناعم) */}
+          {/* قائمة الموبايل */}
           <div className="lg:hidden flex items-center" ref={mobileMenuRef}>
             <Button
               variant="outline"
@@ -259,6 +269,18 @@ function Navbar() {
                       {t("products")}
                     </Link>
                   </li>
+
+                  {/* 👈 الرابط الجديد للمدونة داخل قائمة الموبايل */}
+                  <li>
+                    <Link
+                      to="/blog"
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="block px-3 py-2 rounded-xl text-foreground hover:bg-muted/60 transition-colors"
+                    >
+                      {t("blog")}
+                    </Link>
+                  </li>
+
                   {user && (
                     <>
                       <li>

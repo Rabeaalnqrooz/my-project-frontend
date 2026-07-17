@@ -355,6 +355,7 @@ const resources = {
       no_past_orders_desc:
         "There are no previous orders currently recorded in your account.",
       no_actions_self: "No procedures",
+      blog: "Blog",
     },
   },
 
@@ -702,6 +703,7 @@ const resources = {
         "الرجاء إدخال رقم هاتف أردني صحيح مكون من 10 أرقام ويبدأ بـ (079, 078, 077)",
       no_past_orders_desc: "لا يوجد طلبات سابقة مسجلة في حسابك حاليا",
       no_actions_self: "لا توجد إجراءات",
+      blog: "المدونة",
     },
   },
 };

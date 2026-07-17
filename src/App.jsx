@@ -27,6 +27,8 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import ShippingPolicy from "./pages/ShippingPolicy";
+import BlogList from "./pages/BlogList";
+import BlogPost from "./pages/BlogPost";
 const ScrollToTop = () => {
   const { pathname } = useLocation();
 
@@ -53,6 +55,8 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/privacy" element={<PrivacyPolicy />} />
           <Route path="/shipping-policy" element={<ShippingPolicy />} />
+          <Route path="/blog" element={<BlogList />} />
+          <Route path="/blog/:id" element={<BlogPost />} />
           {/* Protect */}
           <Route element={<ProtectedRoute />}>
             <Route path="/profile" element={<Profile />} />
