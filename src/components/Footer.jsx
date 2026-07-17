@@ -61,6 +61,14 @@ function Footer() {
                   {t("footer_privacy")}
                 </Link>
               </li>
+              <li>
+                <Link
+                  to="/shipping-policy"
+                  className="hover:text-primary hover:ps-1 transition-all duration-200 block"
+                >
+                  {t("ShippingPolicy")}
+                </Link>
+              </li>
             </ul>
           </div>
 

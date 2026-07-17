@@ -252,7 +252,22 @@ const resources = {
       contact_address_value: "Amman, Jordan",
       contact_hours_label: "Working Hours",
       contact_hours_value: "Sat - Thu, 11 AM - 11 PM",
-
+      ShippingPolicy: "Shipping and Returns Policy",
+      ShippingPolicy_title: "Shipping and Returns Policy",
+      ShippingPolicy_s1_title: "Shipping areas",
+      ShippingPolicy_s1_body: "Amman and Zarqa",
+      ShippingPolicy_s2_title: "Delivery Time",
+      ShippingPolicy_s2_body:
+        "Orders within Amman and Zarqa take 24 to 48 working hours after order approval.",
+      ShippingPolicy_s3_title: "Delivery Cost",
+      ShippingPolicy_s3_body:
+        "You will be contacted by the delivery company to determine the appropriate delivery cost.",
+      ShippingPolicy_s4_title: "Grace Period",
+      ShippingPolicy_s4_body:
+        "You can submit a return request while the delivery person is present, provided the order contents have not been used. Only the delivery fee will be deducted.",
+      ShippingPolicy_s5_title: "Delivery fees",
+      ShippingPolicy_s5_body:
+        "Please note that the original delivery fees are non-refundable.",
       privacy_title: "Privacy Policy",
       privacy_intro:
         "We respect your privacy and are committed to protecting your personal data. This policy explains how we collect and use your data.",
@@ -588,7 +603,21 @@ const resources = {
       contact_address_value: "عمّان، الأردن",
       contact_hours_label: "ساعات العمل",
       contact_hours_value: "السبت - الخميس، 11 صباحاً - 11 مساءً",
-
+      ShippingPolicy: " سياسة الشحن والارجاع",
+      ShippingPolicy_title: "سياسة الشحن والارجاع",
+      ShippingPolicy_s1_title: "مناطق الشحن",
+      ShippingPolicy_s1_body: "عمان والزرقاء",
+      ShippingPolicy_s2_title: "مدة التوصيل",
+      ShippingPolicy_s2_body:
+        "تستغرق الطلبات داخل عمان والزرقاء من 24 إلى 48 ساعة عمل بعد الموافقه على الطلب",
+      ShippingPolicy_s3_title: "تكلفة التوصيل",
+      ShippingPolicy_s3_body:
+        "سيتم التواصل معك من قبل شركة التوصيل لتحديد تكلفة التوصيل المناسبة",
+      ShippingPolicy_s4_title: "فترة السماح",
+      ShippingPolicy_s4_body:
+        "يمكنك تقديم طلب استرجاع خلال وجود موظف التوصيل مع شرط عدم استخدام محتويات الطلب ويتم خصم رسوم التوصيل فقط",
+      ShippingPolicy_s5_title: "رسوم التوصيل",
+      ShippingPolicy_s5_body: "يرجى العلم أن رسوم التوصيل الأصلية غير مستردة",
       privacy_title: "سياسة الخصوصية",
       privacy_intro:
         "نحن نحترم خصوصيتك ونلتزم بحماية بياناتك الشخصية. توضح هذه السياسة كيف نجمع بياناتك ونستخدمها.",
