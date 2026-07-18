@@ -356,6 +356,7 @@ const resources = {
         "There are no previous orders currently recorded in your account.",
       no_actions_self: "No procedures",
       blog: "Blog",
+      hero_view_blog_btn: "View Blog",
     },
   },
 
@@ -704,6 +705,7 @@ const resources = {
       no_past_orders_desc: "لا يوجد طلبات سابقة مسجلة في حسابك حاليا",
       no_actions_self: "لا توجد إجراءات",
       blog: "المدونة",
+      hero_view_blog_btn: "مشاهدة المدونة",
     },
   },
 };

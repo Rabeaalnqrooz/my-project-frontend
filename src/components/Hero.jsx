@@ -10,7 +10,7 @@ function Hero() {
 
   return (
     <section className="bg-background text-foreground relative overflow-hidden transition-colors duration-300 pt-28 pb-16 lg:pt-32 lg:pb-24">
-      {/* تأثير إضاءة خلفي (Glow Effect) يمنح التصميم طابعاً عصرياً وفخماً */}
+      {/* تأثير إضاءة خلفي (Glow Effect) */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-full pointer-events-none overflow-hidden -z-10">
         <div className="absolute -top-[30%] -right-[10%] w-[400px] h-[400px] rounded-full bg-primary/10 blur-[120px]" />
         <div className="absolute bottom-[10%] -left-[10%] w-[350px] h-[350px] rounded-full bg-primary/5 blur-[100px]" />
@@ -28,8 +28,9 @@ function Hero() {
             {t("hero_description")}
           </p>
 
-          {/* أزرار اتخاذ القرار (Call to Actions) */}
-          <div className="flex flex-wrap items-center justify-center lg:justify-start mt-8 gap-4 w-full sm:w-auto">
+          {/* أزرار اتخاذ القرار (Call to Actions) المحدثة */}
+          <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start mt-8 gap-4 w-full sm:w-auto">
+            {/* زر تسوق الآن (الأساسي) */}
             <Link to="/products" className="w-full sm:w-auto">
               <Button
                 size="lg"
@@ -38,13 +39,23 @@ function Hero() {
                 {t("hero_get_started_btn")}
               </Button>
             </Link>
+
+            {/* 📝 زر مشاهدة المدونة (الثانوي المضاف) */}
+            <Link to="/blog" className="w-full sm:w-auto">
+              <Button
+                size="lg"
+                variant="outline"
+                className="w-full sm:w-auto h-12 px-8 rounded-xl font-medium border-border/80 hover:bg-muted hover:text-foreground transition-all duration-250 cursor-pointer"
+              >
+                {t("hero_view_blog_btn")}
+              </Button>
+            </Link>
           </div>
         </div>
 
-        {/* قسم الصورة مع تأثيرات الظل والحدود المتناسقة */}
+        {/* قسم الصورة */}
         <div className="w-full flex justify-center items-center px-2 sm:px-6 lg:px-0">
           <div className="relative w-full max-w-[500px] lg:max-w-none group">
-            {/* خلفية جمالية خلف الصورة تظهر عند التحويم (Hover) */}
             <div className="absolute inset-0 bg-gradient-to-tr from-primary/10 to-transparent rounded-2xl blur-xl opacity-70 group-hover:opacity-100 transition-opacity duration-500" />
 
             <img
