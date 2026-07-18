@@ -237,4 +237,138 @@ export const blogPosts = [
     keywords:
       "فساتين أطفال صيفية، علي إكسبريس الأردن ملابس أطفال، AliExpress Jordan girls dresses، فساتين كورية للأطفال عمان، تسويق بالعمولة ملابس أطفال",
   },
+  {
+    id: "temu-summer-essentials-jordan",
+    date: "2026-07-18",
+    image:
+      "https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=600&auto=format&fit=crop", // صورة تعبيرية للمقال
+    readTimeAr: "قراءة في 4 دقائق",
+    readTimeEn: "4 min read",
+
+    // --- المحتوى باللغة العربية ---
+    titleAr:
+      "أفضل عروض وتنسيقات تيمو (Temu) في الأردن: ملابس أطفال، مكياج وإكسسوارات مذهلة! 🛍️✨",
+    contentAr: `
+    <div class="space-y-6 text-foreground">
+      <p class="text-base sm:text-lg leading-relaxed">
+        يستمر متجر <strong>تيمو (Temu)</strong> في بهرنا بأقوى العروض والمنتجات التي تجمع بين الجودة العالية والسعر الخيالي. في هذا الدليل، اخترنا لكِ 3 من المنتجات الأكثر طلباً ومبيعاً للعناية، الأناقة، والأطفال لتتسوقيها مباشرة مع عروض الخصم الحصرية! 🌸
+      </p>
+
+      <!-- كود الخصم العام -->
+      <div class="bg-card border border-border rounded-2xl p-4 text-center my-6 max-w-sm mx-auto shadow-sm">
+        <span class="text-xs font-semibold uppercase text-muted-foreground block mb-1">💰 كود الخصم الحصري للموقع 💰</span>
+        <div class="text-2xl font-black text-primary tracking-widest bg-muted py-1 px-4 rounded-xl inline-block border border-dashed border-primary/50 select-all cursor-pointer">
+          ina148923
+        </div>
+      </div>
+
+      <div class="space-y-8 mt-8">
+        <!-- المنتج الأول: طقم صيفي للأولاد -->
+        <div class="bg-card border border-border/80 rounded-2xl p-5 flex flex-col md:flex-row gap-5 items-center shadow-sm">
+          <img src="https://img.kwcdn.com/product/fancy/7d3c648f-65cc-4f4c-808e-3f126b9e22e5.jpg?imageView2/2/w/180/q/70/format/avif" alt="طقم صيفي للأولاد" class="w-full md:w-48 h-48 object-cover rounded-xl" />
+          <div class="flex-1 text-center md:text-right w-full">
+            <h3 class="text-xl font-bold text-primary mb-2">🧸 1. طقم صيفي كاجوال للأولاد (قطعتين)</h3>
+            <p class="text-sm text-muted-foreground leading-relaxed mb-4">
+طقم ولادي مكون من قطعتين، قميص بأكمام قصيرة وياقة وشورت، مثالي للارتداء في الأوقات الحرة في الهواء الطلق            </p>
+            <!-- ⚠️ ضع رابط الأفلييت للمنتج الأول هنا -->
+            <a href="https://temu.to/k/e4u3e7gva7i" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center bg-primary text-primary-foreground font-medium text-sm px-6 h-10 rounded-xl hover:bg-primary/90 transition-all w-full md:w-auto shadow-sm">
+              تسوقي طقم الأولاد الآن 🛍️
+            </a>
+          </div>
+        </div>
+
+        <!-- المنتج الثاني: مجموعة مكياج سفر -->
+        <div class="bg-card border border-border/80 rounded-2xl p-5 flex flex-col md:flex-row gap-5 items-center shadow-sm">
+          <img src="https://img.kwcdn.com/product/fancy/3678b011-7059-43cb-9e1e-cb9c10c4be1b.jpg?imageView2/2/w/180/q/70/format/avif" alt="مجموعة مكياج سفر" class="w-full md:w-48 h-48 object-cover rounded-xl" />
+          <div class="flex-1 text-center md:text-right w-full">
+            <h3 class="text-xl font-bold text-primary mb-2">💄 2.مجموعة مكياج 37 قطعة</h3>
+            <p class="text-sm text-muted-foreground leading-relaxed mb-4">
+مجموعة مكياج 37 قطعة، لوحة ظلال عيون متعددة الاستخدامات مع أحمر خدود، لمعان شفاه، كيت كونتور ومستحضرات تطبيق - مثالية للمبتدئين - صندوق مكياج كامل            </p>
+            <!-- ⚠️ ضع رابط الأفلييت للمنتج الثاني هنا -->
+            <a href="https://temu.to/k/ess87izuq6o" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center bg-primary text-primary-foreground font-medium text-sm px-6 h-10 rounded-xl hover:bg-primary/90 transition-all w-full md:w-auto shadow-sm">
+              تسوقي مجموعة المكياج 🛒
+            </a>
+          </div>
+        </div>
+
+        <!-- المنتج الثالث: مجموعة إكسسوارات شعر -->
+        <div class="bg-card border border-border/80 rounded-2xl p-5 flex flex-col md:flex-row gap-5 items-center shadow-sm">
+          <img src="https://img.kwcdn.com/product/fancy/8878dd8c-7403-4aa3-9cb9-fbe44f321d5c.jpg?imageView2/2/w/180/q/70/format/avif" alt="إكسسوارات شعر نسائية" class="w-full md:w-48 h-48 object-cover rounded-xl" />
+          <div class="flex-1 text-center md:text-right w-full">
+            <h3 class="text-xl font-bold text-primary mb-2">🌸 3.مجموعة مشابك شعر عشوائية على شكل زهور وفراشات، 892 قطعة</h3>
+            <p class="text-sm text-muted-foreground leading-relaxed mb-4">
+مجموعة مشابك شعر عشوائية على شكل زهور وفراشات، 892 قطعة، مع مشابك شعر على شكل زهور وفراشات، سهلة و لطيفة، مجموعة إكسسوارات شعر عالية المرونة مناسبة للمدرسة والإجازات وأعياد الميلاد والأنشطة المختلفة للحفلات، يمكن استخدامها في تشكيلات متعددة            </p>
+            <!-- ⚠️ ضع رابط الأفلييت للمنتج الثالث هنا -->
+            <a href="https://temu.to/k/ettxf3rxrlk" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center bg-primary text-primary-foreground font-medium text-sm px-6 h-10 rounded-xl hover:bg-primary/90 transition-all w-full md:w-auto shadow-sm">
+             تسوقي مجموعة مشابك شعر 🌸
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  `,
+
+    // --- المحتوى باللغة الإنجليزية ---
+    titleEn:
+      "Best Temu Deals in Jordan: Amazing Kids Wear, Makeup & Hair Accessories! 🛍️✨",
+    contentEn: `
+    <div class="space-y-6 text-foreground">
+      <p class="text-base sm:text-lg leading-relaxed">
+        <strong>Temu</strong> continues to amaze us with products that combine premium quality and fantastic prices. In this guide, we've curated 3 of the most highly requested items for beauty, style, and kids! 🌸
+      </p>
+
+      <!-- Exclusive Promo Code -->
+      <div class="bg-card border border-border rounded-2xl p-4 text-center my-6 max-w-sm mx-auto shadow-sm">
+        <span class="text-xs font-semibold uppercase text-muted-foreground block mb-1">💰 EXCLUSIVE PROMO CODE 💰</span>
+        <div class="text-2xl font-black text-primary tracking-widest bg-muted py-1 px-4 rounded-xl inline-block border border-dashed border-primary/50 select-all cursor-pointer">
+          ina148923
+        </div>
+      </div>
+
+      <div class="space-y-8 mt-8">
+        <!-- Product 1 -->
+        <div class="bg-card border border-border/80 rounded-2xl p-5 flex flex-col md:flex-row gap-5 items-center shadow-sm">
+          <img src="https://img.kwcdn.com/product/fancy/7d3c648f-65cc-4f4c-808e-3f126b9e22e5.jpg?imageView2/2/w/180/q/70/format/avif" alt="Boys Summer Set" class="w-full md:w-48 h-48 object-cover rounded-xl" />
+          <div class="flex-1 text-center md:text-left w-full">
+            <h3 class="text-xl font-bold text-primary mb-2">🧸 1. Boys Casual Summer 2-Piece Set</h3>
+            <p class="text-sm text-muted-foreground leading-relaxed mb-4">
+             2pcs Outfit Boys' Casual Short Sleeve Collared Shirt And Shorts Set, Perfect for Outdoor Leisure Wear
+            </p>
+            <a href="https://temu.to/k/e4u3e7gva7i" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center bg-primary text-primary-foreground font-medium text-sm px-6 h-10 rounded-xl hover:bg-primary/90 transition-all w-full md:w-auto shadow-sm">
+              Shop Boys Set Now 🛍️
+            </a>
+          </div>
+        </div>
+
+        <!-- Product 2 -->
+        <div class="bg-card border border-border/80 rounded-2xl p-5 flex flex-col md:flex-row gap-5 items-center shadow-sm">
+          <img src="https://img.kwcdn.com/product/fancy/3678b011-7059-43cb-9e1e-cb9c10c4be1b.jpg?imageView2/2/w/180/q/70/format/avif" alt="Travel Makeup Set" class="w-full md:w-48 h-48 object-cover rounded-xl" />
+          <div class="flex-1 text-center md:text-left w-full">
+            <h3 class="text-xl font-bold text-primary mb-2">💄 2. 37pcs Makeup Set</h3>
+            <p class="text-sm text-muted-foreground leading-relaxed mb-4">
+              37pcs Makeup Set, Multifunctional Eyeshadow Palette with Blush, Lip Gloss, Contour Kit, and Applicator - Perfect for Beginners - Complete Makeup Box
+            </p>
+            <a href="https://temu.to/k/ess87izuq6o" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center bg-primary text-primary-foreground font-medium text-sm px-6 h-10 rounded-xl hover:bg-primary/90 transition-all w-full md:w-auto shadow-sm">
+              Shop Makeup Set 🛒
+            </a>
+          </div>
+        </div>
+
+        <!-- Product 3 -->
+        <div class="bg-card border border-border/80 rounded-2xl p-5 flex flex-col md:flex-row gap-5 items-center shadow-sm">
+          <img src="https://img.kwcdn.com/product/fancy/8878dd8c-7403-4aa3-9cb9-fbe44f321d5c.jpg?imageView2/2/w/180/q/70/format/avif" alt="Hair Accessories Set" class="w-full md:w-48 h-48 object-cover rounded-xl" />
+          <div class="flex-1 text-center md:text-left w-full">
+            <h3 class="text-xl font-bold text-primary mb-2">🌸 3.892pcs Random Flower And Butterfly Hair Clip Set with Flower And Butterfly Hair Clips</h3>
+            <p class="text-sm text-muted-foreground leading-relaxed mb-4">
+             892pcs Random Flower And Butterfly Hair Clip Set with Flower And Butterfly Hair Clips, Easy And Cute, High Elasticity Hair Accessory Set Suitable for School, Holidays, Birthdays, And Various Party Activities, Can Be Used in Multiple Combinations
+            </p>
+            <a href="https://temu.to/k/ettxf3rxrlk" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center bg-primary text-primary-foreground font-medium text-sm px-6 h-10 rounded-xl hover:bg-primary/90 transition-all w-full md:w-auto shadow-sm">
+              Shop Hair Clip Set  🌸
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  `,
+  },
 ];
