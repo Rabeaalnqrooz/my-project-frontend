@@ -153,6 +153,7 @@ const resources = {
       email_required_error: "Please enter your email address first",
       invalid_email: "Invalid email address",
       session_expired_error: "Session expired",
+      signup_success_auto: "Account created successfully! Welcome 🎉",
       signup_success:
         "Account created successfully! Please Check your email. 🎉",
       signup_failed: "Registration failed",
@@ -506,6 +507,7 @@ const resources = {
       email_required_error: "يرجى إدخال بريدك الإلكتروني أولاً",
       invalid_email: " البريد الإلكتروني المدخل غير صالح",
       session_expired_error: "انتهت صلاحية الجلسة",
+      signup_success_auto: "تم إنشاء حسابك بنجاح! أهلاً فيك 🎉",
       signup_success:
         "تم إنشاء الحساب بنجاح! يرجى التحقق من بريدك الإلكتروني. 🎉",
       signup_failed: "فشل إنشاء الحساب",

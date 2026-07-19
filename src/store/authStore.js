@@ -13,12 +13,35 @@ export const useAuthStore = create(
       // ─── Actions ──────────────────────────────────────────
 
       // ✅ تسجيل مستخدم جديد
+      // register: async (data) => {
+      //   set({ isLoading: true, error: null });
+      //   try {
+      //     const res = await api.post("user/register", data);
+      //     set({ isLoading: false });
+      //     return res.data;
+      //   } catch (error) {
+      //     set({ isLoading: false, error: error.message });
+      //     throw error;
+      //   }
+      // },
       register: async (data) => {
         set({ isLoading: true, error: null });
         try {
-          const res = await api.post("user/register", data);
-          set({ isLoading: false });
-          return res.data;
+          // ─── الخطوة 1: إنشاء الحساب ───────────────────────────────
+          await api.post("user/register", data);
+
+          // ─── الخطوة 2: تسجيل دخول تلقائي فوراً بنفس البيانات ───────
+          // ⚠️ هاي الخطوة بتنجح فقط لو الحساب اتفعّل تلقائياً بالباك اند
+          // (يعني REQUIRE_EMAIL_VERIFICATION=false) — لو رجّعت التحقق بالبريد
+          // لوضعه الطبيعي بالمستقبل، هاي الخطوة رح تفشل بخطأ "لم يتم التحقق من بريدك"
+          // ووقتها لازم تشيل هالجزء وترجع للسلوك القديم (تسجيل بس، بدون دخول تلقائي)
+          const loginRes = await api.post("user/login", {
+            email: data.email,
+            password: data.password,
+          });
+
+          set({ user: loginRes.data.user, isLoading: false });
+          return loginRes.data;
         } catch (error) {
           set({ isLoading: false, error: error.message });
           throw error;

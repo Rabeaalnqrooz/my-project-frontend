@@ -44,8 +44,8 @@ function Signup() {
   const onSubmit = async (data) => {
     try {
       await registerUser(data);
-      toast.success(t("signup_success"));
-      navigate("/login");
+      toast.success(t("signup_success_auto"));
+      navigate("/");
     } catch (error) {
       const errorMessage =
         error.response?.data?.message ||
