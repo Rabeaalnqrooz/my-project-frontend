@@ -4,5 +4,10 @@
       "source": "/(.*)",
       "destination": "/index.html"
     }
-  ]
+  ],
+  "build": {
+    "env": {
+      "VITE_GA_MEASUREMENT_ID": "G-Q0N409QW5Z"
+    }
+  }
 }
