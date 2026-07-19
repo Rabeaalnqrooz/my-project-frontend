@@ -29,16 +29,37 @@ import PrivacyPolicy from "./pages/PrivacyPolicy";
 import ShippingPolicy from "./pages/ShippingPolicy";
 import BlogList from "./pages/BlogList";
 import BlogPost from "./pages/BlogPost";
+import ReactGA from "react-ga4"; // 1️⃣ استيراد مكتبة التحليلات
+// const ScrollToTop = () => {
+//   const { pathname } = useLocation();
+
+//   useEffect(() => {
+//     window.scrollTo({
+//       top: 0,
+//       left: 0,
+//       behavior: "instant", // يمنع القفز البصري ويبدأ من الأعلى فوراً
+//     });
+//   }, [pathname]);
+
+//   return null;
+// };
 const ScrollToTop = () => {
-  const { pathname } = useLocation();
+  const { pathname, search } = useLocation(); // 2️⃣ أضفنا search لتتبع معاملات البحث والروابط مثل الـ Affiliate
 
   useEffect(() => {
+    // التمرير للأعلى فوراً
     window.scrollTo({
       top: 0,
       left: 0,
-      behavior: "instant", // يمنع القفز البصري ويبدأ من الأعلى فوراً
+      behavior: "instant",
     });
-  }, [pathname]);
+
+    // 3️⃣ إرسال تقرير بزيارة الصفحة الحالية لـ Google Analytics
+    ReactGA.send({
+      hitType: "pageview",
+      page: pathname + search,
+    });
+  }, [pathname, search]); // يتفعل التأثير عند تغير المسار أو معاملات البحث
 
   return null;
 };
