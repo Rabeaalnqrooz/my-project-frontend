@@ -45,7 +45,7 @@ function Signup() {
     try {
       await registerUser(data);
       toast.success(t("signup_success"));
-      navigate("/login");
+      navigate("/");
     } catch (error) {
       const errorMessage =
         error.response?.data?.message ||

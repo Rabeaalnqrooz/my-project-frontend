@@ -16,7 +16,7 @@ function BlogList() {
         {/* رأس الصفحة */}
         <div className="text-center mb-12">
           <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-3">
-            {isRTL ? "مدونة متجر جوليا التقيفية" : "Julia Store Blog"}
+            {isRTL ? "مدونة متجر جوليا " : "Julia Store Blog"}
           </h1>
           <p className="text-muted-foreground max-w-xl mx-auto text-sm sm:text-base">
             {isRTL
