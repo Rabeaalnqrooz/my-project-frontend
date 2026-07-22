@@ -1,16 +1,29 @@
-# React + Vite
+# 🛒 E-Commerce Storefront (Frontend)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+واجهة المستخدم لمنصة التجارة الإلكترونية. توفر تجربة تسوق سلسة وتفاعلية مع دعم تصفح المنتجات، السلة، وإدارة الحساب.
 
-Currently, two official plugins are available:
+## 🔗 Related Repositories & Links
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **Backend API:** [my-project-backend](https://github.com/Rabeaalnqrooz/my-project-backend)
+- **Live Website:** [Julia Store](https://julia4-store.vercel.app)
 
-## React Compiler
+## 🛠️ Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Framework/Library:** React.js (Vite)
+- **Styling:** TailwindCSS
+- **HTTP Client:** Axios
+- **Deployment:** Vercel
 
-## Expanding the ESLint configuration
+## ✨ Key Features
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- 🎨 **Responsive UI:** تصميم عصري ومتجاوب تماماً مع الشاشات المختلفة.
+- 🛍️ **Product Catalog:** استعراض المنتجات وتصنيفها مع إمكانية البحث والفلترة.
+- 🛒 **Shopping Cart:** إضافة وتعديل عناصر السلة وإدارتها بسهولة.
+- 🔐 **User Auth & Security:** واجهات تسجيل الدخول، إنشاء الحساب، وتأكيد البريد.
+
+## 🚀 Getting Started
+
+1. **Clone the repo:**
+   ```bash
+   git clone [https://github.com/Rabeaalnqrooz/my-project-frontend.git](https://github.com/Rabeaalnqrooz/my-project-frontend.git)
+   ```
