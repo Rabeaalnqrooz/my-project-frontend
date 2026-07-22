@@ -355,4 +355,358 @@ export const blogPosts = [
     </div>
   `,
   },
+  {
+    id: "shein-fashion-trends-jordan",
+    date: "2026-07-22",
+    image:
+      "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=600&auto=format&fit=crop",
+    readTimeAr: "قراءة في 4 دقائق",
+    readTimeEn: "4 min read",
+
+    // --- المحتوى باللغة العربية ---
+    titleAr:
+      "أحدث صيحات موضة شي إن (SHEIN): أزياء نسائية، فساتين وإكسسوارات صيفية ساحرة! 👗✨",
+    contentAr: `
+    <div class="space-y-6 text-foreground">
+      <p class="text-base sm:text-lg leading-relaxed">
+        تعتبر منصة <strong>شي إن (SHEIN)</strong> الوجهة الأولى لعشاق الموضة والأناقة العصرية بأسعار تنافسية للغاية. جمعنا لكِ في هذا الدليل تشكيلة مميزة من أكثر الأقسام طلباً للتسوق المباشر مع تفعيل أحدث العروض والخصومات تلقائياً! 🌸
+      </p>
+
+      <div class="space-y-8 mt-8">
+        <!-- التصنيف الأول: الفساتين والأزياء النسائية -->
+        <div class="bg-card border border-border/80 rounded-2xl p-5 flex flex-col md:flex-row gap-5 items-center shadow-sm">
+          <img src="https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?q=80&w=380&auto=format&fit=crop" alt="فساتين صيفية أنيقة" class="w-full md:w-48 h-48 object-cover rounded-xl" />
+          <div class="flex-1 text-center md:text-right w-full">
+            <h3 class="text-xl font-bold text-primary mb-2">👗 1. تشكيلة الفساتين والأزياء الصيفية</h3>
+            <p class="text-sm text-muted-foreground leading-relaxed mb-4">
+              اكتشفي أحدث التصاميم اليومية والرسمية من فساتين الكاجوال، الأطقم النسائية، والتنسيقات الصيفية المريحة بأعلى جودة وأفضل خامات.
+            </p>
+            <a href="https://go.urtrackinglink.com/aff_c?offer_id=1882&aff_id=171416&source=rabea4" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center bg-primary text-primary-foreground font-medium text-sm px-6 h-10 rounded-xl hover:bg-primary/90 transition-all w-full md:w-auto shadow-sm">
+              تسوقي تشكيلة الفساتين الآن 🛍️
+            </a>
+          </div>
+        </div>
+
+        <!-- التصنيف الثاني: حقائب وإكسسوارات -->
+        <div class="bg-card border border-border/80 rounded-2xl p-5 flex flex-col md:flex-row gap-5 items-center shadow-sm">
+          <img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?q=80&w=380&auto=format&fit=crop" alt="حقائب وإكسسوارات" class="w-full md:w-48 h-48 object-cover rounded-xl" />
+          <div class="flex-1 text-center md:text-right w-full">
+            <h3 class="text-xl font-bold text-primary mb-2">👜 2. الحقائب والإكسسوارات العصرية</h3>
+            <p class="text-sm text-muted-foreground leading-relaxed mb-4">
+              أكملي أناقتكِ مع تشكيلة واسعة من الحقائب، النظارات الشمسية، والمجوهرات اللطيفة المصممة لتناسب كافة إطلالاتكِ اليومية والمناسبات.
+            </p>
+            <a href="https://go.urtrackinglink.com/aff_c?offer_id=1882&aff_id=171416&source=rabea4" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center bg-primary text-primary-foreground font-medium text-sm px-6 h-10 rounded-xl hover:bg-primary/90 transition-all w-full md:w-auto shadow-sm">
+              تسوقي الحقائب والإكسسوارات 🛒
+            </a>
+          </div>
+        </div>
+
+        <!-- التصنيف الثالث: أزياء الأطفال والبيبي -->
+        <div class="bg-card border border-border/80 rounded-2xl p-5 flex flex-col md:flex-row gap-5 items-center shadow-sm">
+          <img src="https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?q=80&w=380&auto=format&fit=crop" alt="ملابس أطفال" class="w-full md:w-48 h-48 object-cover rounded-xl" />
+          <div class="flex-1 text-center md:text-right w-full">
+            <h3 class="text-xl font-bold text-primary mb-2">🧸 3. ملابس وأطقم الأطفال الحصرية</h3>
+            <p class="text-sm text-muted-foreground leading-relaxed mb-4">
+              تسوقي أحدث ملابس الأطفال والأولاد والبنات من شي إن! تصاميم لطيفة، ألوان مبهجة، وأنسجة قطنية ناعمة ومريحة لحركة طفلكِ.
+            </p>
+            <a href="https://go.urtrackinglink.com/aff_c?offer_id=1882&aff_id=171416&source=rabea4" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center bg-primary text-primary-foreground font-medium text-sm px-6 h-10 rounded-xl hover:bg-primary/90 transition-all w-full md:w-auto shadow-sm">
+              تسوقي أزياء الأطفال 🌸
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  `,
+
+    // --- المحتوى باللغة الإنجليزية ---
+    titleEn:
+      "Top SHEIN Fashion Trends: Stylish Dresses, Bags & Kids Collections! 👗✨",
+    contentEn: `
+    <div class="space-y-6 text-foreground">
+      <p class="text-base sm:text-lg leading-relaxed">
+        <strong>SHEIN</strong> remains the ultimate destination for trending fashion and everyday style at affordable prices. In this guide, we've highlighted 3 top-requested categories for instant shopping with automatic discounts applied! 🌸
+      </p>
+
+      <div class="space-y-8 mt-8">
+        <!-- Category 1 -->
+        <div class="bg-card border border-border/80 rounded-2xl p-5 flex flex-col md:flex-row gap-5 items-center shadow-sm">
+          <img src="https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?q=80&w=380&auto=format&fit=crop" alt="Summer Dresses" class="w-full md:w-48 h-48 object-cover rounded-xl" />
+          <div class="flex-1 text-center md:text-left w-full">
+            <h3 class="text-xl font-bold text-primary mb-2">👗 1. Trendy Summer Dresses & Outfits</h3>
+            <p class="text-sm text-muted-foreground leading-relaxed mb-4">
+              Discover the latest casual and formal dress designs, matching sets, and comfortable summer wear crafted with premium style.
+            </p>
+            <a href="https://go.urtrackinglink.com/aff_c?offer_id=1882&aff_id=171416&source=rabea4" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center bg-primary text-primary-foreground font-medium text-sm px-6 h-10 rounded-xl hover:bg-primary/90 transition-all w-full md:w-auto shadow-sm">
+              Shop Dresses Collection 🛍️
+            </a>
+          </div>
+        </div>
+
+        <!-- Category 2 -->
+        <div class="bg-card border border-border/80 rounded-2xl p-5 flex flex-col md:flex-row gap-5 items-center shadow-sm">
+          <img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?q=80&w=380&auto=format&fit=crop" alt="Bags and Accessories" class="w-full md:w-48 h-48 object-cover rounded-xl" />
+          <div class="flex-1 text-center md:text-left w-full">
+            <h3 class="text-xl font-bold text-primary mb-2">👜 2. Modern Bags & Accessories</h3>
+            <p class="text-sm text-muted-foreground leading-relaxed mb-4">
+              Complete your look with a wide selection of chic handbags, sunglasses, and delicate jewelry designed for every occasion.
+            </p>
+            <a href="https://go.urtrackinglink.com/aff_c?offer_id=1882&aff_id=171416&source=rabea4" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center bg-primary text-primary-foreground font-medium text-sm px-6 h-10 rounded-xl hover:bg-primary/90 transition-all w-full md:w-auto shadow-sm">
+              Shop Bags & Accessories 🛒
+            </a>
+          </div>
+        </div>
+
+        <!-- Category 3 -->
+        <div class="bg-card border border-border/80 rounded-2xl p-5 flex flex-col md:flex-row gap-5 items-center shadow-sm">
+          <img src="https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?q=80&w=380&auto=format&fit=crop" alt="Kids Fashion" class="w-full md:w-48 h-48 object-cover rounded-xl" />
+          <div class="flex-1 text-center md:text-left w-full">
+            <h3 class="text-xl font-bold text-primary mb-2">🧸 3. Exclusive Kids Wear Collections</h3>
+            <p class="text-sm text-muted-foreground leading-relaxed mb-4">
+              Shop cute, colorful, and soft cotton sets for toddlers and kids from SHEIN, built for comfort and playful adventures.
+            </p>
+            <a href="https://go.urtrackinglink.com/aff_c?offer_id=1882&aff_id=171416&source=rabea4" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center bg-primary text-primary-foreground font-medium text-sm px-6 h-10 rounded-xl hover:bg-primary/90 transition-all w-full md:w-auto shadow-sm">
+              Shop Kids Fashion 🌸
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  `,
+  },
+  {
+    id: "hm-summer-collection-jordan",
+    date: "2026-07-22",
+    image:
+      "https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?q=80&w=600&auto=format&fit=crop",
+    readTimeAr: "قراءة في 4 دقائق",
+    readTimeEn: "4 min read",
+
+    // --- المحتوى باللغة العربية ---
+    titleAr:
+      "أحدث تشكيلات H&M للشرق الأوسط: أزياء راقية، ملابس أطفال وديكورات منزلية مميزة! 🛍️✨",
+    contentAr: `
+    <div class="space-y-6 text-foreground">
+      <p class="text-base sm:text-lg leading-relaxed">
+        تُعد علامة <strong>H&M</strong> الرائدة عالمياً الخيار الأفضل للحصول على الموضة العصرية بجودة ممتازة وأسعار مناسبة. جمعنا لكِ في هذا الدليل أبرز الأقسام المتاحة مع تفعيل العروض التلقائية عبر رابط التسوق المباشر! 🌿
+      </p>
+
+      <div class="space-y-8 mt-8">
+        <!-- التصنيف الأول: الأزياء النسائية -->
+        <div class="bg-card border border-border/80 rounded-2xl p-5 flex flex-col md:flex-row gap-5 items-center shadow-sm">
+          <img src="https://images.unsplash.com/photo-1434389677669-e08b4cac3105?q=80&w=380&auto=format&fit=crop" alt="أزياء H&M النسائية" class="w-full md:w-48 h-48 object-cover rounded-xl" />
+          <div class="flex-1 text-center md:text-right w-full">
+            <h3 class="text-xl font-bold text-primary mb-2">👗 1. التشكيلة النسائية والأزياء العصرية</h3>
+            <p class="text-sm text-muted-foreground leading-relaxed mb-4">
+              تسوقي أحدث تصاميم الملابس اليومية، البلايز، الفساتين الصيفية والأطقم العملية المصممة لتمنحكِ الراحة والأنوثة في كل وقت.
+            </p>
+            <a href="https://go.urtrackinglink.com/aff_c?offer_id=1945&aff_id=171416&source=rabea4" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center bg-primary text-primary-foreground font-medium text-sm px-6 h-10 rounded-xl hover:bg-primary/90 transition-all w-full md:w-auto shadow-sm">
+              تسوقي الأزياء النسائية الآن 🛍️
+            </a>
+          </div>
+        </div>
+
+        <!-- التصنيف الثاني: ملابس الأطفال -->
+        <div class="bg-card border border-border/80 rounded-2xl p-5 flex flex-col md:flex-row gap-5 items-center shadow-sm">
+          <img src="https://images.unsplash.com/photo-1519238263530-99bdd11df2ea?q=80&w=380&auto=format&fit=crop" alt="ملابس H&M للأطفال" class="w-full md:w-48 h-48 object-cover rounded-xl" />
+          <div class="flex-1 text-center md:text-right w-full">
+            <h3 class="text-xl font-bold text-primary mb-2">🧸 2. تشكيلة الرضع والأطفال (H&M Kids)</h3>
+            <p class="text-sm text-muted-foreground leading-relaxed mb-4">
+              أفضل الخامات القطنية العضوية والآمنة لبشرة أطفالك، تصاميم لطيفة ومريحة تناسب مختلف الأعمار من المواليد الجدد حتى اليافعين.
+            </p>
+            <a href="https://go.urtrackinglink.com/aff_c?offer_id=1945&aff_id=171416&source=rabea4" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center bg-primary text-primary-foreground font-medium text-sm px-6 h-10 rounded-xl hover:bg-primary/90 transition-all w-full md:w-auto shadow-sm">
+              تسوقي ملابس الأطفال 🛒
+            </a>
+          </div>
+        </div>
+
+        <!-- التصنيف الثالث: قسم H&M HOME -->
+        <div class="bg-card border border-border/80 rounded-2xl p-5 flex flex-col md:flex-row gap-5 items-center shadow-sm">
+          <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?q=80&w=380&auto=format&fit=crop" alt="ديكورات H&M Home" class="w-full md:w-48 h-48 object-cover rounded-xl" />
+          <div class="flex-1 text-center md:text-right w-full">
+            <h3 class="text-xl font-bold text-primary mb-2">🏡 3. منتجات H&M Home لمستلزمات المنزل</h3>
+            <p class="text-sm text-muted-foreground leading-relaxed mb-4">
+              أضيفي لمسة فخامة إلى منزلكِ مع تشكيلة الديكورات المميزة، أغطية الأسرة، السجاد والإكسسوارات المنزلية بلمسات حديثة وراقية.
+            </p>
+            <a href="https://go.urtrackinglink.com/aff_c?offer_id=1945&aff_id=171416&source=rabea4" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center bg-primary text-primary-foreground font-medium text-sm px-6 h-10 rounded-xl hover:bg-primary/90 transition-all w-full md:w-auto shadow-sm">
+              تسوقي H&M Home 🌸
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  `,
+
+    // --- المحتوى باللغة الإنجليزية ---
+    titleEn:
+      "Latest H&M Collections: Trendy Women's Fashion, Kids & H&M Home! 🛍️✨",
+    contentEn: `
+    <div class="space-y-6 text-foreground">
+      <p class="text-base sm:text-lg leading-relaxed">
+        <strong>H&M</strong> is the global benchmark for sustainable, high-quality fashion at great prices. In this quick guide, explore 3 essential categories with instant deal activation via our direct referral link! 🌿
+      </p>
+
+      <div class="space-y-8 mt-8">
+        <!-- Category 1 -->
+        <div class="bg-card border border-border/80 rounded-2xl p-5 flex flex-col md:flex-row gap-5 items-center shadow-sm">
+          <img src="https://images.unsplash.com/photo-1434389677669-e08b4cac3105?q=80&w=380&auto=format&fit=crop" alt="H&M Women Fashion" class="w-full md:w-48 h-48 object-cover rounded-xl" />
+          <div class="flex-1 text-center md:text-left w-full">
+            <h3 class="text-xl font-bold text-primary mb-2">👗 1. Women's Trendy Wear</h3>
+            <p class="text-sm text-muted-foreground leading-relaxed mb-4">
+              Shop stylish everyday apparel, summer dresses, blazers, and versatile outfits tailored for maximum elegance and comfort.
+            </p>
+            <a href="https://go.urtrackinglink.com/aff_c?offer_id=1945&aff_id=171416&source=rabea4" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center bg-primary text-primary-foreground font-medium text-sm px-6 h-10 rounded-xl hover:bg-primary/90 transition-all w-full md:w-auto shadow-sm">
+              Shop Women's Fashion 🛍️
+            </a>
+          </div>
+        </div>
+
+        <!-- Category 2 -->
+        <div class="bg-card border border-border/80 rounded-2xl p-5 flex flex-col md:flex-row gap-5 items-center shadow-sm">
+          <img src="https://images.unsplash.com/photo-1519238263530-99bdd11df2ea?q=80&w=380&auto=format&fit=crop" alt="H&M Kids" class="w-full md:w-48 h-48 object-cover rounded-xl" />
+          <div class="flex-1 text-center md:text-left w-full">
+            <h3 class="text-xl font-bold text-primary mb-2">🧸 2. Baby & Kids Wear (H&M Kids)</h3>
+            <p class="text-sm text-muted-foreground leading-relaxed mb-4">
+              Soft organic cotton apparel and gentle fabrics designed for baby comfort and playful toddler activities.
+            </p>
+            <a href="https://go.urtrackinglink.com/aff_c?offer_id=1945&aff_id=171416&source=rabea4" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center bg-primary text-primary-foreground font-medium text-sm px-6 h-10 rounded-xl hover:bg-primary/90 transition-all w-full md:w-auto shadow-sm">
+              Shop Kids Wear 🛒
+            </a>
+          </div>
+        </div>
+
+        <!-- Category 3 -->
+        <div class="bg-card border border-border/80 rounded-2xl p-5 flex flex-col md:flex-row gap-5 items-center shadow-sm">
+          <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?q=80&w=380&auto=format&fit=crop" alt="H&M Home" class="w-full md:w-48 h-48 object-cover rounded-xl" />
+          <div class="flex-1 text-center md:text-left w-full">
+            <h3 class="text-xl font-bold text-primary mb-2">🏡 3. H&M Home Decor & Essentials</h3>
+            <p class="text-sm text-muted-foreground leading-relaxed mb-4">
+              Transform your living space with stylish bedding, cozy rugs, modern cushions, and chic home accessories.
+            </p>
+            <a href="https://go.urtrackinglink.com/aff_c?offer_id=1945&aff_id=171416&source=rabea4" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center bg-primary text-primary-foreground font-medium text-sm px-6 h-10 rounded-xl hover:bg-primary/90 transition-all w-full md:w-auto shadow-sm">
+              Shop H&M Home 🌸
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  `,
+  },
+  {
+    id: "cdkeys-gaming-deals-jordan",
+    date: "2026-07-22",
+    image:
+      "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=600&auto=format&fit=crop",
+    readTimeAr: "قراءة في 3 دقائق",
+    readTimeEn: "3 min read",
+
+    // --- المحتوى باللغة العربية ---
+    titleAr:
+      "أقوى عروض الألعاب وبطاقات الشحن من CDKeys: بلايستيشن، إكس بوكس وألعاب PC بأرخص الأسعار! 🎮🔥",
+    contentAr: `
+    <div class="space-y-6 text-foreground">
+      <p class="text-base sm:text-lg leading-relaxed">
+        يعتبر موقع <strong>CDKeys</strong> الوجهة الأولى والطقس الأساسي لكل الجيمرز للحصول على ألعاب الفيديو، اشتراكات الأونلاين، وبطاقات شحن الرصيد الرقمية بأسعار مخفضة وتسليم فوري. اخترنا لك أبرز الخدمات المتاحة للشرق الأوسط والأردن! 🕹️
+      </p>
+
+      <div class="space-y-8 mt-8">
+        <!-- التصنيف الأول: بطاقات بلايستيشن وإكس بوكس -->
+        <div class="bg-card border border-border/80 rounded-2xl p-5 flex flex-col md:flex-row gap-5 items-center shadow-sm">
+          <img src="https://images.unsplash.com/photo-1606813907291-d86efa9b94db?q=80&w=380&auto=format&fit=crop" alt="بطاقات بلايستيشن وإكس بوكس" class="w-full md:w-48 h-48 object-cover rounded-xl" />
+          <div class="flex-1 text-center md:text-right w-full">
+            <h3 class="text-xl font-bold text-primary mb-2">💳 1. بطاقات شحن الرصيد (Top-Up & Gift Cards)</h3>
+            <p class="text-sm text-muted-foreground leading-relaxed mb-4">
+              اشحن حسابك في PlayStation Store، Xbox Live، أو Steam بأقل سعر في السوق واستلم الكود مباشرة فور الشراء!
+            </p>
+            <a href="https://go.urtrackinglink.com/aff_c?offer_id=1513&aff_id=171416&source=rabeagcc" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center bg-primary text-primary-foreground font-medium text-sm px-6 h-10 rounded-xl hover:bg-primary/90 transition-all w-full md:w-auto shadow-sm">
+              تسوق بطاقات الشحن الآن 🚀
+            </a>
+          </div>
+        </div>
+
+        <!-- التصنيف الثاني: ألعاب PC والمنصات -->
+        <div class="bg-card border border-border/80 rounded-2xl p-5 flex flex-col md:flex-row gap-5 items-center shadow-sm">
+          <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=380&auto=format&fit=crop" alt="ألعاب البي سي والأجهزة" class="w-full md:w-48 h-48 object-cover rounded-xl" />
+          <div class="flex-1 text-center md:text-right w-full">
+            <h3 class="text-xl font-bold text-primary mb-2">🎯 2. أكواد ألعاب PC و Console الأصلية</h3>
+            <p class="text-sm text-muted-foreground leading-relaxed mb-4">
+              احصل على أحدث إصدارات ألعاب الفيديو للأجهزة المختلفة بخصومات تصل إلى 70% مقارنة بالمتاجر الرسمية.
+            </p>
+            <a href="https://go.urtrackinglink.com/aff_c?offer_id=1513&aff_id=171416&source=rabeagcc" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center bg-primary text-primary-foreground font-medium text-sm px-6 h-10 rounded-xl hover:bg-primary/90 transition-all w-full md:w-auto shadow-sm">
+              تصفح عروض الألعاب 🛒
+            </a>
+          </div>
+        </div>
+
+        <!-- التصنيف الثالث: اشتراكات الاشتراكات الشهرية -->
+        <div class="bg-card border border-border/80 rounded-2xl p-5 flex flex-col md:flex-row gap-5 items-center shadow-sm">
+          <img src="https://images.unsplash.com/photo-1612287230202-1ff1d85d1bdf?q=80&w=380&auto=format&fit=crop" alt="اشتراكات الجيمرز" class="w-full md:w-48 h-48 object-cover rounded-xl" />
+          <div class="flex-1 text-center md:text-right w-full">
+            <h3 class="text-xl font-bold text-primary mb-2">⚡ 3. اشتراكات PlayStation Plus & Xbox Game Pass</h3>
+            <p class="text-sm text-muted-foreground leading-relaxed mb-4">
+              جدد اشتراكاتك السنوية والشهرية ولعب أونلاين مع أصدقائك بأسعار استثنائية وبكود رقمي مفعّل.
+            </p>
+            <a href="https://go.urtrackinglink.com/aff_c?offer_id=1513&aff_id=171416&source=rabeagcc" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center bg-primary text-primary-foreground font-medium text-sm px-6 h-10 rounded-xl hover:bg-primary/90 transition-all w-full md:w-auto shadow-sm">
+              احصل على الاشتراكات 🎮
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  `,
+
+    // --- المحتوى باللغة الإنجليزية ---
+    titleEn:
+      "Top CDKeys Gaming Deals: PlayStation, Xbox Cards & PC Game Keys at Best Prices! 🎮🔥",
+    contentEn: `
+    <div class="space-y-6 text-foreground">
+      <p class="text-base sm:text-lg leading-relaxed">
+        <strong>CDKeys</strong> is the go-to platform for gamers worldwide to buy digital game codes, gift cards, and online memberships with instant delivery and massive discounts. Here are the top categories available for the Middle East! 🕹️
+      </p>
+
+      <div class="space-y-8 mt-8">
+        <!-- Category 1 -->
+        <div class="bg-card border border-border/80 rounded-2xl p-5 flex flex-col md:flex-row gap-5 items-center shadow-sm">
+          <img src="https://images.unsplash.com/photo-1606813907291-d86efa9b94db?q=80&w=380&auto=format&fit=crop" alt="PSN & Xbox Top-Up Cards" class="w-full md:w-48 h-48 object-cover rounded-xl" />
+          <div class="flex-1 text-center md:text-left w-full">
+            <h3 class="text-xl font-bold text-primary mb-2">💳 1. Top-Up & Gift Cards</h3>
+            <p class="text-sm text-muted-foreground leading-relaxed mb-4">
+              Top up your PlayStation Store, Xbox Live, or Steam Wallet instantly with digital codes at unbeatable prices.
+            </p>
+            <a href="https://go.urtrackinglink.com/aff_c?offer_id=1513&aff_id=171416&source=rabeagcc" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center bg-primary text-primary-foreground font-medium text-sm px-6 h-10 rounded-xl hover:bg-primary/90 transition-all w-full md:w-auto shadow-sm">
+              Shop Top-Up Cards 🚀
+            </a>
+          </div>
+        </div>
+
+        <!-- Category 2 -->
+        <div class="bg-card border border-border/80 rounded-2xl p-5 flex flex-col md:flex-row gap-5 items-center shadow-sm">
+          <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=380&auto=format&fit=crop" alt="PC & Console Games" class="w-full md:w-48 h-48 object-cover rounded-xl" />
+          <div class="flex-1 text-center md:text-left w-full">
+            <h3 class="text-xl font-bold text-primary mb-2">🎯 2. Digital Game Keys (PC & Console)</h3>
+            <p class="text-sm text-muted-foreground leading-relaxed mb-4">
+              Buy digital game keys for trending titles with up to 70% off official store retail prices.
+            </p>
+            <a href="https://go.urtrackinglink.com/aff_c?offer_id=1513&aff_id=171416&source=rabeagcc" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center bg-primary text-primary-foreground font-medium text-sm px-6 h-10 rounded-xl hover:bg-primary/90 transition-all w-full md:w-auto shadow-sm">
+              Explore Game Deals 🛒
+            </a>
+          </div>
+        </div>
+
+        <!-- Category 3 -->
+        <div class="bg-card border border-border/80 rounded-2xl p-5 flex flex-col md:flex-row gap-5 items-center shadow-sm">
+          <img src="https://images.unsplash.com/photo-1612287230202-1ff1d85d1bdf?q=80&w=380&auto=format&fit=crop" alt="Gaming Subscriptions" class="w-full md:w-48 h-48 object-cover rounded-xl" />
+          <div class="flex-1 text-center md:text-left w-full">
+            <h3 class="text-xl font-bold text-primary mb-2">⚡ 3. PS Plus & Xbox Game Pass Subscriptions</h3>
+            <p class="text-sm text-muted-foreground leading-relaxed mb-4">
+              Renew your gaming subscriptions easily and jump into online multiplayer with discounted digital codes.
+            </p>
+            <a href="https://go.urtrackinglink.com/aff_c?offer_id=1513&aff_id=171416&source=rabeagcc" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center bg-primary text-primary-foreground font-medium text-sm px-6 h-10 rounded-xl hover:bg-primary/90 transition-all w-full md:w-auto shadow-sm">
+              Get Subscriptions 🎮
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  `,
+  },
 ];
