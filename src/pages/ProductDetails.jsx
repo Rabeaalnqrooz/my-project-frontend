@@ -8,7 +8,8 @@ import useCartStore from "@/store/cartStore";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import useAuthStore from "@/store/authStore";
-import { Minus, Plus, ShoppingBag, Check } from "lucide-react";
+import { Minus, Plus, ShoppingBag, Check, MessageCircle } from "lucide-react";
+
 function ProductDetails() {
   const { t } = useTranslation();
   const { slug } = useParams();
@@ -21,6 +22,9 @@ function ProductDetails() {
   const [selectedImage, setSelectedImage] = useState(0);
   const [quantity, setQuantity] = useState(1);
   const [addSuccess, setAddSuccess] = useState(false);
+
+  // 📱 قم بتغيير الرقم هنا لرقم هاتفك مع رمز الدولة بدون (+) أو أصفار دولية
+  const WHATSAPP_PHONE_NUMBER = "962796150027";
 
   useEffect(() => {
     fetchProductBySlug(slug);
@@ -57,9 +61,9 @@ function ProductDetails() {
     if (!user) {
       const goToLogin = window.confirm(t("login_required_alert"));
       if (goToLogin) {
-        navigate("/login"); // 👈 إذا ضغط "موافق" أو "OK" يتم تحويله فوراً
+        navigate("/login");
       }
-      return; // إيقاف الدالة هنا وعدم إرسال أي طلب للسيرفر
+      return;
     }
     try {
       await addToCart(product._id, quantity);
@@ -70,12 +74,25 @@ function ProductDetails() {
     }
   };
 
+  // 📲 دالة فتح الواتساب برابط ورسالة ديناميكية مترجمة
+  // 📲 دالة فتح الواتساب (بدون رابط)
+  const handleWhatsAppOrder = () => {
+    const message =
+      `${t("whatsapp_message_prefix")}\n` +
+      `- *${t("whatsapp_product_label")}:* ${product.name}\n` +
+      `- *${t("whatsapp_quantity_label")}:* ${quantity}\n` +
+      `- *${t("whatsapp_total_label")}:* ${finalPrice * quantity} ${t("currency_symbol")}`;
+
+    const whatsappUrl = `https://wa.me/${WHATSAPP_PHONE_NUMBER}?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, "_blank");
+  };
+
   return (
     <div className="container mx-auto px-4 pt-24 pb-12 transition-colors duration-300">
       <div className="grid gap-8 md:grid-cols-2 lg:gap-12 items-start">
         {/* القسم الأيسر: معرض الصور */}
         <div className="flex flex-col gap-4">
-          {/* الصورة الرئيسية الكبيرة */}
+          {/* الصورة الرئيسية */}
           <div className="aspect-square overflow-hidden rounded-2xl bg-muted/40 border border-border/50 shadow-sm relative group">
             <img
               src={product.images[selectedImage]?.url}
@@ -84,7 +101,7 @@ function ProductDetails() {
             />
           </div>
 
-          {/* الصور المصغرة الاضافية */}
+          {/* الصور المصغرة */}
           {product.images.length > 1 && (
             <div className="flex flex-wrap gap-2.5">
               {product.images.map((img, index) => (
@@ -110,19 +127,16 @@ function ProductDetails() {
 
         {/* القسم الأيمن: تفاصيل المنتج وعمليات الشراء */}
         <div className="flex flex-col text-start">
-          {/* البراند أو الشركة المصنعة */}
           {product.brand && (
             <p className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
               {product.brand}
             </p>
           )}
 
-          {/* اسم المنتج */}
           <h1 className="mt-1 text-2xl sm:text-3xl font-extrabold tracking-tight text-foreground">
             {product.name}
           </h1>
 
-          {/* القسم أو التصنيف */}
           {product.category?.name && (
             <div className="mt-2.5">
               <Badge
@@ -156,7 +170,7 @@ function ProductDetails() {
             )}
           </div>
 
-          {/* حالة المخزون (Stock Status) */}
+          {/* حالة المخزون */}
           <div className="mt-3 text-sm font-semibold">
             {outOfStock ? (
               <span className="text-destructive flex items-center gap-1.5">
@@ -173,60 +187,72 @@ function ProductDetails() {
             )}
           </div>
 
-          {/* الوصف تفصيلي */}
+          {/* وصف المنتج */}
           <p className="mt-5 whitespace-pre-line text-muted-foreground text-sm leading-relaxed border-t border-border/40 pt-5">
             {product.description}
           </p>
 
-          {/* لوحة التحكم بالشراء وإضافة المنتجات */}
+          {/* لوحة التحكم بالشراء والطلب */}
           {!outOfStock && (
-            <div className="mt-8 flex flex-col sm:flex-row items-stretch sm:items-center gap-4 border-t border-border/40 pt-6">
-              {/* أزرار التحكم بالكمية */}
-              <div className="flex items-center justify-between rounded-xl border border-border/80 bg-card p-1 shadow-sm shrink-0 min-w-[130px]">
+            <div className="mt-8 flex flex-col gap-4 border-t border-border/40 pt-6">
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+                {/* التحكم بالكمية */}
+                <div className="flex items-center justify-between rounded-xl border border-border/80 bg-card p-1 shadow-sm shrink-0 min-w-[130px]">
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    onClick={decreaseQty}
+                    className="h-9 w-9 rounded-lg hover:bg-muted cursor-pointer"
+                    disabled={quantity <= 1}
+                  >
+                    <Minus className="h-4 w-4" />
+                  </Button>
+                  <span className="w-10 text-center font-bold text-sm text-foreground">
+                    {quantity}
+                  </span>
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    onClick={increaseQty}
+                    className="h-9 w-9 rounded-lg hover:bg-muted cursor-pointer"
+                    disabled={quantity >= product.stock}
+                  >
+                    <Plus className="h-4 w-4" />
+                  </Button>
+                </div>
+
+                {/* زر إضافة إلى السلة */}
                 <Button
-                  variant="ghost"
-                  size="icon"
-                  onClick={decreaseQty}
-                  className="h-9 w-9 rounded-lg hover:bg-muted cursor-pointer"
-                  disabled={quantity <= 1}
+                  onClick={handleAddToCart}
+                  disabled={cartLoading}
+                  className={`h-11 rounded-xl font-bold text-sm shadow-sm transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer flex-1 ${
+                    addSuccess
+                      ? "bg-emerald-600 text-white hover:bg-emerald-600/90"
+                      : "bg-primary text-primary-foreground hover:bg-primary/95"
+                  }`}
                 >
-                  <Minus className="h-4 w-4" />
-                </Button>
-                <span className="w-10 text-center font-bold text-sm text-foreground">
-                  {quantity}
-                </span>
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  onClick={increaseQty}
-                  className="h-9 w-9 rounded-lg hover:bg-muted cursor-pointer"
-                  disabled={quantity >= product.stock}
-                >
-                  <Plus className="h-4 w-4" />
+                  {addSuccess ? (
+                    <>
+                      <Check className="h-4 w-4 animate-scale-in" />
+                      {t("added_to_cart")}
+                    </>
+                  ) : (
+                    <>
+                      <ShoppingBag className="h-4 w-4" />
+                      {t("add_to_cart")}
+                    </>
+                  )}
                 </Button>
               </div>
 
-              {/* زر إضافة إلى السلة الديناميكي */}
+              {/* 🟢 زر الطلب عبر الواتساب */}
               <Button
-                onClick={handleAddToCart}
-                disabled={cartLoading}
-                className={`h-11 rounded-xl font-bold text-sm shadow-sm transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer flex-1 ${
-                  addSuccess
-                    ? "bg-emerald-600 text-white hover:bg-emerald-600/90"
-                    : "bg-primary text-primary-foreground hover:bg-primary/95"
-                }`}
+                onClick={handleWhatsAppOrder}
+                variant="outline"
+                className="h-11 rounded-xl font-bold text-sm shadow-sm border-emerald-500 text-emerald-600 hover:bg-emerald-50 dark:text-emerald-400 dark:hover:bg-emerald-950/30 transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer w-full"
               >
-                {addSuccess ? (
-                  <>
-                    <Check className="h-4 w-4 animate-scale-in" />
-                    {t("added_to_cart")}
-                  </>
-                ) : (
-                  <>
-                    <ShoppingBag className="h-4 w-4" />
-                    {t("add_to_cart")}
-                  </>
-                )}
+                <MessageCircle className="h-5 w-5 fill-emerald-500/20 text-emerald-600 dark:text-emerald-400" />
+                {t("order_via_whatsapp")}
               </Button>
             </div>
           )}

@@ -1,6 +1,7 @@
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 import LanguageDetector from "i18next-browser-languagedetector";
+
 // --------------------------------------------------------
 // 1. نصوص الترجمة (Resources)
 // --------------------------------------------------------
@@ -358,6 +359,11 @@ const resources = {
       no_actions_self: "No procedures",
       blog: "Blog",
       hero_view_blog_btn: "View Blog",
+      order_via_whatsapp: "Order via WhatsApp",
+      whatsapp_message_prefix: "Hello, I would like to inquire / order:",
+      whatsapp_product_label: "Product",
+      whatsapp_quantity_label: "Quantity",
+      whatsapp_total_label: "Total Price",
     },
   },
 
@@ -708,6 +714,11 @@ const resources = {
       no_actions_self: "لا توجد إجراءات",
       blog: "المدونة",
       hero_view_blog_btn: "مشاهدة المدونة",
+      order_via_whatsapp: "الطلب عبر الواتساب",
+      whatsapp_message_prefix: "مرحباً، أود الاستفسار / الطلب لـ:",
+      whatsapp_product_label: "المنتج",
+      whatsapp_quantity_label: "الكمية",
+      whatsapp_total_label: "السعر الإجمالي",
     },
   },
 };
@@ -716,23 +727,37 @@ const resources = {
 // 2. تهيئة مكتبة i18next
 // --------------------------------------------------------
 i18n
-  .use(LanguageDetector) // يكتشف ويحفظ لغة المستخدم المفضلة في المتصفح
-  .use(initReactI18next) // يربط الإعدادات لتعمل مع مكونات React
+  .use(LanguageDetector) // يكتشف لغة المتصفح ويحفظ خيار المستخدم
+  .use(initReactI18next)
   .init({
     resources,
-    fallbackLng: "en", // اللغة الاحتياطية في حال عدم توفر لغة المستخدم
+    fallbackLng: "ar", // 🟢 اللغة الاحتياطية هي العربية
+    lng: localStorage.getItem("i18nextLng") || "ar", // 🟢 اللغة الافتراضية للزائر الجديد هي العربية
+
+    detection: {
+      order: ["localStorage", "cookie", "htmlTag"], // يقرأ الاختيار المحفوظ سابقاً أولاً
+      caches: ["localStorage"], // يحفظ خيار التغيير في الـ LocalStorage للمرات القادمة
+    },
+
     interpolation: {
-      escapeValue: false, // تمنع الحماية المزدوجة لأن React يقوم بـ XSS المدمج تلقائياً
+      escapeValue: false, // React يحمي تلقائياً من XSS
     },
   });
 
 // --------------------------------------------------------
 // 3. إدارة اتجاهات الصفحة ديناميكياً (RTL / LTR)
 // --------------------------------------------------------
-i18n.on("languageChanged", (lng) => {
-  // تفعيل واجهة RTL عند اختيار اللغة العربية، و LTR لباقي اللغات
+const updateDirection = (lng) => {
   document.dir = lng === "ar" ? "rtl" : "ltr";
   document.documentElement.lang = lng;
+};
+
+// ضبط اتجاه الصفحة عند بداية التشغيل مباشرة
+updateDirection(i18n.language || "ar");
+
+// ضبط اتجاه الصفحة عند تغيير اللغة أثناء التصفح
+i18n.on("languageChanged", (lng) => {
+  updateDirection(lng);
 });
 
 export default i18n;
