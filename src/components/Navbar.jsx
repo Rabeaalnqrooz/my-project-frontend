@@ -73,8 +73,11 @@ function Navbar() {
         {/* 1. شعار المتجر */}
         <Link to="/" className="flex items-center gap-2.5 group shrink-0">
           <img
-            src="/julialogo.png"
+            src="/julialogo.webp"
             alt={t("logo")}
+            width="70"
+            height="70"
+            fetchpriority="high"
             className="h-10 sm:h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
           />
           <h1 className="text-xl font-extrabold tracking-tight bg-gradient-to-r from-foreground to-foreground/80 bg-clip-text text-transparent hidden sm:block">

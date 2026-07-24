@@ -61,6 +61,9 @@ function Hero() {
             <img
               src="/hero-cover.webp"
               alt="hero image"
+              width="634"
+              height="357"
+              fetchpriority="high"
               className="relative rounded-2xl shadow-2xl object-cover max-h-[350px] sm:max-h-[450px] w-full border border-border/60 transition-transform duration-500 ease-out group-hover:scale-[1.01]"
             />
           </div>
