@@ -9,8 +9,12 @@ import ReactGA from "react-ga4"; // 1️⃣ استيراد المكتبة
 // 2️⃣ جلب المعرّف من ملف الـ .env وتهيئته فوراً
 const GA_MEASUREMENT_ID = import.meta.env.VITE_GA_MEASUREMENT_ID;
 
-if (GA_MEASUREMENT_ID) {
-  ReactGA.initialize(GA_MEASUREMENT_ID);
+if (GA_MEASUREMENT_ID && typeof window !== "undefined") {
+  window.addEventListener("load", () => {
+    setTimeout(() => {
+      ReactGA.initialize(GA_MEASUREMENT_ID);
+    }, 2500);
+  });
 }
 createRoot(document.getElementById("root")).render(
   <StrictMode>
