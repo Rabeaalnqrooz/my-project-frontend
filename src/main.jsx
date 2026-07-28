@@ -16,6 +16,14 @@ if (GA_MEASUREMENT_ID && typeof window !== "undefined") {
     }, 2500);
   });
 }
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker
+      .register("/sw.js")
+      .then((reg) => console.log("SW Registered!", reg))
+      .catch((err) => console.log("SW Registration Error!", err));
+  });
+}
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <BrowserRouter>
