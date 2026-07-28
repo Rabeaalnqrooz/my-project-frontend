@@ -3,16 +3,23 @@
   "name": "Julia Store | متجر جوليا",
   "icons": [
     {
-      "src": "/icon-192.png",
-      "type": "image/png",
-      "sizes": "192x192"
+      "src": "/julialogo.webp",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/webp"
     },
     {
-      "src": "/icon-512.png",
+      "src": "julialogonew2.png",
       "type": "image/png",
-      "sizes": "512x512"
+      "sizes": "192x192",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "julialogonew1.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any maskable"
     }
-  ],
+  ],,
   "start_url": "/",
   "background_color": "#ffffff",
   "theme_color": "#ffffff",
