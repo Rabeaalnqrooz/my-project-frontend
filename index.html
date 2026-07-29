@@ -4,10 +4,7 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
-    <!-- 🚀 التسريع الذكي لاتصال السيرفر وربط الخطوط -->
-    <link rel="preconnect" href="https://julia4-store.vercel.app" crossorigin />
-
-    <!-- ⚡ Preload لملف الخط لإنهاء مشكلة حظر العرض وتقليل زمن اللود لـ 0ms -->
+    <!-- ⚡ Preload لملف الخط لإنهاء مشكلة حظر العرض -->
     <link
       rel="preload"
       href="/assets/geist-lat.woff2"
@@ -27,7 +24,6 @@
 
     <link rel="manifest" href="/manifest.json" />
     <meta name="theme-color" content="#ffffff" />
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- 🔍 تحسين الوصف ليتضمن اسم المتجر بالعربي والإنجليزي -->
@@ -62,7 +58,7 @@
     <!-- 👑 عنوان الصفحة المستهدف لمحركات البحث -->
     <title>Julia Store | متجر جوليا - العناية الطبيعية والعروض</title>
 
-    <!-- 🤖 البيانات المنظمة لتأكيد اسم الهوية والمؤسسة لجوجل (Schema.org) -->
+    <!-- 🤖 البيانات المنظمة (Schema.org) -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -74,16 +70,35 @@
         "description": "منتجات العناية بالبشرة الطبيعية وعروض التوفير الكبرى."
       }
     </script>
-
-    <!-- 🟡 Google AdSense Evaluation Script -->
-    <script
-      async
-      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8740489206078672"
-      crossorigin="anonymous"
-    ></script>
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+
+    <!-- 🟡 Google AdSense: تحميل ذكي ومؤجل لتحرير الرندر الأول ورفع سكور السرعة (FCP / LCP) -->
+    <script>
+      window.addEventListener("DOMContentLoaded", () => {
+        const loadAdSense = () => {
+          if (window.adsenseLoaded) return;
+          window.adsenseLoaded = true;
+          const script = document.createElement("script");
+          script.src =
+            "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8740489206078672";
+          script.async = true;
+          script.crossOrigin = "anonymous";
+          document.head.appendChild(script);
+        };
+
+        // تحميل أدسنس فور أول تفاعل للمستخدم أو بعد 2.5 ثانية تلقائياً
+        ["touchstart", "scroll", "mousemove", "click"].forEach((event) => {
+          window.addEventListener(event, loadAdSense, {
+            once: true,
+            passive: true,
+          });
+        });
+
+        setTimeout(loadAdSense, 2500);
+      });
+    </script>
   </body>
 </html>

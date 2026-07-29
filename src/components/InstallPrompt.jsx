@@ -6,17 +6,13 @@ const InstallPrompt = () => {
 
   useEffect(() => {
     const handleBeforeInstallPrompt = (e) => {
-      // منع ظهور البنر الافتراضي المتصفح
       e.preventDefault();
-      // حفظ حدث التثبيت لاستدعائه لاحقاً عند النقر
       setDeferredPrompt(e);
-      // إظهار البنر المخصص
       setIsVisible(true);
     };
 
     window.addEventListener("beforeinstallprompt", handleBeforeInstallPrompt);
 
-    // إخفاء البنر فور نجاح التثبيت
     window.addEventListener("appinstalled", () => {
       setIsVisible(false);
       setDeferredPrompt(null);
@@ -32,57 +28,43 @@ const InstallPrompt = () => {
 
   const handleInstallClick = async () => {
     if (!deferredPrompt) return;
-
-    // إظهار نافذة التثبيت الرسمية للنظام
     deferredPrompt.prompt();
-
     const { outcome } = await deferredPrompt.userChoice;
     if (outcome === "accepted") {
-      console.log("User accepted the install prompt");
+      setDeferredPrompt(null);
+      setIsVisible(false);
     }
-
-    setDeferredPrompt(null);
-    setIsVisible(false);
-  };
-
-  const handleClose = () => {
-    setIsVisible(false);
   };
 
   if (!isVisible) return null;
 
   return (
-    <div className="fixed bottom-4 left-4 right-4 md:left-auto md:right-4 md:max-w-sm bg-gray-900 text-white p-4 rounded-2xl shadow-2xl z-50 border border-gray-800 transition-all duration-300 dir-rtl">
-      <div className="flex items-center justify-between gap-3">
-        <div className="flex items-center gap-3">
-          <div className="bg-rose-600 text-white p-2.5 rounded-xl font-bold text-lg flex items-center justify-center">
-            📱
-          </div>
-          <div>
-            <h4 className="font-bold text-sm text-gray-100">
-              تطبيق متجر جوليا
-            </h4>
-            <p className="text-xs text-gray-400 mt-0.5">
-              ثبّت التطبيق لسرعة التصفح وتجربة أسهل
-            </p>
-          </div>
+    <div className="fixed bottom-3 left-3 right-3 z-50 bg-gray-900/95 backdrop-blur-md text-white p-3 rounded-2xl shadow-xl border border-gray-800 flex items-center justify-between gap-3 dir-rtl">
+      <div className="flex items-center gap-2.5 min-w-0">
+        <span className="text-2xl shrink-0">📲</span>
+        <div className="min-w-0">
+          <h4 className="font-bold text-xs text-gray-100 truncate">
+            تطبيق متجر جوليا
+          </h4>
+          <p className="text-[10px] text-gray-400 truncate">
+            تصفح أسرع وتجربة أفضل
+          </p>
         </div>
+      </div>
 
-        <div className="flex items-center gap-2">
-          <button
-            onClick={handleInstallClick}
-            className="bg-rose-600 hover:bg-rose-700 text-white text-xs font-bold px-3 py-2 rounded-lg transition-colors whitespace-nowrap shadow-md cursor-pointer"
-          >
-            تثبيت
-          </button>
-          <button
-            onClick={handleClose}
-            className="text-gray-400 hover:text-white p-1 text-sm font-bold transition-colors cursor-pointer"
-            aria-label="إغلاق"
-          >
-            ✕
-          </button>
-        </div>
+      <div className="flex items-center gap-1.5 shrink-0">
+        <button
+          onClick={handleInstallClick}
+          className="bg-rose-600 hover:bg-rose-700 text-white text-xs font-bold px-3 py-1.5 rounded-xl transition-all shadow-sm active:scale-95"
+        >
+          تثبيت
+        </button>
+        <button
+          onClick={() => setIsVisible(false)}
+          className="text-gray-400 hover:text-white p-1 text-xs"
+        >
+          ✕
+        </button>
       </div>
     </div>
   );
