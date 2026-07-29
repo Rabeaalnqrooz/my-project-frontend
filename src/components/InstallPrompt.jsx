@@ -11,13 +11,12 @@ const InstallPrompt = () => {
       window.navigator.standalone === true ||
       document.referrer.includes("android-app://");
 
-    // إذا كان يعمل كتطبيق مثبت، نلغي إظهار البنر نهائياً!
     if (isStandalone) {
       setIsVisible(false);
       return;
     }
 
-    // 🛡️ 2. التحقق مما إذا كان المستخدم قد أغلق البنر سابقاً في هذه الجلسة
+    // 🛡️ 2. عدم إظهاره إذا أغلقه المستخدم سابقاً
     const isDismissed = sessionStorage.getItem("pwa_prompt_dismissed");
     if (isDismissed) return;
 
@@ -57,36 +56,38 @@ const InstallPrompt = () => {
 
   const handleClose = () => {
     setIsVisible(false);
-    // حفظ رغبة المستخدم في عدم رؤية البنر طوال فترة فتح المتصفح الحالية
     sessionStorage.setItem("pwa_prompt_dismissed", "true");
   };
 
   if (!isVisible) return null;
 
   return (
-    <div className="fixed bottom-3 left-3 right-3 z-50 bg-gray-900/95 backdrop-blur-md text-white p-3 rounded-2xl shadow-xl border border-gray-800 flex items-center justify-between gap-3 dir-rtl">
-      <div className="flex items-center gap-2.5 min-w-0">
-        <span className="text-2xl shrink-0">📲</span>
+    /* 🎯 تحسين الموقع: max-w-md لتقييد العرض على الشاشات الكبيرة + sm:left-4 وضبط z-index */
+    <div className="fixed bottom-4 left-4 right-4 md:right-auto md:max-w-md z-40 bg-gray-900/95 backdrop-blur-md text-white p-3.5 rounded-2xl shadow-2xl border border-gray-800/80 flex items-center justify-between gap-3 dir-rtl transition-all duration-300 animate-in fade-in slide-in-from-bottom-5">
+      <div className="flex items-center gap-3 min-w-0">
+        <div className="w-10 h-10 rounded-xl bg-rose-500/10 flex items-center justify-center shrink-0 border border-rose-500/20">
+          <span className="text-xl">📲</span>
+        </div>
         <div className="min-w-0">
-          <h4 className="font-bold text-xs text-gray-100 truncate">
+          <h4 className="font-bold text-xs md:text-sm text-gray-100 truncate">
             تطبيق متجر جوليا
           </h4>
-          <p className="text-[10px] text-gray-400 truncate">
+          <p className="text-[11px] text-gray-400 truncate">
             تصفح أسرع وتجربة أفضل
           </p>
         </div>
       </div>
 
-      <div className="flex items-center gap-1.5 shrink-0">
+      <div className="flex items-center gap-2 shrink-0">
         <button
           onClick={handleInstallClick}
-          className="bg-rose-600 hover:bg-rose-700 text-white text-xs font-bold px-3 py-1.5 rounded-xl transition-all shadow-sm active:scale-95 cursor-pointer"
+          className="bg-rose-600 hover:bg-rose-700 text-white text-xs font-semibold px-3.5 py-1.5 rounded-xl transition-all shadow-md active:scale-95 cursor-pointer"
         >
           تثبيت
         </button>
         <button
           onClick={handleClose}
-          className="text-gray-400 hover:text-white p-1 text-xs cursor-pointer"
+          className="text-gray-400 hover:text-white p-1 text-xs cursor-pointer rounded-lg hover:bg-gray-800/50 transition-colors"
           aria-label="إغلاق"
         >
           ✕
