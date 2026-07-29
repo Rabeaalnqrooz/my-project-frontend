@@ -1,4 +1,5 @@
-const CACHE_NAME = "julia-store-v1";
+// في أعلى ملف public/sw.js
+const CACHE_NAME = "julia-store-cache-v2"; // 👈 غير الرقم هنا (مثلاً من v1 إلى v2)
 const urlsToCache = ["/", "/index.html", "/manifest.json"];
 
 self.addEventListener("install", (event) => {
