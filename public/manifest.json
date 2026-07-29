@@ -1,6 +1,9 @@
 {
   "short_name": "متجر جوليا",
   "name": "Julia Store | متجر جوليا",
+  "id": "/",
+  "start_url": "/?utm_source=pwa",
+  "scope": "/",
   "icons": [
     {
       "src": "/julialogo.webp",
@@ -20,8 +23,6 @@
       "purpose": "any maskable"
     }
   ],
-  "start_url": "/",
-  "scope": "/",
   "background_color": "#ffffff",
   "theme_color": "#ffffff",
   "display": "standalone",
