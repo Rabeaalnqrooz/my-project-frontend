@@ -62,17 +62,17 @@ const InstallPrompt = () => {
   if (!isVisible) return null;
 
   return (
-    /* 🎯 تحسين الموقع: max-w-md لتقييد العرض على الشاشات الكبيرة + sm:left-4 وضبط z-index */
-    <div className="fixed bottom-4 left-4 right-4 md:right-auto md:max-w-md z-40 bg-gray-900/95 backdrop-blur-md text-white p-3.5 rounded-2xl shadow-2xl border border-gray-800/80 flex items-center justify-between gap-3 dir-rtl transition-all duration-300 animate-in fade-in slide-in-from-bottom-5">
+    /* 🎯 bottom-20 على الموبايل عشان يرتفع فوق زر المشاركة، ويرجع bottom-4 للشاشات الكبيرة */
+    <div className="fixed bottom-20 sm:bottom-4 left-3 right-3 sm:right-auto sm:max-w-md z-40 bg-gray-900/95 backdrop-blur-md text-white p-3.5 rounded-2xl shadow-2xl border border-gray-800/80 flex items-center justify-between gap-3 dir-rtl transition-all duration-300">
       <div className="flex items-center gap-3 min-w-0">
         <div className="w-10 h-10 rounded-xl bg-rose-500/10 flex items-center justify-center shrink-0 border border-rose-500/20">
           <span className="text-xl">📲</span>
         </div>
         <div className="min-w-0">
-          <h4 className="font-bold text-xs md:text-sm text-gray-100 truncate">
+          <h4 className="font-bold text-xs sm:text-sm text-gray-100 truncate">
             تطبيق متجر جوليا
           </h4>
-          <p className="text-[11px] text-gray-400 truncate">
+          <p className="text-[10px] sm:text-[11px] text-gray-400 truncate">
             تصفح أسرع وتجربة أفضل
           </p>
         </div>
@@ -81,7 +81,7 @@ const InstallPrompt = () => {
       <div className="flex items-center gap-2 shrink-0">
         <button
           onClick={handleInstallClick}
-          className="bg-rose-600 hover:bg-rose-700 text-white text-xs font-semibold px-3.5 py-1.5 rounded-xl transition-all shadow-md active:scale-95 cursor-pointer"
+          className="bg-rose-600 hover:bg-rose-700 text-white text-xs font-semibold px-3 py-1.5 rounded-xl transition-all shadow-md active:scale-95 cursor-pointer"
         >
           تثبيت
         </button>
