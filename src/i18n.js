@@ -129,6 +129,7 @@ const resources = {
         'Are you sure you want to disable the account of "{{name}}"?',
       confirm_delete:
         'Are you sure you want to permanently delete the account of "{{name}}"?',
+
       // Footer Section
       footer_description:
         "A distinctive collection of natural skincare products made from pure and safe ingredients.",
@@ -364,16 +365,18 @@ const resources = {
       whatsapp_product_label: "Product",
       whatsapp_quantity_label: "Quantity",
       whatsapp_total_label: "Total Price",
-    },
-    pwa: {
-      title: "Julia Store App",
-      subtitle: "Faster browsing & better experience",
-      iosSub: "Tap here to see how to install",
-      install: "Install",
-      howToInstall: "How to Install",
-      close: "Close",
-      iosInstructions:
-        "To install on iOS:\n1. Tap the Share button at the bottom of Safari.\n2. Select 'Add to Home Screen'.",
+
+      // 📲 PWA App Prompt Translations
+      pwa: {
+        title: "Julia Store App",
+        subtitle: "Faster browsing & better experience",
+        iosSub: "Tap here to see how to install",
+        install: "Install",
+        howToInstall: "How to Install",
+        close: "Close",
+        iosInstructions:
+          "To install on iOS:\n1. Tap the Share button at the bottom of Safari.\n2. Select 'Add to Home Screen'.",
+      },
     },
   },
 
@@ -498,6 +501,7 @@ const resources = {
       pagination_next: "التالي",
       confirm_disable: 'هل أنت متأكد من تعطيل حساب "{{name}}"؟',
       confirm_delete: 'هل أنت متأكد من حذف حساب "{{name}}" نهائياً؟',
+
       // Footer Section
       footer_description:
         "مجموعة متميزة من منتجات العناية بالبشرة الطبيعية المصنوعة من مكونات نقية وآمنة",
@@ -729,16 +733,18 @@ const resources = {
       whatsapp_product_label: "المنتج",
       whatsapp_quantity_label: "الكمية",
       whatsapp_total_label: "السعر الإجمالي",
-    },
-    pwa: {
-      title: "تطبيق متجر جوليا",
-      subtitle: "تصفح أسرع وتجربة أفضل",
-      iosSub: "اضغط هنا لمعرفة طريقة التثبيت",
-      install: "تثبيت",
-      howToInstall: "طريقة التثبيت",
-      close: "إغلاق",
-      iosInstructions:
-        "لتثبيت التطبيق على الأيفون:\n1. اضغط على زر المشاركة (Share) أسفل المتصفح.\n2. اختر (إضافة إلى الشاشة الرئيسية - Add to Home Screen).",
+
+      // 📲 PWA App Prompt Translations
+      pwa: {
+        title: "تطبيق متجر جوليا",
+        subtitle: "تصفح أسرع وتجربة أفضل",
+        iosSub: "اضغط هنا لمعرفة طريقة التثبيت",
+        install: "تثبيت",
+        howToInstall: "طريقة التثبيت",
+        close: "إغلاق",
+        iosInstructions:
+          "لتثبيت التطبيق على الأيفون:\n1. اضغط على زر المشاركة (Share) أسفل المتصفح.\n2. اختر (إضافة إلى الشاشة الرئيسية - Add to Home Screen).",
+      },
     },
   },
 };
@@ -752,32 +758,9 @@ i18n
   .init({
     resources,
     fallbackLng: "ar", // 🟢 اللغة الاحتياطية هي العربية
-    lng: localStorage.getItem("i18nextLng") || "ar", // 🟢 اللغة الافتراضية للزائر الجديد هي العربية
-
-    detection: {
-      order: ["localStorage", "cookie", "htmlTag"], // يقرأ الاختيار المحفوظ سابقاً أولاً
-      caches: ["localStorage"], // يحفظ خيار التغيير في الـ LocalStorage للمرات القادمة
-    },
-
     interpolation: {
-      escapeValue: false, // React يحمي تلقائياً من XSS
+      escapeValue: false, // React يقوم بالحماية من XSS تلقائياً
     },
   });
-
-// --------------------------------------------------------
-// 3. إدارة اتجاهات الصفحة ديناميكياً (RTL / LTR)
-// --------------------------------------------------------
-const updateDirection = (lng) => {
-  document.dir = lng === "ar" ? "rtl" : "ltr";
-  document.documentElement.lang = lng;
-};
-
-// ضبط اتجاه الصفحة عند بداية التشغيل مباشرة
-updateDirection(i18n.language || "ar");
-
-// ضبط اتجاه الصفحة عند تغيير اللغة أثناء التصفح
-i18n.on("languageChanged", (lng) => {
-  updateDirection(lng);
-});
 
 export default i18n;
