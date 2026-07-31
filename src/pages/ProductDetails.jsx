@@ -8,7 +8,15 @@ import useCartStore from "@/store/cartStore";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import useAuthStore from "@/store/authStore";
-import { Minus, Plus, ShoppingBag, Check, MessageCircle } from "lucide-react";
+import {
+  Minus,
+  Plus,
+  ShoppingBag,
+  Check,
+  MessageCircle,
+  Star,
+} from "lucide-react";
+import ProductReviews from "@/components/ProductReviews";
 
 function ProductDetails() {
   const { t } = useTranslation();
@@ -23,7 +31,7 @@ function ProductDetails() {
   const [quantity, setQuantity] = useState(1);
   const [addSuccess, setAddSuccess] = useState(false);
 
-  // 📱 قم بتغيير الرقم هنا لرقم هاتفك مع رمز الدولة بدون (+) أو أصفار دولية
+  // 📱 رقم الواتساب الخاص بالمتجر
   const WHATSAPP_PHONE_NUMBER = "962796150027";
 
   useEffect(() => {
@@ -74,8 +82,6 @@ function ProductDetails() {
     }
   };
 
-  // 📲 دالة فتح الواتساب برابط ورسالة ديناميكية مترجمة
-  // 📲 دالة فتح الواتساب (بدون رابط)
   const handleWhatsAppOrder = () => {
     const message =
       `${t("whatsapp_message_prefix")}\n` +
@@ -87,12 +93,16 @@ function ProductDetails() {
     window.open(whatsappUrl, "_blank");
   };
 
+  const scrollToReviews = () => {
+    const section = document.getElementById("reviews-section");
+    if (section) section.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <div className="container mx-auto px-4 pt-24 pb-12 transition-colors duration-300">
       <div className="grid gap-8 md:grid-cols-2 lg:gap-12 items-start">
         {/* القسم الأيسر: معرض الصور */}
         <div className="flex flex-col gap-4">
-          {/* الصورة الرئيسية */}
           <div className="aspect-square overflow-hidden rounded-2xl bg-muted/40 border border-border/50 shadow-sm relative group">
             <img
               src={product.images[selectedImage]?.url}
@@ -101,7 +111,6 @@ function ProductDetails() {
             />
           </div>
 
-          {/* الصور المصغرة */}
           {product.images.length > 1 && (
             <div className="flex flex-wrap gap-2.5">
               {product.images.map((img, index) => (
@@ -137,8 +146,49 @@ function ProductDetails() {
             {product.name}
           </h1>
 
+          {/* 🌟 شريط التقييم الديناميكي المربوط بقاعدة البيانات */}
+          {product.numReviews > 0 ? (
+            <div
+              className="mt-2.5 flex items-center gap-2 cursor-pointer"
+              onClick={scrollToReviews}
+            >
+              <div className="flex items-center text-amber-400">
+                {[...Array(5)].map((_, i) => (
+                  <Star
+                    key={i}
+                    className={`w-4 h-4 ${
+                      i < Math.round(product.rating)
+                        ? "fill-amber-400 text-amber-400"
+                        : "text-muted border-muted fill-muted/20"
+                    }`}
+                  />
+                ))}
+              </div>
+              <span className="text-xs font-semibold text-foreground">
+                {product.rating ? product.rating.toFixed(1) : "0.0"}
+              </span>
+              <span className="text-xs text-muted-foreground underline">
+                ({t("reviews_count", { count: product.numReviews })})
+              </span>
+            </div>
+          ) : (
+            <div
+              className="mt-2.5 flex items-center gap-2 cursor-pointer text-muted-foreground hover:text-foreground transition-colors"
+              onClick={scrollToReviews}
+            >
+              <div className="flex items-center text-muted-foreground/30">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="w-4 h-4" />
+                ))}
+              </div>
+              <span className="text-xs font-medium underline">
+                {t("be_first_to_review")}
+              </span>
+            </div>
+          )}
+
           {product.category?.name && (
-            <div className="mt-2.5">
+            <div className="mt-3">
               <Badge
                 variant="secondary"
                 className="px-2.5 py-0.5 rounded-lg font-medium text-xs"
@@ -258,6 +308,9 @@ function ProductDetails() {
           )}
         </div>
       </div>
+
+      {/* 🌟 سكشن التقييمات والمراجعات كاملاً بالأسفل */}
+      <ProductReviews product={product} />
     </div>
   );
 }

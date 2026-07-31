@@ -377,6 +377,54 @@ const resources = {
         iosInstructions:
           "To install on iOS:\n1. Tap the Share button at the bottom of Safari.\n2. Select 'Add to Home Screen'.",
       },
+      badge_natural_title: "100% Natural Ingredients",
+      badge_natural_desc: "Safe & free from harmful chemicals",
+      badge_delivery_title: "Fast Delivery (24-48h)",
+      badge_delivery_desc: "Express shipping to Amman, Zarqa & all cities",
+      badge_cod_title: "Cash on Delivery",
+      badge_cod_desc: "Inspect your package and pay cash at your door",
+      badge_guarantee_title: "100% Satisfaction Guaranteed",
+      badge_guarantee_desc: "Carefully tested and high quality products",
+      hero_trust_natural: "100% Natural Ingredients",
+      hero_trust_cod: "Cash on Delivery",
+      hero_trust_delivery: "Delivery within 24-48h",
+      // Testimonials & Reviews (English)
+      testimonials_badge: "Real Reviews",
+      testimonials_title: "What Our Customers Say About Julia Store",
+      testimonials_subtitle:
+        "Thousands of happy customers trust us. Here are some of their experiences.",
+      verified_buyer: "Verified Buyer",
+      testimonial_1_name: "Reham Mohammad",
+      testimonial_1_comment:
+        "I tried the body scrub and honestly the result was amazing from the first use! It leaves the skin super smooth, fresh, and hydrated. 100% natural and gentle on sensitive skin.",
+      testimonial_1_prod: "Body Scrub",
+      testimonial_2_name: "Raneem Jameel",
+      testimonial_2_comment:
+        "Super fast delivery, received in under 24 hours! The sunscreen is amazing—lightweight, non-greasy, doesn't leave any white cast, and smells wonderful.",
+      testimonial_2_prod: "Sunscreen",
+      testimonial_3_name: "Abeer Hussein",
+      testimonial_3_comment:
+        "The natural deodorant is unbelievable! All-day freshness without any harmful chemicals. Best natural product store in Jordan! Definitely ordering again.",
+      testimonial_3_prod: "Deodorant",
+      reviews_count: "{{count}} reviews",
+      reviews_and_ratings_title: "Customer Reviews & Ratings",
+      based_on_reviews: "Based on {{count}} reviews",
+      add_review_title: "Add Your Review",
+      review_placeholder: "Write your review and experience here...",
+      submit_review_btn: "Submit Review",
+      review_submitted: "Review submitted successfully!",
+      verified_purchase: "Verified Purchase",
+      guest_user: "Julia Customer",
+      out_of_5: "out of 5",
+      rev_1_user: "Dina Al-Khater",
+      rev_1_comment:
+        "Excellent product! Great packaging and safe for sensitive skin.",
+      rev_2_user: "Maryam Al-Abbadi",
+      rev_2_comment:
+        "High quality and unexpectedly fast delivery. Will definitely order again.",
+      confirm_delete_review: "Are you sure you want to delete this review?",
+      delete_review: "Delete review",
+      be_first_to_review: "Be the first to review this product",
     },
   },
 
@@ -525,7 +573,7 @@ const resources = {
 
       // إشعارات التنبيه (Toasts & Errors)
       email_required_error: "يرجى إدخال بريدك الإلكتروني أولاً",
-      invalid_email: " البريد الإلكتروني المدخل غير صالح",
+      invalid_email: "البريد الإلكتروني المدخل غير صالح",
       session_expired_error: "انتهت صلاحية الجلسة",
       signup_success_auto: "تم إنشاء حسابك بنجاح! أهلاً فيك 🎉",
       signup_success:
@@ -745,6 +793,54 @@ const resources = {
         iosInstructions:
           "لتثبيت التطبيق على الأيفون:\n1. اضغط على زر المشاركة (Share) أسفل المتصفح.\n2. اختر (إضافة إلى الشاشة الرئيسية - Add to Home Screen).",
       },
+      badge_natural_title: "مكونات طبيعية 100%",
+      badge_natural_desc: "آمنة وخالية من المواد الكيميائية الضارة",
+      badge_delivery_title: "توصيل سريع (24-48 ساعة)",
+      badge_delivery_desc: "خدمة توصيل فورية لعمان والزرقاء وباقي المحافظات",
+      badge_cod_title: "الدفع عند الاستلام",
+      badge_cod_desc: "عاين طلبك وادفع نقداً لباب بيتك بكل راحة",
+      badge_guarantee_title: "ضمان جودة ورضا 100%",
+      badge_guarantee_desc: "منتجات مفحوصة ومجربة بعناية فائقة",
+      hero_trust_natural: "مكونات طبيعية 100%",
+      hero_trust_cod: "الدفع عند الاستلام",
+      hero_trust_delivery: "توصيل خلال 24-48 ساعة",
+      // Testimonials & Reviews (العربية)
+      testimonials_badge: "تجارب حقيقية",
+      testimonials_title: "ماذا يقول عملاؤنا عن متجر جوليا",
+      testimonials_subtitle:
+        "ثقة آلاف العملاء هي سر نجاحنا، إليك بعض انطباعاتهم بعد استخدام المنتجات",
+      verified_buyer: "مشتري مؤكد",
+      testimonial_1_name: "رهام محمد",
+      testimonial_1_comment:
+        "جربت سكراب الجسم وبصراحة النتيجة روعة من أول استخدام! قشر بشرتي ولطفها بشكل مش طبيعي، الفرق واضح بالنعومة والنضارة والمنتجات طبيعية وما تسببت بتهيج بشرتي.",
+      testimonial_1_prod: "سكراب للجسم",
+      testimonial_2_name: "رنيم جميل",
+      testimonial_2_comment:
+        "توصيل سريع جداً وصلني الطلب خلال أقل من 24 ساعة. واقي الشمس ممتاز جداً، خفيف عالبشرة وما بترك أثر أبيض وريحته بتجنن.",
+      testimonial_2_prod: "واقي الشمس",
+      testimonial_3_name: "عبير حسين",
+      testimonial_3_comment:
+        "مزيل العرق الطبيعي رائع جداً! حماية طول اليوم وبدون أي مواد كيميائية مضرة. أفضل متجر للمنتجات الطبيعية بالأردن وتعاملم رائع وسريع. أكيد مش آخر التعامل.",
+      testimonial_3_prod: "مزيل العرق",
+      reviews_count: "{{count}} تقييم",
+      reviews_and_ratings_title: "التقييمات وآراء العملاء",
+      based_on_reviews: "بناءً على {{count}} تقييم",
+      add_review_title: "أضف تقييمك للمنتج",
+      review_placeholder: "اكتب رأيك وتجربتك مع المنتج هنا...",
+      submit_review_btn: "إرسال التقييم",
+      review_submitted: "تم إضافة تقييمك بنجاح!",
+      verified_purchase: "شراء مؤكد",
+      guest_user: "عميل جوليا",
+      out_of_5: "من 5",
+      rev_1_user: "دينا الخاطر",
+      rev_1_comment:
+        "منتج ممتاز جداً! التغليف رائع ومناسب للبشرة الحساسة، حظي بإعجاب كل العائلة.",
+      rev_2_user: "مريم العبادي",
+      rev_2_comment:
+        "جودة عالية وسرعة للتوصيل غير متوقعة. أكرر تجربة الشراء بكل تأكيد.",
+      confirm_delete_review: "هل أنت متأكد من رغبتك في حذف هذا التقييم؟",
+      delete_review: "حذف التقييم",
+      be_first_to_review: "كن أول من يقيّم هذا المنتج",
     },
   },
 };

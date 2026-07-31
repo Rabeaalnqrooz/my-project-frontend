@@ -1,9 +1,8 @@
 // frontend/src/store/productStore.js
-
 import { create } from "zustand";
 import api from "@/api/axios";
 
-export const useProductStore = create((set) => ({
+export const useProductStore = create((set, get) => ({
   products: [],
   currentProduct: null,
   totalPages: 1,
@@ -44,7 +43,54 @@ export const useProductStore = create((set) => ({
 
   clearCurrentProduct: () => set({ currentProduct: null }),
 
-  // ✅ إنشاء منتج — formData لأنها بتحتوي عدة صور
+  // ➕ إضافة تقييم جديد للـ Backend
+  addReview: async (productId, { rating, comment }) => {
+    try {
+      const res = await api.post(`product/${productId}/reviews`, {
+        rating,
+        comment,
+      });
+
+      // تحديث المنتج الحالي بالمراجعات الجديدة والنسبة الجديدة
+      set((state) => {
+        if (!state.currentProduct) return state;
+        return {
+          currentProduct: {
+            ...state.currentProduct,
+            reviews: res.data.reviews,
+            rating: res.data.rating,
+            numReviews: res.data.numReviews,
+          },
+        };
+      });
+      return res.data;
+    } catch (error) {
+      throw new Error(error.response?.data?.message || error.message);
+    }
+  },
+
+  // 🗑️ حذف تقييم عبر الـ Backend (أدمن فقط)
+  deleteReview: async (productId, reviewId) => {
+    try {
+      const res = await api.delete(`product/${productId}/reviews/${reviewId}`);
+
+      set((state) => {
+        if (!state.currentProduct) return state;
+        return {
+          currentProduct: {
+            ...state.currentProduct,
+            reviews: res.data.reviews,
+            rating: res.data.rating,
+            numReviews: res.data.numReviews,
+          },
+        };
+      });
+      return res.data;
+    } catch (error) {
+      throw new Error(error.response?.data?.message || error.message);
+    }
+  },
+
   createProduct: async (formData) => {
     set({ isLoading: true, error: null });
     try {
@@ -75,20 +121,6 @@ export const useProductStore = create((set) => ({
         isLoading: false,
       }));
       return res.data;
-    } catch (error) {
-      set({ isLoading: false, error: error.message });
-      throw error;
-    }
-  },
-
-  deleteProduct: async (id) => {
-    set({ isLoading: true, error: null });
-    try {
-      await api.delete(`product/${id}`);
-      set((state) => ({
-        products: state.products.filter((p) => p._id !== id),
-        isLoading: false,
-      }));
     } catch (error) {
       set({ isLoading: false, error: error.message });
       throw error;
