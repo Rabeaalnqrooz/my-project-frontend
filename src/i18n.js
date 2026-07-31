@@ -365,6 +365,16 @@ const resources = {
       whatsapp_quantity_label: "Quantity",
       whatsapp_total_label: "Total Price",
     },
+    pwa: {
+      title: "Julia Store App",
+      subtitle: "Faster browsing & better experience",
+      iosSub: "Tap here to see how to install",
+      install: "Install",
+      howToInstall: "How to Install",
+      close: "Close",
+      iosInstructions:
+        "To install on iOS:\n1. Tap the Share button at the bottom of Safari.\n2. Select 'Add to Home Screen'.",
+    },
   },
 
   // 🇸🇦 اللغة العربية
@@ -719,6 +729,16 @@ const resources = {
       whatsapp_product_label: "المنتج",
       whatsapp_quantity_label: "الكمية",
       whatsapp_total_label: "السعر الإجمالي",
+    },
+    pwa: {
+      title: "تطبيق متجر جوليا",
+      subtitle: "تصفح أسرع وتجربة أفضل",
+      iosSub: "اضغط هنا لمعرفة طريقة التثبيت",
+      install: "تثبيت",
+      howToInstall: "طريقة التثبيت",
+      close: "إغلاق",
+      iosInstructions:
+        "لتثبيت التطبيق على الأيفون:\n1. اضغط على زر المشاركة (Share) أسفل المتصفح.\n2. اختر (إضافة إلى الشاشة الرئيسية - Add to Home Screen).",
     },
   },
 };
