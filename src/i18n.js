@@ -849,13 +849,18 @@ const resources = {
 // 2. تهيئة مكتبة i18next
 // --------------------------------------------------------
 i18n
-  .use(LanguageDetector) // يكتشف لغة المتصفح ويحفظ خيار المستخدم
+  .use(LanguageDetector)
   .use(initReactI18next)
   .init({
     resources,
-    fallbackLng: "ar", // 🟢 اللغة الاحتياطية هي العربية
+    lng: localStorage.getItem("i18nextLng") || "ar", // 🟢 افتراضياً عربي إلا إذا كان العميل قد غير اللغة سابقاً
+    fallbackLng: "ar", // 🟢 اللغة الاحتياطية
+    detection: {
+      order: ["localStorage", "cookie"], // 🟢 يفحص فقط الخيار المحفوظ سابقاً، ويتجاهل لغة متصفح جهاز العميل
+      caches: ["localStorage"], // يحفظ اختيار العميل عندما يغير اللغة
+    },
     interpolation: {
-      escapeValue: false, // React يقوم بالحماية من XSS تلقائياً
+      escapeValue: false,
     },
   });
 
