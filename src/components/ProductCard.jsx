@@ -45,7 +45,12 @@ function ProductCard({ product }) {
               {t("discount_percent", { percent: product.discountPercentage })}
             </Badge>
           )}
-
+          {/* ✅ شارة "باقة" — بمكانها الصحيح جوا حاوية الصورة */}
+          {product.isBundle && (
+            <Badge className="absolute top-2.5 start-2.5 bg-primary text-primary-foreground font-bold px-2 py-0.5 text-[11px] border-none shadow-sm z-10">
+              {t("bundle_badge")}
+            </Badge>
+          )}
           {/* شارة نفاد الكمية */}
           {product.stock === 0 && (
             <div className="absolute inset-0 flex items-center justify-center bg-background/70 backdrop-blur-[1px] animate-in fade-in duration-200 z-10">

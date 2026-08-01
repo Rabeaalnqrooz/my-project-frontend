@@ -113,6 +113,14 @@ function Navbar() {
               {t("blog")}
             </Link>
           </li>
+          <li>
+            <Link
+              to="/bundles"
+              className="text-foreground/80 hover:text-foreground relative py-1.5 after:absolute after:bottom-0 after:start-0 after:h-[2px] after:w-0 hover:after:w-full after:bg-primary after:transition-all after:duration-300 transition-colors"
+            >
+              {t("bundles_nav_link")}
+            </Link>
+          </li>
         </ul>
 
         {/* 3. أزرار التحكم والعمليات */}
@@ -281,6 +289,15 @@ function Navbar() {
                       className="block px-3 py-2 rounded-xl text-foreground hover:bg-muted/60 transition-colors"
                     >
                       {t("blog")}
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      to="/bundles"
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="block px-3 py-2 rounded-xl text-foreground hover:bg-muted/60 transition-colors"
+                    >
+                      {t("bundles_nav_link")}
                     </Link>
                   </li>
 

@@ -47,6 +47,15 @@ function Hero() {
                 {t("hero_view_blog_btn")}
               </Button>
             </Link>
+            <Link to="/bundles" className="w-full sm:w-auto">
+              <Button
+                size="lg"
+                variant="outline"
+                className="w-full sm:w-auto h-11 sm:h-12 px-6 sm:px-8 rounded-xl font-medium border-border/80 hover:bg-muted hover:text-foreground transition-all duration-250 cursor-pointer text-sm sm:text-base"
+              >
+                {t("hero_view_Packages_btn")}
+              </Button>
+            </Link>
           </div>
 
           {/* 🌟 شريط الثقة السريع المترجم والمتجاوب 100% مع الشاشات */}

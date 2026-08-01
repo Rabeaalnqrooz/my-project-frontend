@@ -26,6 +26,8 @@ const emptyForm = {
   discountPrice: "",
   stock: "",
   isActive: true,
+  isBundle: false, // ✅ جديد
+  bundleItems: [], // ✅ جديد — array من { product: id, quantity }
 };
 
 function AdminProducts() {
@@ -47,7 +49,8 @@ function AdminProducts() {
   const [editingId, setEditingId] = useState(null);
   const [submitError, setSubmitError] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
-
+  const [selectedBundleProduct, setSelectedBundleProduct] = useState("");
+  const [selectedBundleQty, setSelectedBundleQty] = useState(1);
   useEffect(() => {
     fetchCategories(true);
     fetchProducts({ all: true, limit: 50 });
@@ -59,6 +62,8 @@ function AdminProducts() {
     setExistingImages([]);
     setRemovedImageIds([]);
     setEditingId(null);
+    setSelectedBundleProduct(""); // ✅ جديد
+    setSelectedBundleQty(1); // ✅ جديد
   };
 
   const handleEditClick = (product) => {
@@ -72,6 +77,11 @@ function AdminProducts() {
       discountPrice: product.discountPrice || "",
       stock: product.stock,
       isActive: product.isActive,
+      isBundle: product.isBundle || false, // ✅ جديد
+      bundleItems: (product.bundleItems || []).map((item) => ({
+        product: item.product?._id || item.product,
+        quantity: item.quantity,
+      })), // ✅ جديد
     });
     setExistingImages(product.images);
     setNewImages([]);
@@ -89,7 +99,39 @@ function AdminProducts() {
   const handleRemoveNewImage = (index) => {
     setNewImages((prev) => prev.filter((_, i) => i !== index));
   };
+  // ✅ إضافة منتج للباقة قيد الإنشاء
+  const handleAddBundleItem = () => {
+    if (!selectedBundleProduct) return;
 
+    // ✅ منع تكرار نفس المنتج مرتين بنفس الباقة
+    const alreadyAdded = formData.bundleItems.some(
+      (item) => item.product === selectedBundleProduct,
+    );
+    if (alreadyAdded) {
+      alert(t("product_already_in_bundle"));
+      return;
+    }
+
+    setFormData((prev) => ({
+      ...prev,
+      bundleItems: [
+        ...prev.bundleItems,
+        { product: selectedBundleProduct, quantity: selectedBundleQty },
+      ],
+    }));
+    setSelectedBundleProduct("");
+    setSelectedBundleQty(1);
+  };
+
+  // ✅ حذف منتج من الباقة قيد الإنشاء
+  const handleRemoveBundleItem = (productId) => {
+    setFormData((prev) => ({
+      ...prev,
+      bundleItems: prev.bundleItems.filter(
+        (item) => item.product !== productId,
+      ),
+    }));
+  };
   const handleSubmit = async (e) => {
     e.preventDefault();
     setSubmitError("");
@@ -116,6 +158,8 @@ function AdminProducts() {
       data.append("discountPrice", formData.discountPrice);
     data.append("stock", formData.stock);
     data.append("isActive", formData.isActive);
+    data.append("isBundle", formData.isBundle);
+    data.append("bundleItems", JSON.stringify(formData.bundleItems)); // ✅ تحويلها JSON string
 
     newImages.forEach((file) => data.append("images", file));
     removedImageIds.forEach((id) => data.append("removeImages", id));
@@ -301,7 +345,116 @@ function AdminProducts() {
               />
             </div>
           </div>
+          {/* ─── قسم "الباقة" (Bundle) ──────────────────────────── */}
+          <div className="space-y-3 border-t border-border/40 pt-3">
+            <label className="flex items-center gap-2 text-sm font-semibold text-foreground/90 cursor-pointer">
+              <input
+                type="checkbox"
+                checked={formData.isBundle}
+                onChange={(e) =>
+                  setFormData({ ...formData, isBundle: e.target.checked })
+                }
+                className="h-4 w-4 rounded-md border-border/60 text-primary focus:ring-primary accent-primary cursor-pointer"
+              />
+              {t("is_bundle_label")}
+            </label>
 
+            {/* ✅ يظهر بس لو فعّل الأدمن خيار "باقة" */}
+            {formData.isBundle && (
+              <div className="space-y-3 rounded-xl border border-border/60 bg-muted/20 p-4">
+                {/* ─── اختيار منتج + كمية لإضافته للباقة ─── */}
+                <div className="flex flex-wrap items-end gap-2">
+                  <div className="flex-1 min-w-[180px]">
+                    <Label className="text-xs font-semibold text-muted-foreground">
+                      {t("choose_product_label")}
+                    </Label>
+                    <Select
+                      value={selectedBundleProduct}
+                      onValueChange={setSelectedBundleProduct}
+                    >
+                      <SelectTrigger className="mt-1.5 h-10 w-full rounded-xl border-border/60">
+                        <SelectValue
+                          placeholder={t("choose_product_placeholder")}
+                        />
+                      </SelectTrigger>
+                      <SelectContent className="rounded-xl">
+                        {products
+                          // ✅ نمنع الباقة إنها تحتوي نفسها (لو بوضع تعديل)
+                          .filter((p) => p._id !== editingId)
+                          .map((p) => (
+                            <SelectItem
+                              key={p._id}
+                              value={p._id}
+                              className="rounded-lg"
+                            >
+                              {p.name}
+                            </SelectItem>
+                          ))}
+                      </SelectContent>
+                    </Select>
+                  </div>
+
+                  <div className="w-20">
+                    <Label className="text-xs font-semibold text-muted-foreground">
+                      {t("quantity_label_short")}
+                    </Label>
+                    <Input
+                      type="number"
+                      min="1"
+                      value={selectedBundleQty}
+                      onChange={(e) =>
+                        setSelectedBundleQty(Number(e.target.value))
+                      }
+                      className="mt-1.5 h-10 rounded-xl border-border/60"
+                    />
+                  </div>
+
+                  <Button
+                    type="button"
+                    onClick={handleAddBundleItem}
+                    disabled={!selectedBundleProduct}
+                    className="h-10 rounded-xl"
+                  >
+                    {t("add_to_bundle_btn")}
+                  </Button>
+                </div>
+
+                {/* ─── قائمة المنتجات المضافة للباقة حالياً ─── */}
+                {formData.bundleItems.length > 0 ? (
+                  <div className="space-y-1.5">
+                    {formData.bundleItems.map((item) => {
+                      // ✅ نلاقي اسم المنتج من قائمة products الأصلية (عندنا بس الـ id)
+                      const productInfo = products.find(
+                        (p) => p._id === item.product,
+                      );
+                      return (
+                        <div
+                          key={item.product}
+                          className="flex items-center justify-between rounded-lg bg-background px-3 py-2 text-sm border border-border/40"
+                        >
+                          <span>
+                            {productInfo?.name || t("unknown_product")} ×{" "}
+                            {item.quantity}
+                          </span>
+                          <button
+                            type="button"
+                            onClick={() => handleRemoveBundleItem(item.product)}
+                            className="text-destructive hover:underline text-xs font-semibold"
+                          >
+                            {t("delete_btn")}
+                          </button>
+                        </div>
+                      );
+                    })}
+                  </div>
+                ) : (
+                  <p className="text-xs text-muted-foreground">
+                    {t("no_bundle_items_yet")}
+                  </p>
+                )}
+              </div>
+            )}
+          </div>
           {/* ─── إدارة ومعاينة الصور الحالية ─── */}
           {existingImages.length > 0 && (
             <div className="space-y-1.5 border-t border-border/40 pt-3">

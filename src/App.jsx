@@ -4,7 +4,7 @@ import ReactGA from "react-ga4";
 import Layout from "./components/Layout";
 import Home from "./pages/Home";
 import InstallPrompt from "./components/InstallPrompt";
-
+import Bundles from "./pages/Bundles";
 // 🛡️ دالة ذكية لتحميل الصفحات الكسولة وإعادة التحميل تلقائياً عند تحديث الموقع
 const safeLazy = (importFn) =>
   lazy(() =>
@@ -99,6 +99,7 @@ function App() {
             <Route path="/shipping-policy" element={<ShippingPolicy />} />
             <Route path="/blog" element={<BlogList />} />
             <Route path="/blog/:id" element={<BlogPost />} />
+            <Route path="/bundles" element={<Bundles />} />
 
             {/* Protect */}
             <Route element={<ProtectedRoute />}>
