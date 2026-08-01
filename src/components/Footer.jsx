@@ -147,6 +147,29 @@ function Footer() {
                   <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
                 </svg>
               </a>
+              {/* 4. أيقونة بينتريست (Pinterest) */}
+              <a
+                href="https://www.pinterest.com/julianqrooz/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex h-9 w-9 items-center justify-center rounded-xl bg-card border border-border/60 text-muted-foreground hover:text-primary hover:border-primary/50 hover:scale-105 transition-all duration-200 shadow-sm"
+                title="Pinterest"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="h-4 w-4"
+                >
+                  <line x1="12" y1="9" x2="12" y2="22" />
+                  <path d="M8 22l3-11a4.5 4.5 0 0 1 6-2 4.5 4.5 0 0 1 2 5.5c-.8 2.5-3 4.5-5.5 4.5-1.5 0-2.8-.8-3.3-2" />
+                  <circle cx="12" cy="12" r="10" />
+                </svg>
+              </a>
             </div>
           </div>
         </div>
