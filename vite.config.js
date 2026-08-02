@@ -1,9 +1,4 @@
-import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react";
-import tailwindcss from "@tailwindcss/vite";
-import path from "path";
-
-// https://vite.dev/config/
+// vite.config.js
 export default defineConfig({
   plugins: [react(), tailwindcss()],
   resolve: {
@@ -11,41 +6,31 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  // ⚡ تعديل الـ esbuild لحذف الكونسول وتصغير الكود بدون مكتبات خارجية
+  esbuild: {
+    drop: ["console", "debugger"],
+  },
   build: {
-    // ⚡ 1. تفعيل ضغط الكود بأقصى كفاءة وتقليل الأحجام
-    minify: "terser",
-    terserOptions: {
-      compress: {
-        drop_console: true, // حذف console.log في الإنتاج لتخفيف الحجم
-        drop_debugger: true,
-      },
-    },
-    // ⚡ 2. تجميع وتقسيم CSS بشكل منفصل لكل Chunk لتجنب حظر الرندر الأول
+    // استخدم esbuild بدلاً من terser
+    minify: "esbuild",
     cssCodeSplit: true,
-
     rollupOptions: {
       output: {
         entryFileNames: `assets/[name].[hash].js`,
         chunkFileNames: `assets/[name].[hash].js`,
         assetFileNames: `assets/[name].[hash].[ext]`,
-
-        // ⚡ 3. تقسيم المكتبات الخارجية (Vendor Chunks) لمنع تضخم ملف index.js
         manualChunks(id) {
           if (id.includes("node_modules")) {
-            if (
-              id.includes("react") ||
-              id.includes("react-dom") ||
-              id.includes("react-router-dom")
-            ) {
-              return "vendor-core"; // مكتبات ريآكت الأساسية في Chunk منفصل
+            if (id.includes("react") || id.includes("react-dom") || id.includes("react-router-dom")) {
+              return "vendor-core";
             }
             if (id.includes("lucide-react")) {
-              return "vendor-icons"; // الأيقونات في Chunk منفصل
+              return "vendor-icons";
             }
             if (id.includes("react-ga4")) {
-              return "vendor-analytics"; // مكتبة تحليلات جوجل
+              return "vendor-analytics";
             }
-            return "vendor-libs"; // باقي مكتبات Node
+            return "vendor-libs";
           }
         },
       },
