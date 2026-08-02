@@ -11,12 +11,9 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
-  // ⚡ حذف الكونسول والـ debugger لتسريع الأداء وتصغير الحجم عبر esbuild
-  esbuild: {
-    drop: ["console", "debugger"],
-  },
   build: {
-    minify: "esbuild",
+    // ⚡ الاعتماد على الضغط الافتراضي الذكي والسريع لـ Vite
+    minify: true,
     cssCodeSplit: true,
     rollupOptions: {
       output: {
@@ -24,7 +21,7 @@ export default defineConfig({
         chunkFileNames: `assets/[name].[hash].js`,
         assetFileNames: `assets/[name].[hash].[ext]`,
 
-        // ⚡ تقسيم مكتبات الـ node_modules لتفادي الـ Unused JS
+        // ⚡ تقسيم المكتبات (Vendor Chunks) لتقليل حجم unused JS
         manualChunks(id) {
           if (id.includes("node_modules")) {
             if (
