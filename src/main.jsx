@@ -5,7 +5,7 @@ import { Toaster } from "sonner";
 import "./index.css";
 import App from "./App.jsx";
 import "./i18n.js";
-import ReactGA from "react-ga4";
+// ❌ تم إزالة import ReactGA المباشر لمنع انتفاخ الـ Bundle وتجميد الـ Main Thread
 
 // 🛡️ 1. حارس الكاش: يلتقط أخطاء التحميل في متصفح الواتساب ويُنعش الصفحة
 window.addEventListener("error", (event) => {
@@ -33,40 +33,60 @@ window.addEventListener("unhandledrejection", (event) => {
   }
 });
 
-// 2. تهيئة Google Analytics
+// ⚡ 2. تهيئة Google Analytics باستخدام Dynamic Import لتوفير الـ Main Thread 100%
 const GA_MEASUREMENT_ID = import.meta.env.VITE_GA_MEASUREMENT_ID;
+
 if (GA_MEASUREMENT_ID && typeof window !== "undefined") {
+  const initGA = () => {
+    if (window.gaInitialized) return;
+    window.gaInitialized = true;
+
+    // 🚀 استدعاء ديناميكي للمكتبة بدون إثقال الصفحة عند الإقلاع
+    import("react-ga4").then((ReactGA) => {
+      ReactGA.default.initialize(GA_MEASUREMENT_ID);
+    });
+  };
+
+  // تحميل GA عند أول تفاعل من المستخدم أو بعد 4.5 ثوانٍ تلقائياً
+  const userEvents = ["touchstart", "scroll", "click", "mousemove"];
+  const triggerGA = () => {
+    initGA();
+    userEvents.forEach((evt) => window.removeEventListener(evt, triggerGA));
+  };
+
+  userEvents.forEach((evt) =>
+    window.addEventListener(evt, triggerGA, { passive: true, once: true }),
+  );
+
   window.addEventListener("load", () => {
-    setTimeout(() => {
-      ReactGA.initialize(GA_MEASUREMENT_ID);
-    }, 2500);
+    setTimeout(initGA, 4500);
   });
 }
 
-// ⚡ 3. تسجيل Service Worker مع تحديث تلقائي وفوري للكاش (إلغاء احتجاز الشاشة البيضاء)
+// ⚡ 3. تسجيل Service Worker بعد اكتمال رندر الصفحة بـ 3 ثوانٍ
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => {
-    navigator.serviceWorker
-      .register("/sw.js")
-      .then((reg) => {
-        console.log("SW Registered!", reg);
-        // التحقق من وجود نسخة جديدة وتحديثها فوراً
-        reg.onupdatefound = () => {
-          const installingWorker = reg.installing;
-          if (installingWorker) {
-            installingWorker.onstatechange = () => {
-              if (
-                installingWorker.state === "installed" &&
-                navigator.serviceWorker.controller
-              ) {
-                // إعادة تحميل الصفحة لتفعيل التحديث الجديد ومسح الشاشة البيضاء
-                window.location.reload();
-              }
-            };
-          }
-        };
-      })
-      .catch((err) => console.log("SW Registration Error!", err));
+    setTimeout(() => {
+      navigator.serviceWorker
+        .register("/sw.js")
+        .then((reg) => {
+          console.log("SW Registered!", reg);
+          reg.onupdatefound = () => {
+            const installingWorker = reg.installing;
+            if (installingWorker) {
+              installingWorker.onstatechange = () => {
+                if (
+                  installingWorker.state === "installed" &&
+                  navigator.serviceWorker.controller
+                ) {
+                  window.location.reload();
+                }
+              };
+            }
+          };
+        })
+        .catch((err) => console.log("SW Registration Error!", err));
+    }, 3000);
   });
 }
 
