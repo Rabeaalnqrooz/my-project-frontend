@@ -1,4 +1,9 @@
-// vite.config.js
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
+import tailwindcss from "@tailwindcss/vite";
+import path from "path";
+
+// https://vite.dev/config/
 export default defineConfig({
   plugins: [react(), tailwindcss()],
   resolve: {
@@ -6,12 +11,11 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
-  // ⚡ تعديل الـ esbuild لحذف الكونسول وتصغير الكود بدون مكتبات خارجية
+  // ⚡ حذف الكونسول والـ debugger لتسريع الأداء وتصغير الحجم عبر esbuild
   esbuild: {
     drop: ["console", "debugger"],
   },
   build: {
-    // استخدم esbuild بدلاً من terser
     minify: "esbuild",
     cssCodeSplit: true,
     rollupOptions: {
@@ -19,9 +23,15 @@ export default defineConfig({
         entryFileNames: `assets/[name].[hash].js`,
         chunkFileNames: `assets/[name].[hash].js`,
         assetFileNames: `assets/[name].[hash].[ext]`,
+
+        // ⚡ تقسيم مكتبات الـ node_modules لتفادي الـ Unused JS
         manualChunks(id) {
           if (id.includes("node_modules")) {
-            if (id.includes("react") || id.includes("react-dom") || id.includes("react-router-dom")) {
+            if (
+              id.includes("react") ||
+              id.includes("react-dom") ||
+              id.includes("react-router-dom")
+            ) {
               return "vendor-core";
             }
             if (id.includes("lucide-react")) {
