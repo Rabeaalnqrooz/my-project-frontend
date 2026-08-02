@@ -1,6 +1,5 @@
 import React, { useEffect, lazy, Suspense } from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
-import ReactGA from "react-ga4";
 import Layout from "./components/Layout";
 import Home from "./pages/Home";
 
@@ -31,7 +30,7 @@ const safeLazy = (importFn) =>
   );
 
 // ⚡ التحميل الكسول الآمن للصفحات العامة والفرعية
-const Bundles = safeLazy(() => import("./pages/Bundles")); // 👈 تم التعديل هنا لتقليل حجم Bundle الرئيسي
+const Bundles = safeLazy(() => import("./pages/Bundles"));
 const Products = safeLazy(() => import("./pages/Products"));
 const ProductDetails = safeLazy(() => import("./pages/ProductDetails"));
 const About = safeLazy(() => import("./pages/About"));
@@ -50,7 +49,7 @@ const OrderDetails = safeLazy(() => import("./pages/OrderDetails"));
 const Login = safeLazy(() => import("./pages/Login"));
 const Signup = safeLazy(() => import("./pages/Signup"));
 
-// 🛡️ مكونات الحماية والأدمن
+// 🛡️ مكونات الحماية والأدمن (مفصولة بالكامل)
 const ProtectedRoute = safeLazy(() => import("./components/ProtectedRoute"));
 const AdminRoute = safeLazy(() => import("@/components/AdminRoute"));
 const AdminLayout = safeLazy(() => import("./components/admin/AdminLayout"));
@@ -77,24 +76,29 @@ const ScrollToTop = () => {
       behavior: "instant",
     });
 
-    // ⚡ إرسال بيانات التحليلات عبر requestIdleCallback لضمان عدم تجميد السلسلة الرئيسية أثناء التنقل
+    // ⚡ إرسال بيانات التحليلات بشكل آمن وبدون استيراد ثابت يعطل الـ Main Thread
     const trackPageView = () => {
       try {
-        if (typeof window !== "undefined" && window.thirdPartyScriptsLoaded) {
-          ReactGA.send({
-            hitType: "pageview",
-            page: pathname + search,
+        if (typeof window !== "undefined" && window.gaInitialized) {
+          import("react-ga4").then((gaModule) => {
+            const ReactGA = gaModule.default || gaModule;
+            if (ReactGA && typeof ReactGA.send === "function") {
+              ReactGA.send({
+                hitType: "pageview",
+                page: pathname + search,
+              });
+            }
           });
         }
       } catch (err) {
-        // تجنب توقف الصفحة إذا تعطل AdBlocker/GA
+        // تجنب توقف الصفحة إذا تعطل GA
       }
     };
 
     if ("requestIdleCallback" in window) {
       window.requestIdleCallback(trackPageView);
     } else {
-      setTimeout(trackPageView, 200);
+      setTimeout(trackPageView, 300);
     }
   }, [pathname, search]);
 
