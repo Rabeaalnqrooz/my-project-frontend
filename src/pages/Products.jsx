@@ -69,16 +69,15 @@ function Products() {
 
   return (
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16 mt-6 max-w-7xl">
-      {/* قسم العنوان العلوي بتصميم عصري نظيف */}
+      {/* قسم العنوان العلوي */}
       <div className="mb-8 border-b border-border/60 pb-5">
         <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-foreground">
           {t("products_title")}
         </h1>
       </div>
 
-      {/* قسم الفلترة والبحث المتجاوب بالكامل */}
+      {/* قسم الفلترة والبحث */}
       <div className="mb-10 flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between bg-card p-4 sm:p-5 rounded-xl border border-border/50 shadow-sm">
-        {/* فوروم البحث: يأخذ كامل العرض في الهواتف وينسق العناصر بداخله */}
         <form
           onSubmit={handleSearchSubmit}
           className="flex w-full items-center gap-2 lg:max-w-md"
@@ -100,7 +99,6 @@ function Products() {
           </Button>
         </form>
 
-        {/* عناصر الاختيار (Select): تصبح بجانب بعضها في الشاشات المتوسطة وفوق بعضها في الهواتف */}
         <div className="flex flex-col sm:flex-row gap-3 w-full lg:w-auto">
           <Select
             value={selectedCategory || "all"}
@@ -142,7 +140,7 @@ function Products() {
         </div>
       </div>
 
-      {/* حالة التحميل المؤثرة */}
+      {/* حالة التحميل */}
       {isLoading && (
         <div className="py-20 flex flex-col items-center justify-center gap-3">
           <div className="h-8 w-8 animate-spin rounded-full border-4 border-primary border-t-transparent" />
@@ -152,7 +150,7 @@ function Products() {
         </div>
       )}
 
-      {/* حالة عدم وجود منتجات بتصميم مريح للعين */}
+      {/* عدم وجود منتجات */}
       {!isLoading && products.length === 0 && (
         <div className="text-center py-24 bg-muted/20 rounded-2xl border border-dashed border-border/80 p-8">
           <p className="text-base font-medium text-muted-foreground">
@@ -161,21 +159,22 @@ function Products() {
         </div>
       )}
 
-      {/* شبكة المنتجات (Grid): 1 في الهواتف الصغيرة جداً، 2 في الشاشات العادية، 3 في المتوسطة، 4 في الكبيرة */}
+      {/* شبكة المنتجات (Grid) */}
       {!isLoading && products.length > 0 && (
         <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          {products.map((product) => (
+          {products.map((product, index) => (
             <div
               key={product._id}
               className="transition-all duration-300 hover:-translate-y-1"
             >
-              <ProductCard product={product} />
+              {/* ⚡ تمرير priority لأول عنصرين يظهران في أعلى الشاشة فوراً */}
+              <ProductCard product={product} priority={index < 2} />
             </div>
           ))}
         </div>
       )}
 
-      {/* أزرار التنقل بين الصفحات (Pagination) بشكل ناعم ومتناسق */}
+      {/* أزرار الصفحات (Pagination) */}
       {!isLoading && totalPages > 1 && (
         <div className="mt-14 flex items-center justify-center gap-4 border-t border-border/40 pt-6">
           <Button

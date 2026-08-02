@@ -6,7 +6,8 @@ import { useTranslation } from "react-i18next";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 
-function ProductCard({ product }) {
+// ⚡ إضافة prop باسم priority لمعالجة تحميل الصورة الأولى فوراً دون تأخير
+function ProductCard({ product, priority = false }) {
   const { t } = useTranslation();
   const hasDiscount = !!product.discountPrice;
 
@@ -14,7 +15,6 @@ function ProductCard({ product }) {
   const images = product?.images || [];
   const hasMultipleImages = images.length > 1;
 
-  // 🖱️ للمكتبية: التنقل للصورة الثانية فقط عند الـ Hover لراحة العين ولتوفير الأداء
   const handleMouseEnter = () => {
     if (hasMultipleImages) setCurrentImageIndex(1);
   };
@@ -36,7 +36,10 @@ function ProductCard({ product }) {
             src={images[currentImageIndex]?.url || product.images?.[0]?.url}
             alt={product.name}
             className="h-full w-full object-cover transition-all duration-500 group-hover:scale-105"
-            loading="lazy"
+            // ⚡ إذا كانت هذه الصورة الأولى (LCP)، نحملها فوراً وبأعلى أولوية
+            loading={priority ? "eager" : "lazy"}
+            fetchPriority={priority ? "high" : "auto"}
+            decoding={priority ? "sync" : "async"}
           />
 
           {/* شارة الخصم */}
@@ -45,12 +48,14 @@ function ProductCard({ product }) {
               {t("discount_percent", { percent: product.discountPercentage })}
             </Badge>
           )}
-          {/* ✅ شارة "باقة" — بمكانها الصحيح جوا حاوية الصورة */}
+
+          {/* شارة باقة */}
           {product.isBundle && (
             <Badge className="absolute top-2.5 start-2.5 bg-primary text-primary-foreground font-bold px-2 py-0.5 text-[11px] border-none shadow-sm z-10">
               {t("bundle_badge")}
             </Badge>
           )}
+
           {/* شارة نفاد الكمية */}
           {product.stock === 0 && (
             <div className="absolute inset-0 flex items-center justify-center bg-background/70 backdrop-blur-[1px] animate-in fade-in duration-200 z-10">
@@ -63,7 +68,7 @@ function ProductCard({ product }) {
             </div>
           )}
 
-          {/* مؤشر بصري بسيط لعدد الصور على الشاشات الكبيرة والصغيرة */}
+          {/* مؤشر بصري لعدد الصور */}
           {hasMultipleImages && (
             <div className="absolute bottom-2 left-1/2 -translate-x-1/2 z-10 flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300 dir-ltr">
               {images.map((_, idx) => (

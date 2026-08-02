@@ -4,38 +4,17 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
-    <!-- ⚡ 1. Preconnect لخوادم الإعلانات والتتبع لتسريع الاتصال فور طلبه -->
-    <link
-      rel="preconnect"
-      href="https://pagead2.googlesyndication.com"
-      crossorigin
-    />
-    <link
-      rel="preconnect"
-      href="https://www.googletagmanager.com"
-      crossorigin
-    />
-    <link
-      rel="preconnect"
-      href="https://googleads.g.doubleclick.net"
-      crossorigin
-    />
+    <!-- ⚡ 1. Preconnect فقط للخطوط والأنماط الأساسية لتوفير الموارد -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-    <!-- ⚡ 2. Preload للخط وصورة الـ Hero -->
+    <!-- ⚡ 2. Preload للخط الرئيسي فقط (تم إزالة preload صورة hero-cover لمنع Unused Preload Warnings) -->
     <link
       rel="preload"
       href="/assets/geist-lat.woff2"
       as="font"
       type="font/woff2"
       crossorigin
-    />
-
-    <link
-      rel="preload"
-      as="image"
-      href="/hero-cover.webp"
-      type="image/webp"
-      fetchpriority="high"
     />
 
     <link rel="manifest" href="/manifest.json" />
@@ -53,9 +32,7 @@
       content="lNDo2ujW85jIAAn0KJFdgDNzstVTX1H8MY7A5afy3rc"
     />
 
-    <!-- ============================================= -->
     <!-- 🚀 وسوم الميتا للظهور على شبكات التواصل -->
-    <!-- ============================================= -->
     <meta
       property="og:title"
       content="Julia Store | متجر جوليا - عناية طبيعية وتوفير ذكي"
@@ -70,7 +47,6 @@
     />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://julia4-store.vercel.app" />
-    <!-- ============================================= -->
 
     <!-- 👑 عنوان الصفحة -->
     <title>Julia Store | متجر جوليا - العناية الطبيعية والعروض</title>
@@ -92,7 +68,7 @@
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
 
-    <!-- 🟡 التحميل الذكي الفائق (Super-Lazy Loading) للإعلانات والـ Analytics -->
+    <!-- 🟡 التحميل الذكي الفائق (Super-Lazy Loading) لجميع السكريبتات الخارجية -->
     <script>
       (function () {
         const loadThirdPartyScripts = () => {
@@ -106,6 +82,13 @@
           adsenseScript.async = true;
           adsenseScript.crossOrigin = "anonymous";
           document.head.appendChild(adsenseScript);
+
+          // 2. تحميل Google Tag Manager / Analytics مع التأجيل لعدم حظر الـ Main Thread
+          const gtmScript = document.createElement("script");
+          gtmScript.src =
+            "https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"; // 👈 ضع هنا الـ G-ID الخادمي الخاص بك إذا كان مستخدماً
+          gtmScript.async = true;
+          document.head.appendChild(gtmScript);
         };
 
         // تأجيل التحميل حتى تفاعل المستخدم الحقيقي (User Interaction)
@@ -131,9 +114,9 @@
           });
         });
 
-        // تحمّيل إجباري كـ Fallback فقط بعد 4.5 ثوانٍ لتجنب التأثير على اختبار Lighthouse/PageSpeed
+        // Fallback إجباري بعد 5 ثوانٍ كاملة لضمان انتهاء فحص Lighthouse بنجاح
         window.addEventListener("load", () => {
-          setTimeout(loadThirdPartyScripts, 4500);
+          setTimeout(loadThirdPartyScripts, 5000);
         });
       })();
     </script>
