@@ -5,7 +5,6 @@ import { Toaster } from "sonner";
 import "./index.css";
 import App from "./App.jsx";
 import "./i18n.js";
-// ❌ تم إزالة import ReactGA المباشر لمنع انتفاخ الـ Bundle وتجميد الـ Main Thread
 
 // 🛡️ 1. حارس الكاش: يلتقط أخطاء التحميل في متصفح الواتساب ويُنعش الصفحة
 window.addEventListener("error", (event) => {
@@ -33,33 +32,46 @@ window.addEventListener("unhandledrejection", (event) => {
   }
 });
 
-// ⚡ 2. تهيئة Google Analytics باستخدام Dynamic Import لتوفير الـ Main Thread 100%
+// ⚡ 2. تهيئة Google Analytics الآمنة بدون إثقال الـ Main Thread
 const GA_MEASUREMENT_ID = import.meta.env.VITE_GA_MEASUREMENT_ID;
 
 if (GA_MEASUREMENT_ID && typeof window !== "undefined") {
+  let timerId = null;
+  const userEvents = ["touchstart", "scroll", "click", "mousemove"];
+
+  const cleanupEvents = () => {
+    userEvents.forEach((evt) => window.removeEventListener(evt, triggerGA));
+    if (timerId) clearTimeout(timerId);
+  };
+
   const initGA = () => {
     if (window.gaInitialized) return;
     window.gaInitialized = true;
+    cleanupEvents();
 
-    // 🚀 استدعاء ديناميكي للمكتبة بدون إثقال الصفحة عند الإقلاع
-    import("react-ga4").then((ReactGA) => {
-      ReactGA.default.initialize(GA_MEASUREMENT_ID);
-    });
+    // 🚀 جلب آمن ومباشر لدالة initialize من الحزمة الديناميكية
+    import("react-ga4")
+      .then((gaModule) => {
+        const ReactGA = gaModule.default || gaModule;
+        if (ReactGA && typeof ReactGA.initialize === "function") {
+          ReactGA.initialize(GA_MEASUREMENT_ID);
+        }
+      })
+      .catch((err) => console.error("GA Load Error:", err));
   };
 
-  // تحميل GA عند أول تفاعل من المستخدم أو بعد 4.5 ثوانٍ تلقائياً
-  const userEvents = ["touchstart", "scroll", "click", "mousemove"];
   const triggerGA = () => {
     initGA();
-    userEvents.forEach((evt) => window.removeEventListener(evt, triggerGA));
   };
 
+  // تسجيل مستمعي الأحداث التفاعلية
   userEvents.forEach((evt) =>
     window.addEventListener(evt, triggerGA, { passive: true, once: true }),
   );
 
+  // Fallback مؤجل بعد 4.5 ثوانٍ
   window.addEventListener("load", () => {
-    setTimeout(initGA, 4500);
+    timerId = setTimeout(initGA, 4500);
   });
 }
 

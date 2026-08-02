@@ -12,32 +12,48 @@ export default defineConfig({
     },
   },
   build: {
-    // ⚡ الاعتماد على الضغط الافتراضي الذكي والسريع لـ Vite
-    minify: true,
+    minify: "esbuild", // استخدام esbuild السريع والدقيق للإنتاج
     cssCodeSplit: true,
+    target: "esnext",
     rollupOptions: {
       output: {
         entryFileNames: `assets/[name].[hash].js`,
         chunkFileNames: `assets/[name].[hash].js`,
         assetFileNames: `assets/[name].[hash].[ext]`,
 
-        // ⚡ تقسيم المكتبات (Vendor Chunks) لتقليل حجم unused JS
+        // ⚡ تقسيم الاحترافي لـ Vendor Chunks للتخلص من Unused JS
         manualChunks(id) {
           if (id.includes("node_modules")) {
-            if (
-              id.includes("react") ||
-              id.includes("react-dom") ||
-              id.includes("react-router-dom")
-            ) {
-              return "vendor-core";
+            // 1. النواة الأساسية فقط (React & DOM)
+            if (id.includes("react/") || id.includes("react-dom/")) {
+              return "vendor-react";
             }
+            // 2. التوجيه (Router)
+            if (id.includes("react-router")) {
+              return "vendor-router";
+            }
+            // 3. الأيقونات
             if (id.includes("lucide-react")) {
               return "vendor-icons";
             }
+            // 4. الإشعارات والـ UI Utilities
+            if (
+              id.includes("sonner") ||
+              id.includes("clsx") ||
+              id.includes("tailwind-merge")
+            ) {
+              return "vendor-ui";
+            }
+            // 5. الترجمة وإدارة اللغة
+            if (id.includes("i18next")) {
+              return "vendor-i18n";
+            }
+            // 6. التحليلات
             if (id.includes("react-ga4")) {
               return "vendor-analytics";
             }
-            return "vendor-libs";
+            // أي مكتبة أخرى
+            return "vendor-utils";
           }
         },
       },

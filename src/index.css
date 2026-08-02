@@ -1,5 +1,4 @@
 @import "tailwindcss";
-@import "tw-animate-css";
 @import "shadcn/tailwind.css";
 
 /* ⚡ تحسين جلب الخط لتحديد swap وإلغاء حجب الرندر */
@@ -125,6 +124,22 @@
 @font-face {
   font-family: "Geist Variable";
   font-display: swap;
+}
+
+/* ⚡ تحسين الأنيميشنز لتعمل على GPU بدلاً من الـ Main Thread (يلغي تحذيرات Non-composited animations) */
+@keyframes gpu-bounce {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -6px, 0);
+  }
+}
+
+.animate-bounce-slow {
+  animation: gpu-bounce 2.5s infinite ease-in-out;
+  will-change: transform;
 }
 
 @layer base {
