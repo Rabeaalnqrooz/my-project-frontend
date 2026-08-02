@@ -3,27 +3,35 @@ import { Route, Routes, useLocation } from "react-router-dom";
 import ReactGA from "react-ga4";
 import Layout from "./components/Layout";
 import Home from "./pages/Home";
-import InstallPrompt from "./components/InstallPrompt";
-import Bundles from "./pages/Bundles";
-// 🛡️ دالة ذكية لتحميل الصفحات الكسولة وإعادة التحميل تلقائياً عند تحديث الموقع
+
+// ⚡ تحميل InstallPrompt بشكل كسول لعدم التأثير على التحميل الأولي
+const InstallPrompt = lazy(() => import("./components/InstallPrompt"));
+
+// 🛡️ دالة محصنة لتحميل الصفحات الكسولة وتجنب حلقة الإعادة اللانهائية
 const safeLazy = (importFn) =>
   lazy(() =>
     importFn().catch((error) => {
-      // إذا فشل جلب الـ Chunk بسبب وجود نسخة جديدة على Vercel، نقوم بعمل Reload
-      if (
+      const isChunkError =
         error.message?.includes(
           "Failed to fetch dynamically imported module",
         ) ||
         error.message?.includes("Importing a module script failed") ||
-        error.message?.includes("Loading chunk")
-      ) {
+        error.message?.includes("Loading chunk");
+
+      const hasReloaded = sessionStorage.getItem("chunk_reload_retry");
+
+      if (isChunkError && !hasReloaded) {
+        sessionStorage.setItem("chunk_reload_retry", "true");
         window.location.reload();
+      } else {
+        sessionStorage.removeItem("chunk_reload_retry");
       }
       throw error;
     }),
   );
 
-// ⚡ التحميل الكسول الآمن للصفحات
+// ⚡ التحميل الكسول الآمن للصفحات العامة والفرعية
+const Bundles = safeLazy(() => import("./pages/Bundles")); // 👈 تم التعديل هنا لتقليل حجم Bundle الرئيسي
 const Products = safeLazy(() => import("./pages/Products"));
 const ProductDetails = safeLazy(() => import("./pages/ProductDetails"));
 const About = safeLazy(() => import("./pages/About"));
@@ -69,13 +77,24 @@ const ScrollToTop = () => {
       behavior: "instant",
     });
 
-    try {
-      ReactGA.send({
-        hitType: "pageview",
-        page: pathname + search,
-      });
-    } catch (err) {
-      // تجنب توقف الصفحة إذا تعطل AdBlocker/GA
+    // ⚡ إرسال بيانات التحليلات عبر requestIdleCallback لضمان عدم تجميد السلسلة الرئيسية أثناء التنقل
+    const trackPageView = () => {
+      try {
+        if (typeof window !== "undefined" && window.thirdPartyScriptsLoaded) {
+          ReactGA.send({
+            hitType: "pageview",
+            page: pathname + search,
+          });
+        }
+      } catch (err) {
+        // تجنب توقف الصفحة إذا تعطل AdBlocker/GA
+      }
+    };
+
+    if ("requestIdleCallback" in window) {
+      window.requestIdleCallback(trackPageView);
+    } else {
+      setTimeout(trackPageView, 200);
     }
   }, [pathname, search]);
 
@@ -86,7 +105,9 @@ function App() {
   return (
     <>
       <ScrollToTop />
-      <InstallPrompt />
+      <Suspense fallback={null}>
+        <InstallPrompt />
+      </Suspense>
       <Suspense fallback={<PageLoader />}>
         <Routes>
           <Route element={<Layout />}>

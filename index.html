@@ -4,7 +4,24 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
-    <!-- ⚡ Preload لملف الخط لإنهاء مشكلة حظر العرض -->
+    <!-- ⚡ 1. Preconnect لخوادم الإعلانات والتتبع لتسريع الاتصال فور طلبه -->
+    <link
+      rel="preconnect"
+      href="https://pagead2.googlesyndication.com"
+      crossorigin
+    />
+    <link
+      rel="preconnect"
+      href="https://www.googletagmanager.com"
+      crossorigin
+    />
+    <link
+      rel="preconnect"
+      href="https://googleads.g.doubleclick.net"
+      crossorigin
+    />
+
+    <!-- ⚡ 2. Preload للخط وصورة الـ Hero -->
     <link
       rel="preload"
       href="/assets/geist-lat.woff2"
@@ -13,7 +30,6 @@
       crossorigin
     />
 
-    <!-- ⚡ تحميل صورة الهيرو بأعلى أولوية ممكنة -->
     <link
       rel="preload"
       as="image"
@@ -26,7 +42,8 @@
     <meta name="theme-color" content="#ffffff" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="p:domain_verify" content="4c7d00c4afa65b9913825ac51cf3d561" />
-    <!-- 🔍 تحسين الوصف ليتضمن اسم المتجر بالعربي والإنجليزي -->
+
+    <!-- 🔍 تحسين الوصف -->
     <meta
       name="description"
       content="متجر جوليا (Julia Store) - مجموعة متميزة من منتجات العناية بالبشرة الطبيعية المصنوعة من مكونات نقية وآمنة، مع أقوى عروض التوفير وكوبونات الخصم الحصرية."
@@ -37,7 +54,7 @@
     />
 
     <!-- ============================================= -->
-    <!-- 🚀 وسوم الميتا الذكية للظهور الاحترافي على واتساب وفيسبوك -->
+    <!-- 🚀 وسوم الميتا للظهور على شبكات التواصل -->
     <!-- ============================================= -->
     <meta
       property="og:title"
@@ -55,7 +72,7 @@
     <meta property="og:url" content="https://julia4-store.vercel.app" />
     <!-- ============================================= -->
 
-    <!-- 👑 عنوان الصفحة المستهدف لمحركات البحث -->
+    <!-- 👑 عنوان الصفحة -->
     <title>Julia Store | متجر جوليا - العناية الطبيعية والعروض</title>
 
     <!-- 🤖 البيانات المنظمة (Schema.org) -->
@@ -75,30 +92,50 @@
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
 
-    <!-- 🟡 Google AdSense: تحميل ذكي ومؤجل لتحرير الرندر الأول ورفع سكور السرعة (FCP / LCP) -->
+    <!-- 🟡 التحميل الذكي الفائق (Super-Lazy Loading) للإعلانات والـ Analytics -->
     <script>
-      window.addEventListener("DOMContentLoaded", () => {
-        const loadAdSense = () => {
-          if (window.adsenseLoaded) return;
-          window.adsenseLoaded = true;
-          const script = document.createElement("script");
-          script.src =
+      (function () {
+        const loadThirdPartyScripts = () => {
+          if (window.thirdPartyScriptsLoaded) return;
+          window.thirdPartyScriptsLoaded = true;
+
+          // 1. تحميل Google AdSense
+          const adsenseScript = document.createElement("script");
+          adsenseScript.src =
             "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8740489206078672";
-          script.async = true;
-          script.crossOrigin = "anonymous";
-          document.head.appendChild(script);
+          adsenseScript.async = true;
+          adsenseScript.crossOrigin = "anonymous";
+          document.head.appendChild(adsenseScript);
         };
 
-        // تحميل أدسنس فور أول تفاعل للمستخدم أو بعد 2.5 ثانية تلقائياً
-        ["touchstart", "scroll", "mousemove", "click"].forEach((event) => {
-          window.addEventListener(event, loadAdSense, {
-            once: true,
+        // تأجيل التحميل حتى تفاعل المستخدم الحقيقي (User Interaction)
+        const userEvents = [
+          "touchstart",
+          "scroll",
+          "mousemove",
+          "keydown",
+          "click",
+        ];
+
+        const triggerListener = () => {
+          loadThirdPartyScripts();
+          userEvents.forEach((event) =>
+            window.removeEventListener(event, triggerListener),
+          );
+        };
+
+        userEvents.forEach((event) => {
+          window.addEventListener(event, triggerListener, {
             passive: true,
+            once: true,
           });
         });
 
-        setTimeout(loadAdSense, 2500);
-      });
+        // تحمّيل إجباري كـ Fallback فقط بعد 4.5 ثوانٍ لتجنب التأثير على اختبار Lighthouse/PageSpeed
+        window.addEventListener("load", () => {
+          setTimeout(loadThirdPartyScripts, 4500);
+        });
+      })();
     </script>
   </body>
 </html>

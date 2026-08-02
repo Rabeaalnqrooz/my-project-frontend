@@ -82,12 +82,13 @@ function Hero() {
 
             <img
               src="/hero-cover.webp"
+              srcSet="/hero-cover-mobile.webp 480w, /hero-cover.webp 800w"
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 500px, 634px"
               alt="hero image"
               width="800"
               height="450"
-              fetchpriority="high"
-              decoding="sync"
-              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 500px, 634px"
+              fetchPriority="high"
+              decoding="async"
               className="relative rounded-2xl shadow-2xl object-cover max-h-[280px] sm:max-h-[400px] lg:max-h-[450px] w-full border border-border/60 transition-transform duration-500 ease-out group-hover:scale-[1.01]"
             />
           </div>
