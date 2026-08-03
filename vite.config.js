@@ -15,7 +15,7 @@ export default defineConfig({
     // ⚡ استخدام المينيفاي الافتراضي الذكي والسريع لـ Vite بدون استدعاء esbuild صريح
     minify: true,
     cssCodeSplit: true,
-    target: "esnext",
+    target: ["es2020", "chrome80", "safari13.1", "firefox78", "edge88"],
     rollupOptions: {
       output: {
         entryFileNames: `assets/[name].[hash].js`,
