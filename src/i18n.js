@@ -849,7 +849,7 @@ const resources = {
       whatsapp_product_label: "المنتج",
       whatsapp_quantity_label: "الكمية",
       whatsapp_total_label: "السعر الإجمالي",
-
+      hero_view_Packages_btn: "مشاهدة البكجات",
       // 📲 PWA App Prompt Translations
       pwa: {
         title: "تطبيق متجر جوليا",
