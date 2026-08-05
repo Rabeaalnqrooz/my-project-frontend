@@ -1,8 +1,6 @@
-// frontend/src/pages/PrivacyPolicy.jsx
-
 import { useTranslation } from "react-i18next";
 
-function PrivacyPolicy() {
+function ShippingPolicy() {
   const { t } = useTranslation();
 
   const sections = [1, 2, 3, 4, 5];
@@ -14,8 +12,11 @@ function PrivacyPolicy() {
         <h1 className="mb-4 text-2xl sm:text-3xl font-extrabold tracking-tight text-foreground">
           {t("ShippingPolicy_title")}
         </h1>
+        <p className="mb-8 text-sm sm:text-base text-muted-foreground/90 leading-relaxed border-b border-border/60 pb-6">
+          {t("ShippingPolicy_intro")}
+        </p>
 
-        {/* أقسام سياسة الخصوصية */}
+        {/* أقسام سياسة الشحن والإرجاع */}
         <div className="space-y-6 sm:space-y-8">
           {sections.map((num) => (
             <div
@@ -37,4 +38,4 @@ function PrivacyPolicy() {
   );
 }
 
-export default PrivacyPolicy;
+export default ShippingPolicy;

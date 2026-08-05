@@ -1,9 +1,13 @@
 import React, { useEffect, lazy, Suspense } from "react";
-import { Route, Routes, useLocation } from "react-router-dom";
+import { Route, Routes, useLocation, Navigate } from "react-router-dom";
 import Layout from "./components/Layout";
 import Home from "./pages/Home";
 
-// ⚡ تحميل InstallPrompt بشكل كسول لعدم التأثير على التحميل الأولي
+// 🛡️ استيراد مكونات الحماية بشكل مباشر لضمان ثبات جلسة المستخدم وعدم التسبب برمشة شاشة
+import ProtectedRoute from "./components/ProtectedRoute";
+import AdminRoute from "./components/AdminRoute";
+
+// ⚡ تحميل InstallPrompt بشكل كسول
 const InstallPrompt = lazy(() => import("./components/InstallPrompt"));
 
 // 🛡️ دالة محصنة لتحميل الصفحات الكسولة وتجنب حلقة الإعادة اللانهائية
@@ -49,9 +53,7 @@ const OrderDetails = safeLazy(() => import("./pages/OrderDetails"));
 const Login = safeLazy(() => import("./pages/Login"));
 const Signup = safeLazy(() => import("./pages/Signup"));
 
-// 🛡️ مكونات الحماية والأدمن (مفصولة بالكامل)
-const ProtectedRoute = safeLazy(() => import("./components/ProtectedRoute"));
-const AdminRoute = safeLazy(() => import("@/components/AdminRoute"));
+// 🛡️ مكونات لوحة التحكم
 const AdminLayout = safeLazy(() => import("./components/admin/AdminLayout"));
 const AdminDashboard = safeLazy(() => import("./pages/admin/AdminDashboard"));
 const AdminUsers = safeLazy(() => import("./pages/admin/AdminUsers"));
@@ -76,7 +78,6 @@ const ScrollToTop = () => {
       behavior: "instant",
     });
 
-    // ⚡ إرسال بيانات التحليلات بشكل آمن وبدون استيراد ثابت يعطل الـ Main Thread
     const trackPageView = () => {
       try {
         if (typeof window !== "undefined" && window.gaInitialized) {
@@ -146,6 +147,9 @@ function App() {
                 <Route path="/admin/orders" element={<AdminOrders />} />
               </Route>
             </Route>
+
+            {/* Catch-all route for undefined paths */}
+            <Route path="*" element={<Navigate to="/" replace />} />
           </Route>
 
           <Route path="/login" element={<Login />} />

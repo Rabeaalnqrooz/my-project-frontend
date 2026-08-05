@@ -1,11 +1,9 @@
-// frontend/src/pages/PrivacyPolicy.jsx
-
 import { useTranslation } from "react-i18next";
 
 function PrivacyPolicy() {
   const { t } = useTranslation();
 
-  const sections = [1, 2, 3, 4, 5];
+  const sections = [1, 2, 3, 4, 5, 6, 7];
 
   return (
     <div className="max-w-3xl mx-auto pt-24 px-4 mb-12 relative text-foreground mt-12 animate-in fade-in duration-300">

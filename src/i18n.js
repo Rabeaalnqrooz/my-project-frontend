@@ -239,56 +239,73 @@ const resources = {
       proceed_to_checkout: "Proceed to Checkout",
       login_required_alert:
         "Please log in first to add products to your cart. Would you like to go to the login page now?",
-      about_title: "About Us",
-      about_p1:
-        "Our store is your trusted destination for online shopping in Jordan. We offer a distinguished range of natural skincare products made from pure and safe ingredients, including moisturizing creams, hair serums, deodorants, and body scrubs for fresh and healthy skin.",
-      about_p2:
-        "We are committed to providing a smooth and safe shopping experience, from product selection to delivery to your doorstep.",
-      about_p3:
-        "Our goal is for you to get smooth and radiant skin, through natural products and a genuine guarantee.",
+      // about_title: "About Us",
+      // about_p1:
+      //   "Our store is your trusted destination for online shopping in Jordan. We offer a distinguished range of natural skincare products made from pure and safe ingredients, including moisturizing creams, hair serums, deodorants, and body scrubs for fresh and healthy skin.",
+      // about_p2:
+      //   "We are committed to providing a smooth and safe shopping experience, from product selection to delivery to your doorstep.",
+      // about_p3:
+      //   "Our goal is for you to get smooth and radiant skin, through natural products and a genuine guarantee.",
 
       contact_title: "Contact Us",
-      contact_intro: "For any inquiry or feedback, reach us through:",
+      contact_intro:
+        "We're here to help! Reach out to us through our contact details or send a direct message using the form below.",
+      contact_info_heading: "Direct Contact Info",
       contact_email_label: "Email",
       contact_phone_label: "Phone Number",
       contact_address_label: "Address",
       contact_address_value: "Amman, Jordan",
       contact_hours_label: "Working Hours",
       contact_hours_value: "Sat - Thu, 11 AM - 11 PM",
-      ShippingPolicy: "Shipping and Returns Policy",
-      ShippingPolicy_title: "Shipping and Returns Policy",
-      ShippingPolicy_s1_title: "Shipping areas",
+      contact_form_heading: "Send Us a Message",
+      contact_form_name: "Full Name",
+      contact_form_name_placeholder: "Enter your full name",
+      contact_form_email: "Email Address",
+      contact_form_message: "Message",
+      contact_form_message_placeholder: "Type your query or feedback here...",
+      contact_form_send: "Send Message",
+      ShippingPolicy: "Shipping & Returns Policy",
+      ShippingPolicy_title: "Shipping & Returns Policy",
+      ShippingPolicy_intro:
+        "To ensure a smooth shopping experience, here are the details regarding our order fulfillment times and return rules.",
+      ShippingPolicy_s1_title: "Shipping Areas",
       ShippingPolicy_s1_body: "Amman and Zarqa",
       ShippingPolicy_s2_title: "Delivery Time",
       ShippingPolicy_s2_body:
-        "Orders within Amman and Zarqa take 24 to 48 working hours after order approval.",
+        "Orders within Amman and Zarqa take 24 to 48 working hours following order confirmation.",
       ShippingPolicy_s3_title: "Delivery Cost",
       ShippingPolicy_s3_body:
-        "You will be contacted by the delivery company to determine the appropriate delivery cost.",
-      ShippingPolicy_s4_title: "Grace Period",
+        "The delivery company will contact you directly to confirm the applicable shipping charges.",
+      ShippingPolicy_s4_title: "Return Grace Period",
       ShippingPolicy_s4_body:
-        "You can submit a return request while the delivery person is present, provided the order contents have not been used. Only the delivery fee will be deducted.",
-      ShippingPolicy_s5_title: "Delivery fees",
+        "You may submit a return request while the courier is present, provided the items remain unused. Only the delivery fee will apply.",
+      ShippingPolicy_s5_title: "Non-Refundable Fees",
       ShippingPolicy_s5_body:
-        "Please note that the original delivery fees are non-refundable.",
+        "Please note that initial delivery fees are non-refundable under any circumstances.",
       privacy_title: "Privacy Policy",
       privacy_intro:
-        "We respect your privacy and are committed to protecting your personal data. This policy explains how we collect and use your data.",
+        "At Julia Store, we respect your privacy and are committed to protecting your personal data. This policy details how we collect, handle, and secure your information in compliance with standard practices.",
       privacy_s1_title: "Information We Collect",
       privacy_s1_body:
-        "We collect information you provide directly when creating an account or placing an order, such as name, phone number, address, and email.",
+        "We collect information provided directly when creating an account or submitting an order, including your name, phone number, address, and email, alongside standard technical log details such as IP address and browser type.",
       privacy_s2_title: "How We Use Your Data",
       privacy_s2_body:
-        "We use your data to process your orders, communicate with you about order status, and improve your shopping experience. We never sell your data to third parties.",
-      privacy_s3_title: "Cookies",
+        "We use your information strictly to process orders, communicate update statuses, enhance platform performance, and ensure digital security. We never sell or share your data with unauthorized third parties.",
+      privacy_s3_title: "Cookies and Preferences",
       privacy_s3_body:
-        "We use essential cookies to maintain your login session and improve site performance.",
-      privacy_s4_title: "Data Security",
+        "We utilize essential cookies to keep you logged in securely, remember your store preferences, and optimize frontend loading performance.",
+      privacy_s4_title: "Third-Party Advertising & Google AdSense",
       privacy_s4_body:
-        "We take reasonable technical measures to protect your data from unauthorized access, including password encryption.",
-      privacy_s5_title: "Contact Us",
+        "Third-party vendors, including Google, use cookies (such as the DART cookie) to serve ads based on your prior visits to our website or other websites on the Internet. Users may opt out of personalized advertising by visiting Google Ads Settings.",
+      privacy_s5_title: "External Links and Partners",
       privacy_s5_body:
-        "For any inquiry regarding this privacy policy, you can reach us through our Contact page.",
+        "Our website may contain referral links to external vendor sites. We are not responsible for the privacy practices or content of third-party platforms and encourage reviewing their respective policies.",
+      privacy_s6_title: "Data Security Standards",
+      privacy_s6_body:
+        "We enforce robust security measures to prevent unauthorized access, alteration, or disclosure of personal records, incorporating password hashing and SSL network encryption.",
+      privacy_s7_title: "Contact Information",
+      privacy_s7_body:
+        "For questions or inquiries regarding our privacy standards, you can contact our technical team via the official Contact Us page.",
       admin_categories_title: "Manage Categories",
       add_category_title: "Add New Category",
       edit_category_title: "Edit Category",
@@ -439,6 +456,24 @@ const resources = {
       no_bundle_items_yet: "No products added to the Package yet",
       unknown_product: "Unknown product",
       hero_view_Packages_btn: "View Packages",
+      about_title: "About Julia Store",
+      about_p1:
+        "Welcome to Julia Store, your premier destination for discovering top-quality products and enjoying an exceptional online shopping experience. We aim to provide a seamless shopping journey that guarantees full customer satisfaction.",
+      about_p2:
+        "Our store was established to serve as a comprehensive platform offering a wide variety of carefully curated items, with a strong focus on reliability, ease of use, and great value for money.",
+      about_vision_title: "Our Vision & Mission",
+      about_p3:
+        "We believe online shopping should be enjoyable, safe, and swift. Our mission is to bridge the gap between high-quality products and consumers by providing flexible shopping options and reliable support.",
+      about_why_us_title: "Why Choose Julia Store?",
+      about_why_us_1: "Guaranteed products with thorough quality control.",
+      about_why_us_2:
+        "Continuous customer service to assist with all inquiries.",
+      about_why_us_3: "Fast order handling with safe and secure packaging.",
+      about_why_us_4:
+        "Transparent refund and exchange policies to safeguard buyers.",
+      about_quality_title: "Our Commitment to Quality",
+      about_p4:
+        "We continuously partner with suppliers who adhere to top quality standards and regularly update our inventory to meet our visitors' evolving expectations. Thank you for choosing us.",
     },
   },
 
@@ -673,56 +708,75 @@ const resources = {
       proceed_to_checkout: "إتمام الطلب",
       login_required_alert:
         "الرجاء تسجيل الدخول أولاً لتتمكن من إضافة المنتجات إلى السلة. هل تريد الذهاب لصفحة تسجيل الدخول الآن؟",
-      about_title: "من نحن",
-      about_p1:
-        "متجرنا وجهتك الموثوقة للتسوق الإلكتروني في الأردن، نقدّم مجموعة متميزة من منتجات العناية بالبشرة الطبيعية المصنوعة من مكونات نقية وآمنة، بما في ذلك الكريمات المرطبة، سيروم الشعر، مزيلات العرق، ومقشرات الجسم للحصول على بشرة نضرة وصحية",
-      about_p2:
-        "نحرص على توفير تجربة تسوق سلسة وآمنة، من اختيار المنتج وحتى التوصيل لباب بيتك،",
-      about_p3:
-        "هدفنا ان تحصلي على بشرة ناعمة ومشرقة، من خلال منتجات طبيعية وضمان حقيقي.",
 
+      // about_title: "من نحن",
+      // about_p1:
+      //   "متجرنا وجهتك الموثوقة للتسوق الإلكتروني في الأردن، نقدّم مجموعة متميزة من منتجات العناية بالبشرة الطبيعية المصنوعة من مكونات نقية وآمنة، بما في ذلك الكريمات المرطبة، سيروم الشعر، مزيلات العرق، ومقشرات الجسم للحصول على بشرة نضرة وصحية",
+      // about_p2:
+      //   "نحرص على توفير تجربة تسوق سلسة وآمنة، من اختيار المنتج وحتى التوصيل لباب بيتك،",
+      // about_p3:
+      //   "هدفنا ان تحصلي على بشرة ناعمة ومشرقة، من خلال منتجات طبيعية وضمان حقيقي.",
       contact_title: "اتصل بنا",
-      contact_intro: "لأي استفسار أو ملاحظة، تقدر تتواصل معنا عبر:",
+      contact_intro:
+        "نحن هنا لمساعدتك! لأي استفسار أو اقتراح، يمكنكم التواصل معنا عبر الخيارات المتاحة أو نموذج الرسائل المباشرة.",
+      contact_info_heading: "قنوات التواصل المباشر",
       contact_email_label: "البريد الإلكتروني",
       contact_phone_label: "رقم الهاتف",
       contact_address_label: "العنوان",
       contact_address_value: "عمّان، الأردن",
       contact_hours_label: "ساعات العمل",
       contact_hours_value: "السبت - الخميس، 11 صباحاً - 11 مساءً",
-      ShippingPolicy: " سياسة الشحن والارجاع",
-      ShippingPolicy_title: "سياسة الشحن والارجاع",
+      contact_form_heading: "أرسل لنا رسالة",
+      contact_form_name: "الاسم الكامل",
+      contact_form_name_placeholder: "أدخل اسمك الكريم",
+      contact_form_email: "البريد الإلكتروني",
+      contact_form_message: "الرسالة",
+      contact_form_message_placeholder: "اكتب استفسارك أو ملاحظتك هنا...",
+      contact_form_send: "إرسال الرسالة",
+
+      ShippingPolicy: "سياسة الشحن والإرجاع",
+      ShippingPolicy_title: "سياسة الشحن والإرجاع",
+      ShippingPolicy_intro:
+        "حرصاً منا على تقديم أفضل خدمة تسوق، نوضح لكم تفاصيل ومواعيد شحن الطلبات وضوابط الإرجاع الخاصة بمتجرنا.",
       ShippingPolicy_s1_title: "مناطق الشحن",
       ShippingPolicy_s1_body: "عمان والزرقاء",
       ShippingPolicy_s2_title: "مدة التوصيل",
       ShippingPolicy_s2_body:
-        "تستغرق الطلبات داخل عمان والزرقاء من 24 إلى 48 ساعة عمل بعد الموافقه على الطلب",
+        "تستغرق الطلبات داخل عمان والزرقاء من 24 إلى 48 ساعة عمل بعد الموافقة على الطلب.",
       ShippingPolicy_s3_title: "تكلفة التوصيل",
       ShippingPolicy_s3_body:
-        "سيتم التواصل معك من قبل شركة التوصيل لتحديد تكلفة التوصيل المناسبة",
-      ShippingPolicy_s4_title: "فترة السماح",
+        "سيتم التواصل معك من قبل شركة التوصيل لتحديد تكلفة التوصيل المناسبة.",
+      ShippingPolicy_s4_title: "فترة السماح والإرجاع",
       ShippingPolicy_s4_body:
-        "يمكنك تقديم طلب استرجاع خلال وجود موظف التوصيل مع شرط عدم استخدام محتويات الطلب ويتم خصم رسوم التوصيل فقط",
+        "يمكنك تقديم طلب استرجاع خلال وجود موظف التوصيل بشرط عدم استخدام محتويات الطلب، ويتم خصم رسوم التوصيل فقط.",
       ShippingPolicy_s5_title: "رسوم التوصيل",
-      ShippingPolicy_s5_body: "يرجى العلم أن رسوم التوصيل الأصلية غير مستردة",
+      ShippingPolicy_s5_body: "يرجى العلم أن رسوم التوصيل الأصلية غير مستردة.",
+
       privacy_title: "سياسة الخصوصية",
       privacy_intro:
-        "نحن نحترم خصوصيتك ونلتزم بحماية بياناتك الشخصية. توضح هذه السياسة كيف نجمع بياناتك ونستخدمها.",
+        "نحن في Julia Store نحترم خصوصيتك ونلتزم بتوفير أقصى درجات الحماية لبياناتك الشخصية. توضح هذه السياسة آلية جمع واستخدام البيانات وشروط الإعلانات على موقعنا وفق المعايير الدولية.",
       privacy_s1_title: "المعلومات التي نجمعها",
       privacy_s1_body:
-        "نجمع المعلومات التي تزودنا بها مباشرة عند إنشاء حساب أو إتمام طلب، مثل الاسم ورقم الهاتف والعنوان والبريد الإلكتروني.",
+        "نجمع المعلومات التي تزودنا بها مباشرة عند إنشاء حساب أو إتمام طلب، مثل الاسم، رقم الهاتف، العنوان، والبريد الإلكتروني، بالإضافة للبيانات التقنية العامة مثل عنوان الـ IP ونوع المتصفح.",
       privacy_s2_title: "كيف نستخدم بياناتك",
       privacy_s2_body:
-        "نستخدم بياناتك لمعالجة طلباتك، التواصل معك بخصوص حالة الطلب، وتحسين تجربتك بالمتجر. لا نبيع بياناتك لأي طرف ثالث.",
+        "نستخدم بياناتك لمعالجة طلبات الشراء، التواصل بخصوص حالة الشحنات، تحسين جودة خدماتنا وتجربة المتصفح، وضمان الأمان التقني للحسابات. لا نبيع بياناتك لأي طرف ثالث نهائياً.",
       privacy_s3_title: "ملفات تعريف الارتباط (Cookies)",
       privacy_s3_body:
-        "نستخدم ملفات تعريف الارتباط الأساسية للحفاظ على جلسة تسجيل دخولك وتحسين أداء الموقع.",
-      privacy_s4_title: "أمان البيانات",
+        "نستخدم ملفات تعريف الارتباط الأساسية للحفاظ على جلسة تسجيل الدخول وحفظ تفضيلات التسوق، بالإضافة إلى تحسين سرعة واستجابة صفحات الموقع أثناء التصفح.",
+      privacy_s4_title:
+        "شركاء الإعلانات وملفات تعريف الارتباط للطرف الثالث (Google AdSense)",
       privacy_s4_body:
-        "نتخذ إجراءات تقنية معقولة لحماية بياناتك من الوصول غير المصرح به، بما في ذلك تشفير كلمات المرور.",
-      privacy_s5_title: "تواصل معنا",
+        "قد نستخدم شبكات إعلانية لجهات خارجية مثل Google AdSense لعرض الإعلانات عند زيارتك للموقع. تستخدم هذه الشركات ملفات تعريف الارتباط (مثل ملف تعريف الارتباط DART) لعرض إعلانات بناءً على زياراتك لموقعنا ومواقع أخرى على الإنترنت. يمكنك إلغاء الاشتراك في استخدام ملف تعريف الارتباط DART بزيارة سياسة الخصوصية الخاصة بشبكة Google الإعلانية.",
+      privacy_s5_title: "روابط المواقع الخارجية والشركاء",
       privacy_s5_body:
-        "لأي استفسار بخصوص سياسة الخصوصية، تقدر تتواصل معنا عبر صفحة اتصل بنا.",
-      admin_categories_title: "إدارة التصنيفات",
+        "قد يحتوي موقعنا على روابط لمواقع خارجية أو خدمات تحويل التسوق. نحن غير مسؤولين عن ممارسات الخصوصية أو محتوى تلك المواقع الخارجية، وننصح بقرائة سياسة الخصوصية الخاصة بكل موقع على حدة.",
+      privacy_s6_title: "أمان البيانات والتشفير",
+      privacy_s6_body:
+        "نتخذ كافة الإجراءات التقنية والأمنية المعقولة لحماية بياناتك الشخصية من الوصول غير المصرح به أو التغيير أو الإفصاح، بما في ذلك تشفير كلمات المرور بروتوكولات حماية SSL.",
+      privacy_s7_title: "تواصل معنا",
+      privacy_s7_body:
+        "لأي استفسار أو مراجعة بخصوص سياسة الخصوصية وحماية البيانات، يمكنكم التواصل معنا دائماً عبر صفحة (اتصل بنا) أو عبر بريد الدعم الفني المباشر.",
       add_category_title: "إضافة تصنيف جديد",
       edit_category_title: "تعديل التصنيف",
       category_name_label: "الاسم",
@@ -868,7 +922,22 @@ const resources = {
       product_already_in_bundle: "هذا المنتج مضاف أصلاً للبكج",
       no_bundle_items_yet: "لسا ما ضفت أي منتج للبكج",
       unknown_product: "منتج غير معروف",
-      hero_view_Packages_btn: "مشاهدة البكجات",
+      about_title: "عن متجر Julia Store",
+      about_p1:
+        "مرحباً بكم في Julia Store، وجهتكم الأولى لاكتشاف أفضل المنتجات والتسوق الإلكتروني العالي الجودة. نحن نسعى لتوفير تجربة تسوق سلسة ومميزة تلبّي احتياجات عملائنا وتضمن لهم أعلى مستويات الرضا.",
+      about_p2:
+        "تم تأسيس متجرنا ليكون منصة متكاملة توفر مجموعة واسعة من المنتجات المختارة بعناية فائقة، مع التركيز التام على معايير الاعتمادية، سهولة الاستخدام، والقيمة مقابل السعر.",
+      about_vision_title: "رؤيتنا ورسالتنا",
+      about_p3:
+        "نؤمن بأن التسوق عبر الإنترنت يجب أن يكون عملية ممتعة، آمنة، وسريعة. رسالتنا هي تقليل الفجوة بين المنتجات ذات الجودة العالية والمستهلك النهائي عبر إتاحة خيارات شراء مرنة وخدمات دعم ممتازة.",
+      about_why_us_title: "لماذا تختار Julia Store؟",
+      about_why_us_1: "منتجات مضمونة وفحص دقيق لجودة كافة المعروضات.",
+      about_why_us_2: "دعم فني وتواصل مستمر لإجابة كافة الاستفسارات.",
+      about_why_us_3: "معالجة شحن سريعة مع خيارات تغليف آمنة للطلبات.",
+      about_why_us_4: "سياسات استبدال وإرجاع واضحة لحماية حقوق المشتري.",
+      about_quality_title: "التزامنا بالجودة والشفافية",
+      about_p4:
+        "نعمل باستمرار على اختيار الشركاء والموردين وفق أعلى معايير الجودة العالمية، وتحديث قائمة منتجاتنا لنلبي تطلعات زوارنا بشكل متجدد. نشكر ثقتكم الغالية بنا ونطمح لخدمتكم دائماً بأفضل صورة.",
     },
   },
 };
